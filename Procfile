@@ -1,1 +1,1 @@
-web: gunicorn trax-webapp.wsgi
+web: gunicorn trax.wsgi
