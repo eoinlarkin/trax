@@ -1,1 +1,1 @@
-web: gunicorn ciblog.wsgi
+web: gunicorn trax-webapp.wsgi
