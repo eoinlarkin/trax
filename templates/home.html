@@ -31,18 +31,21 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h1 class="mt-5">GeoApp developed by Hatarilabs</h1>
-        <p class="lead">You´ll be seeing shapefiles storaged in Database</p>
- 
+        <h1 class="mt-5">Map Plot</h1>
         {{ my_map|safe }}
- 
-        <ul class="list-unstyled">
-          <li>Developed by Hatarilabs</li>
-          <li>2020</li>
-        </ul>
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Heart Rate Plot</h1>
+        {{ elev_plot|safe }}
+      </div>
+    </div>
+  </div>
+
   <!-- Bootstrap core JavaScript -->
   <script src="{% static '/jquery/jquery.slim.min.js' %}"></script>
   <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
