@@ -2,11 +2,7 @@ from django.shortcuts import render, redirect
 import os
 import folium
 import gpxpy
-import urllib.request;
-
-#from gpxplotter import read_gpx_file, create_folium_map, add_segment_to_map, plot_filled
-#from matplotlib import pyplot as plt
-#from io import StringIO
+import urllib.request
 
 # # Create your views here.
 def home(request):
