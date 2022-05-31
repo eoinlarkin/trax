@@ -14,3 +14,7 @@ https://stackoverflow.com/questions/36805137/how-to-pass-options-to-cloudinaryfi
 
 ## GPX - Plot Heartrate
 https://www.andersle.no/posts/2018/gpxplot/gpxplot.html
+
+
+## GPXPY to dataframe
+https://www.gpxz.io/blog/gpx-file-to-pandas
