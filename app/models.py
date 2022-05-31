@@ -1,4 +1,3 @@
-from cairo import STATUS_USER_FONT_NOT_IMPLEMENTED
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField

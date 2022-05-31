@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'cloudinary_storage',
     'django.contrib.staticfiles',
+    'crispy_forms', #
     'cloudinary',
     'app', # trax web app 
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

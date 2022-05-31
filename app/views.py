@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from .forms import ActivityForm
 import os
 import folium
 import gpxpy
@@ -72,4 +74,16 @@ def home(request):
 #     return render(request,'home.html',context)
 
 
-# # https://res.cloudinary.com/dapgpdd7z/raw/upload/v1653520044/oubn2z8a8ws8wlc4e6s1.gpx
+
+def AddActivity(request):
+    # djanogo docs: https://docs.djangoproject.com/en/4.0/topics/forms/
+
+    if request.method == 'POST':
+        form = ActivityForm(request.POST)
+        
+        if form.is_valid():
+            return HttpResponseRedirect("/") 
+    else:
+        form = ActivityForm()
+
+    return render(request, "upload.html", {"form": form})
