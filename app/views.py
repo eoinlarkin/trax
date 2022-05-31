@@ -59,7 +59,7 @@ def home(request):
     myMap=myMap._repr_html_()
     # elev_plot = render_elev_plot()._repr_html_()
     #context = {'my_map': myMap}
-    context = {'my_map': myMap, 'elev_plot': render_elev_plot()}
+    context = {'my_map': myMap, 'elev_plot': myMap}
     ## rendering
     return render(request,'home.html',context)
 
