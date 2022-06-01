@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from .forms import ActivityForm
+from cloudinary.forms import cl_init_js_callbacks   
+
 import os
 import folium
 import gpxpy
@@ -77,13 +79,19 @@ def home(request):
 
 def AddActivity(request):
     # djanogo docs: https://docs.djangoproject.com/en/4.0/topics/forms/
+    # https://cloudinary.com/documentation/django_image_and_video_upload#django_forms_and_models
+
+    context = dict( form = ActivityForm())
+
 
     if request.method == 'POST':
-        form = ActivityForm(request.POST)
+        form = ActivityForm(request.POST, request.FILES)
+        context['posted'] = form.instance
         
         if form.is_valid():
+            form.save()
             return HttpResponseRedirect("/") 
     else:
         form = ActivityForm()
 
-    return render(request, "upload.html", {"form": form})
+    return render(request, "upload.html", context)
