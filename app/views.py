@@ -18,14 +18,15 @@ class ActivityDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Activity.objects
         activity = get_object_or_404(queryset, slug=slug)
+        my_map, elev_plot, heart_rate = generate_plots(activity.gpx_file.url)
 
         return render(
             request,
             "activity.html",
             {
-                "post": "",
-                "comments": "",
-                "liked": ""
+                "my_map": my_map,
+                "elev_plot": elev_plot,
+                "heart_rate": heart_rate
             },
         )
 
@@ -38,7 +39,7 @@ def about(request):
     context = {}
     return render(request,'about.html',context)
 
-def activity(request):
+def generate_plots(gpx_file):
     import os
     import folium
     import gpxpy
@@ -47,8 +48,7 @@ def activity(request):
     import plotly.express as px
     import modules.gpx_helper as gpx_helper
 
-    #zoom = 14
-    gpxPath = "https://res.cloudinary.com/dapgpdd7z/raw/upload/v1653520044/oubn2z8a8ws8wlc4e6s1.gpx"
+    gpxPath = gpx_file
 
     urllib.request.urlretrieve(gpxPath, "temp.gpx")
 
@@ -70,6 +70,7 @@ def activity(request):
     myMap.fit_bounds([[min_lat, min_lon], [max_lat, max_lon], ])
 
     gpx_df =  gpx_helper.get_dataframe_from_gpx(os.path.join(os.getcwd(), 'temp.gpx'))
+    myMap=myMap._repr_html_() ## exporting
 
     def heart_rate():
         fig = px.area(gpx_df, x='time', y='heart_rate', color_discrete_sequence=['crimson'])
@@ -77,12 +78,15 @@ def activity(request):
 
     def elevation_plot():
         fig = px.area(gpx_df, x='time', y='elevation', color_discrete_sequence=['darkorchid'])
-        return opy.plot(fig, auto_open=False, output_type='div')
+        return opy.plot(fig, auto_open=False, output_type='div')   
+    
+    return myMap, elevation_plot(), heart_rate()
 
-    ## exporting
-    myMap=myMap._repr_html_()
-    context = {'my_map': myMap, 'elev_plot': elevation_plot(), 'heart_rate': heart_rate()}
-
+def activity(request):
+    gpxPath = "https://res.cloudinary.com/dapgpdd7z/raw/upload/v1653520044/oubn2z8a8ws8wlc4e6s1.gpx"
+    myMap_plot, elev_plot, heart_rate_plot = generate_plots(gpxPath)
+    #context = {'my_map': myMap, 'elev_plot': elevation_plot(), 'heart_rate': heart_rate()}
+    context = {'my_map': myMap_plot, 'elev_plot': elev_plot, 'heart_rate': heart_rate_plot}
     ## rendering
     return render(request,'activity.html',context)
 
