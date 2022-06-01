@@ -1,10 +1,35 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views import generic, View
+from .models import Activity
 from django.http import HttpResponseRedirect
 from .forms import ActivityForm
-from cloudinary.forms import cl_init_js_callbacks   
+
 
 
 # # Create your views here.
+class ActivityList(generic.ListView):
+    model = Activity
+    queryset = Activity.objects.order_by('-slug')
+    template_name = 'home.html'
+    paginate_by = 10
+
+class ActivityDetail(View):
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Activity.objects
+        activity = get_object_or_404(queryset, slug=slug)
+
+        return render(
+            request,
+            "activity.html",
+            {
+                "post": "",
+                "comments": "",
+                "liked": ""
+            },
+        )
+
+
 def home(request):
     context = {}
     return render(request,'home.html',context)

@@ -46,3 +46,9 @@ https://www.gpxz.io/blog/gpx-file-to-pandas
 
 ## Rendering Plotly graphs - exporting to django
 https://stackoverflow.com/questions/36846395/embedding-a-plotly-chart-in-a-django-template
+
+## Upload File and read contents to populate model
+https://stackoverflow.com/questions/6091965/django-upload-a-file-and-read-its-content-to-populate-a-model
+
+# Retrieve and Update database entries
+https://stackoverflow.com/questions/2712682/how-to-select-a-record-and-update-it-with-a-single-queryset-in-django
