@@ -12,3 +12,4 @@ django-summernote==0.8.20.0
 folium==0.12.1
 gpxpy==1.5.0
 django-extensions==3.1.5
+plotly==5.8.0

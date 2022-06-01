@@ -43,3 +43,6 @@ https://towardsdatascience.com/build-interactive-gps-activity-maps-from-gpx-file
 
 ## Plotting Elevation Data:
 https://www.gpxz.io/blog/gpx-file-to-pandas
+
+## Rendering Plotly graphs - exporting to django
+https://stackoverflow.com/questions/36846395/embedding-a-plotly-chart-in-a-django-template

@@ -4,7 +4,6 @@ from .forms import ActivityForm
 from cloudinary.forms import cl_init_js_callbacks   
 
 
-
 # # Create your views here.
 def home(request):
     context = {}
@@ -19,6 +18,9 @@ def activity(request):
     import folium
     import gpxpy
     import urllib.request
+    import plotly.offline as opy
+    import plotly.express as px
+    import modules.gpx_helper as gpx_helper
 
     #zoom = 14
     gpxPath = "https://res.cloudinary.com/dapgpdd7z/raw/upload/v1653520044/oubn2z8a8ws8wlc4e6s1.gpx"
@@ -42,9 +44,19 @@ def activity(request):
     min_lat, min_lon = min(p[0] for p in points), min(p[1] for p in points)   
     myMap.fit_bounds([[min_lat, min_lon], [max_lat, max_lon], ])
 
+    gpx_df =  gpx_helper.get_dataframe_from_gpx(os.path.join(os.getcwd(), 'temp.gpx'))
+
+    def heart_rate():
+        fig = px.area(gpx_df, x='time', y='heart_rate', color_discrete_sequence=['crimson'])
+        return opy.plot(fig, auto_open=False, output_type='div')
+
+    def elevation_plot():
+        fig = px.area(gpx_df, x='time', y='elevation', color_discrete_sequence=['darkorchid'])
+        return opy.plot(fig, auto_open=False, output_type='div')
+
     ## exporting
     myMap=myMap._repr_html_()
-    context = {'my_map': myMap, 'elev_plot': myMap}
+    context = {'my_map': myMap, 'elev_plot': elevation_plot(), 'heart_rate': heart_rate()}
 
     ## rendering
     return render(request,'activity.html',context)
