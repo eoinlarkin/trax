@@ -1,19 +1,12 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 
-  <!-- Page Content -->
-  <div class="container">
-    <h1>Map Plot</h1>
-        {{ my_map|safe }}
-  </div>
+  <h1>Trax Home</h1>
 
-  <div class="container">
-    <h1>Heart Rate Plot</h1>
-        {{ elev_plot|safe }}
-  </div>
+  <a href="{% url 'upload' %}" class="">Upload</a><br>
+  <a href="{% url 'activity' %}" class="">Activity View</a><br>
+  <a href="{% url 'about' %}" class="">About</a><br>
 
-  <div class="container">
-    <h1>Elevation Plot</h1>
-        {{ elev_plot|safe }}
-  </div>
 
-  {% endblock content %}
+
+{% endblock content %}

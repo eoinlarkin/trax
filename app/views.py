@@ -10,6 +10,14 @@ import urllib.request
 
 # # Create your views here.
 def home(request):
+    context = {}
+    return render(request,'home.html',context)
+
+def about(request):
+    context = {}
+    return render(request,'about.html',context)
+
+def activity(request):
     zoom = 14
     #gpx_dir = os.path.join(os.getcwd(),'media','shp')
     #gpx_file = open(os.path.join(gpx_dir, 'test.gpx'), 'r')
@@ -35,7 +43,7 @@ def home(request):
     myMap=myMap._repr_html_()
     context = {'my_map': myMap, 'elev_plot': myMap}
     ## rendering
-    return render(request,'home.html',context)
+    return render(request,'activity.html',context)
 
 # # Create your views here.
 # def home(request):

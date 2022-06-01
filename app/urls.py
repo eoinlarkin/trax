@@ -4,6 +4,8 @@ from .import views
 
 urlpatterns = [
     path('', views.home,name='home'),
-    path('upload', views.AddActivity, name='upload')
+    path('upload', views.AddActivity, name='upload'),
+    path('activity', views.activity, name='activity'),
+    path('about', views.about, name='about')
     ]
 
