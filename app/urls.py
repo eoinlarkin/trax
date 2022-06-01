@@ -4,7 +4,7 @@ from .views import ActivityList, ActivityDetail
 from .import views
 
 urlpatterns = [
-    path('', ActivityList.as_view(),name='activity-list'),
+    path('', ActivityList.as_view(),name='home'),
     path('<slug:slug>/', ActivityDetail.as_view(), name='activity_detail'),
     path('upload', views.AddActivity, name='upload'),
     path('activity', views.activity, name='activity'),

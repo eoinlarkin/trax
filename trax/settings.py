@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',     # required for allauth authentication
+    'allauth',  # required for allauth authentication
+    'allauth.account', # required for allauth authentication
+    'allauth.socialaccount', # required for allauth authentication
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'crispy_forms', #
@@ -47,6 +51,11 @@ INSTALLED_APPS = [
     'app', # trax web app 
     'django_extensions',
 ]
+
+SITE_ID = 1 # required for allauth authentication
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
