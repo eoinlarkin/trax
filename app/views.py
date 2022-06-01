@@ -61,7 +61,7 @@ def generate_plots(gpx_file):
                 points.append(tuple([point.latitude, point.longitude]))
     latitude = sum(p[0] for p in points)/len(points)
     longitude = sum(p[1] for p in points)/len(points)
-    myMap = folium.Map(location=[latitude,longitude]) 
+    myMap = folium.Map(location=[latitude,longitude], tiles='Stamen Terrain') 
     folium.PolyLine(points, color="red", weight=2.5, opacity=1).add_to(myMap)
 
     # getting max and min lat and longitude to optimise zoom level
