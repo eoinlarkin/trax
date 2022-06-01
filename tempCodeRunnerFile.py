@@ -1,1 +1,0 @@
-_discrete_sequence
