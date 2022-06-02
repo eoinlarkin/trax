@@ -6,10 +6,12 @@ class ActivityForm(ModelForm):
         model = Activity
         #fields = ['gpx_file']
         fields = '__all__'
+        exclude = ('user',) 
     
     def get_slug(self):
         # data = self.data.copy()
         # data['distance'] = 1000
         # self.data = data
-        return self.data['slug'] 
+         
         print(self.data['slug'])
+        return self.data['slug']

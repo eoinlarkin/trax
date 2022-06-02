@@ -130,8 +130,9 @@ def AddActivity(request):
         context["posted"] = form.instance
 
         if form.is_valid():
-            
-            form.save()
+            object = form.save(commit=False)
+            object.user = request.user
+            object.save()
 
             # Updating the model entry after the file has been uploaded
             

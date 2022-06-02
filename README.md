@@ -52,3 +52,14 @@ https://stackoverflow.com/questions/6091965/django-upload-a-file-and-read-its-co
 
 # Retrieve and Update database entries
 https://stackoverflow.com/questions/2712682/how-to-select-a-record-and-update-it-with-a-single-queryset-in-django
+
+## Updating the database following upload:
+https://stackoverflow.com/questions/54534599/django-how-to-edit-value-and-store-back-in-database
+
+## Hide user and autopopulate
+https://stackoverflow.com/questions/51547441/django-forms-autofill-hide-foreign-key-field
+
+
+## Challenges
+
+Updating the database after the upload
