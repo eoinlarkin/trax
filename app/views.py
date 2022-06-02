@@ -3,6 +3,8 @@ from django.views import generic, View
 from .models import Activity
 from django.http import HttpResponseRedirect
 from .forms import ActivityForm
+from django.contrib.auth import get_user_model
+
 
 
 # # Create your views here.
@@ -100,19 +102,49 @@ def activity(request):
     # rendering
     return render(request, "activity.html", context)
 
+def decode_utf8(line_iterator):
+    '''
+    Used to decode the uploaded gpx for parsing to 
+    populate the database
+    '''
+    for line in line_iterator:
+        yield line.decode('utf-8')
+
 
 def AddActivity(request):
+    import modules.gpx_helper as gpx_helper
     # djanogo docs: https://docs.djangoproject.com/en/4.0/topics/forms/
     # https://cloudinary.com/documentation/django_image_and_video_upload#django_forms_and_models
 
     context = dict(form=ActivityForm())
     if request.method == "POST":
         form = ActivityForm(request.POST, request.FILES)
+        #print('***** FORM **********')
+        #print(form)
+        # print('***** Base Fields **********')
+        # print(form.base_fields)
+        # print('***** Base Values **********')
+        # print(form.base_fields.values)
+
+
         context["posted"] = form.instance
 
         if form.is_valid():
+            
             form.save()
+
+            # Updating the model entry after the file has been uploaded
+            
+            queryset = Activity.objects
+            fname = get_object_or_404(queryset, slug=form.get_slug()).gpx_file.url
+            gpx_helper.gpx_download(fname)
+            calc_distance = gpx_helper.gpx_distance('temp.gpx') / 1000
+
+            Activity.objects.filter(slug=form.get_slug()).update(distance=calc_distance)
+
+
             return HttpResponseRedirect("/")
     else:
         form = ActivityForm()
     return render(request, "upload.html", context)
+

@@ -58,3 +58,6 @@ def gpx_distance(file_name):
     tot_distance = track.segments[0].length_3d()
     return tot_distance
 
+def gpx_download(webpath):
+    import urllib.request
+    urllib.request.urlretrieve(webpath, "temp.gpx")
