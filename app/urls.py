@@ -1,13 +1,13 @@
 from django.urls import path
-# from django.contrib.auth import views as auth_views
-from .views import ActivityList, ActivityDetail
+from .views import ActivityList, ActivityDetail, ActivityLike
 from .import views
 
 urlpatterns = [
     path('', ActivityList.as_view(),name='home'),
     path('<slug:slug>/', ActivityDetail.as_view(), name='activity_detail'),
+    path('like/<slug:slug>', ActivityLike.as_view(), name='activity_like'),
     path('upload', views.AddActivity, name='upload'),
     path('activity', views.activity, name='activity'),
-    path('about', views.about, name='about')
+    path('about', views.about, name='about'),
     ]
 

@@ -1,6 +1,28 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 
   <!-- Page Content -->
+
+  <div>
+    <strong>
+        {% if user.is_authenticated %}
+        <form action="{% url 'activity_like' activity.slug %}" method="POST">
+            {% csrf_token %}
+            {% if liked %}
+            <button type="submit" name="blogspot_id" value="{{ activity.slug }}"><i class="fas fa-heart"></i><button>                                                     
+            {% else %}
+            <button type="submit" name="blogspot_id" value="{{activity.slug}}"><i class="far fa-heart"></i></button>
+            {% endif %}    
+        </form>
+        {% else %}
+            <span ><i class="far fa-heart"></i></span>
+        {% endif %}           
+        <span > {{ activity.number_of_likes }} </span>
+    </strong>
+</div>
+
+
+
   <div class="container">
     <h1>Map Plot</h1>
         {{ my_map|safe }}
@@ -15,5 +37,8 @@
     <h1>Elevation Plot</h1>
         {{ elev_plot|safe }}
   </div>
+
+
+
 
   {% endblock content %}

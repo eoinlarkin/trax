@@ -1,22 +1,29 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 
-  <h1>Trax Home Test</h1>
+<h1>Trax Home Test</h1>
 
-  <a href="{% url 'upload' %}" class="">Upload</a><br>
-  <a href="{% url 'activity' %}" class="">Activity View</a><br>
-  <a href="{% url 'about' %}" class="">About</a><br>
+<a href="{% url 'upload' %}" class="">Upload</a><br>
+<a href="{% url 'activity' %}" class="">Activity View</a><br>
+<a href="{% url 'about' %}" class="">About</a><br>
 
 
-  {% for activity in activity_list %}
-    <div>
-      <a href="{% url 'activity_detail' activity.slug  %}" ><h2>Activity Link</h2></a>
-        <p>Slug: {{ activity.slug }} <br>
-        Uploaded By: {{ activity.user }}</p>
-
+{% for activity in activity_list %}
+<div>
+  <a href="{% url 'activity_detail' activity.slug  %}">
+    <h2>Activity Link</h2>
+  </a>
+  <p>Slug: {{ activity.slug }} <br>
+    Uploaded By: {{ activity.user }}</p>
+    <p><i class="far fa-heart"></i>{{ activity.number_of_likes }}</p>
     </div>
-  {% endfor %}
+
+  </div>
+
+<!--  Like Buttons -->
 
 
+
+{% endfor %}
 
 {% endblock content %}

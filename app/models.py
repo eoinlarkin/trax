@@ -12,9 +12,14 @@ class Activity(models.Model):
     distance = models.FloatField(default=0)
     start_time = models.DateTimeField(auto_now=True)
     description = models.CharField(max_length=1000, default='')
+    likes = models.ManyToManyField(User, related_name='activity_like', blank=True)
+
 
     class Meta:
         ordering = ["-date_created"]
     
     def __str__(self):
         return self.slug
+
+    def number_of_likes(self):
+        return self.likes.count()    

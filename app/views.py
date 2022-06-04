@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
 from .models import Activity
 from django.http import HttpResponseRedirect
@@ -21,11 +21,22 @@ class ActivityDetail(View):
         activity = get_object_or_404(queryset, slug=slug)
         my_map, elev_plot, heart_rate = generate_plots(activity.gpx_file.url)
 
+        liked = False
+        if activity.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
         return render(
             request,
             "activity.html",
-            {"my_map": my_map, "elev_plot": elev_plot, "heart_rate": heart_rate},
+            {
+                "activity": activity,
+                "my_map": my_map, 
+                "elev_plot": elev_plot, 
+                "heart_rate": heart_rate, 
+                "liked": liked
+            },
         )
+    
 
 
 def home(request):
@@ -149,3 +160,18 @@ def AddActivity(request):
         form = ActivityForm()
     return render(request, "upload.html", context)
 
+class ActivityLike(View):
+    '''
+    Will add or remove likes to an activity 
+    On liking an activity the page will be reload
+    '''
+    def post(self, request, slug):
+        activity = get_object_or_404(Activity, slug=slug)
+
+        # if a user has previously liked a post we should remove the like
+        if activity.likes.filter(id=request.user.id).exists():
+            activity.likes.remove(request.user)
+        else:
+            activity.likes.add(request.user)
+        
+        return HttpResponseRedirect(reverse('activity_detail', args=[slug]))
