@@ -61,3 +61,53 @@ def gpx_distance(file_name):
 def gpx_download(webpath):
     import urllib.request
     urllib.request.urlretrieve(webpath, "temp.gpx")
+
+def generate_plots(gpx_file):
+    import os
+    import folium
+    import gpxpy
+    import urllib.request
+    import plotly.offline as opy
+    import plotly.express as px
+
+    gpxPath = gpx_file
+    urllib.request.urlretrieve(gpxPath, "temp.gpx")
+
+    gpx_file = open(os.path.join(os.getcwd(), "temp.gpx"), "r")
+    gpx = gpxpy.parse(gpx_file)
+    points = []
+    for track in gpx.tracks:
+        for segment in track.segments:
+            for point in segment.points:
+                points.append(tuple([point.latitude, point.longitude]))
+    latitude = sum(p[0] for p in points) / len(points)
+    longitude = sum(p[1] for p in points) / len(points)
+    myMap = folium.Map(location=[latitude, longitude], tiles="Stamen Terrain")
+    folium.PolyLine(points, color="red", weight=2.5, opacity=1).add_to(myMap)
+
+    # getting max and min lat and longitude to optimise zoom level
+    max_lat, max_lon = max(p[0] for p in points), max(p[1] for p in points)
+    min_lat, min_lon = min(p[0] for p in points), min(p[1] for p in points)
+    myMap.fit_bounds(
+        [
+            [min_lat, min_lon],
+            [max_lat, max_lon],
+        ]
+    )
+
+    gpx_df = get_dataframe_from_gpx(os.path.join(os.getcwd(), "temp.gpx"))
+    myMap = myMap._repr_html_()  # exporting for use in django
+
+    def heart_rate():
+        fig = px.area(
+            gpx_df, x="time", y="heart_rate", color_discrete_sequence=["crimson"]
+        )
+        return opy.plot(fig, auto_open=False, output_type="div")
+
+    def elevation_plot():
+        fig = px.area(
+            gpx_df, x="time", y="elevation", color_discrete_sequence=["darkorchid"]
+        )
+        return opy.plot(fig, auto_open=False, output_type="div")
+
+    return myMap, elevation_plot(), heart_rate()

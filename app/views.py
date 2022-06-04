@@ -16,6 +16,7 @@ class ActivityList(generic.ListView):
     paginate_by = 10
 
 
+
 class ActivityDetail(View):
     """
     Detailed activity view
@@ -25,7 +26,7 @@ class ActivityDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Activity.objects
         activity = get_object_or_404(queryset, slug=slug)
-        my_map, elev_plot, heart_rate = generate_plots(activity.gpx_file.url)
+        my_map, elev_plot, heart_rate = gpx_helper.generate_plots(activity.gpx_file.url)
 
         liked = False
         if activity.likes.filter(id=self.request.user.id).exists():
