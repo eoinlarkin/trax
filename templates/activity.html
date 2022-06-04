@@ -3,6 +3,9 @@
 
   <!-- Page Content -->
 
+<h1>{{ activity.title }}</h1>
+
+
   <div>
     <strong>
         {% if user.is_authenticated %}
@@ -21,7 +24,10 @@
     </strong>
 </div>
 
-
+<div class="container">
+  <h1>Distance:</h1><p>{{ activity.distance }}</p>
+  <h1>Description:</h1><p>{{ activity.description }}</p>
+</div>
 
   <div class="container">
     <h1>Map Plot</h1>
