@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from .forms import ActivityForm
 from django.contrib.auth import get_user_model
 import modules.gpx_helper as gpx_helper
+import modules.slug_helper as slug_helper
 
 
 class ActivityList(generic.ListView):
@@ -70,14 +71,20 @@ def AddActivity(request):
         if form.is_valid():
             object = form.save(commit=False)
             object.user = request.user
-            object.save()
+            slug_str = "%s %s" % (object.title, request.user) # generate a starting slug
+            slug_helper.unique_slugify(object, slug_str) # use slugify to ensure unique
+            object.save() # save activity
+            slug_str = object.slug # store slug to edit activity 
 
             # Updating the model entry after the file has been uploaded
             queryset = Activity.objects
-            fname = get_object_or_404(queryset, slug=form.get_slug()).gpx_file.url
+            # fname = get_object_or_404(queryset, slug=form.get_slug()).gpx_file.url
+            fname = get_object_or_404(queryset, slug=slug_str).gpx_file.url
             gpx_helper.gpx_download(fname)  # downloading the gpx file
             calc_distance = gpx_helper.gpx_distance("temp.gpx") / 1000
-            Activity.objects.filter(slug=form.get_slug()).update(distance=calc_distance)
+            
+            # updating the activity:
+            Activity.objects.filter(slug=slug_str).update(distance=calc_distance)
             return HttpResponseRedirect("/")
 
     else:

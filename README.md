@@ -59,7 +59,11 @@ https://stackoverflow.com/questions/54534599/django-how-to-edit-value-and-store-
 ## Hide user and autopopulate
 https://stackoverflow.com/questions/51547441/django-forms-autofill-hide-foreign-key-field
 
+## Creating a Unique Slug:
+https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django
+
 
 ## Challenges
 
 Updating the database after the upload
+
