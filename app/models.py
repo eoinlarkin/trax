@@ -10,7 +10,6 @@ class Activity(models.Model):
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     date_created = models.DateTimeField(auto_now=True)
     distance = models.FloatField(default=0)
-    start_time = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=25,default='Trax Activity')
     description = models.CharField(max_length=1000, default='')
     gpx_file = CloudinaryField('', default='manual', resource_type='raw')

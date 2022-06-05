@@ -8,7 +8,7 @@ gunicorn==20.1.0
 psycopg2==2.9.3
 pytz==2022.1
 sqlparse==0.4.2
-django-summernote==0.8.20.0
+# django-summernote==0.8.20.0
 folium==0.12.1
 gpxpy==1.5.0
 django-extensions==3.1.5

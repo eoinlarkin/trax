@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount', # required for allauth authentication
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    'crispy_forms', #
+    # 'crispy_forms', #
     'cloudinary',
     'app', # trax web app 
     'django_extensions',

@@ -73,6 +73,8 @@ def AddActivity(request):
             object.user = request.user
             slug_str = "%s %s" % (object.title, request.user) # generate a starting slug
             slug_helper.unique_slugify(object, slug_str) # use slugify to ensure unique
+            print('slug is working')
+            print(slug_str)
             object.save() # save activity
             slug_str = object.slug # store slug to edit activity 
 

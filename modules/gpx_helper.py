@@ -58,6 +58,19 @@ def gpx_distance(file_name):
     tot_distance = track.segments[0].length_3d()
     return tot_distance
 
+def gpx_metrics(file_name):
+    '''
+    Function to return key metrics from the gpx file
+    '''
+    gpx = gpxpy.parse(open(file_name))  
+    gpx_df = get_dataframe_from_gpx(gpx)
+    track = gpx.tracks[0]
+    tot_distance = track.segments[0].length_3d()
+    avg_heartrate = gpx_df['heart_rate'].mean()
+    start_time = gpx_df['time'].min()
+    end_time = gpx_df['time'].max()
+    return tot_distance, avg_heartrate, start_time, end_time
+
 def gpx_download(webpath):
     import urllib.request
     urllib.request.urlretrieve(webpath, "temp.gpx")
