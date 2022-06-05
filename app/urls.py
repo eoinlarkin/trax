@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import ActivityList, ActivityDetail, ActivityLike
 from .import views
 
@@ -8,5 +8,6 @@ urlpatterns = [
     path('like/<slug:slug>', ActivityLike.as_view(), name='activity_like'),
     path('upload', views.AddActivity, name='upload'),
     path('about', views.about, name='about'),
+    path('delete/<slug:slug>/', views.ActivityDeleteView.as_view(), name='delete'),
     ]
 

@@ -5,6 +5,14 @@
 
 <h1>{{ activity.title }}</h1>
 
+<div>
+  {% if user == activity.user %}
+  <form  method="POST" action="{% url 'delete' slug=activity.slug %}">
+  {% csrf_token %}
+  <button type="submit" class="btn">Delete</button>
+  </form>
+  {% endif %}     
+</div>
 
   <div>
     <strong>

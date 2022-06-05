@@ -1,11 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.views import generic, View
-from .models import Activity
 from django.http import HttpResponseRedirect
+from django.views import generic, View
+from django.urls import reverse_lazy
+from .models import Activity
 from .forms import ActivityForm
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, mixins
 import modules.gpx_helper as gpx_helper
 import modules.slug_helper as slug_helper
+
+
+class ActivityDeleteView(mixins.LoginRequiredMixin, generic.DeleteView):
+    model = Activity
+    success_url = reverse_lazy('home')
 
 
 class ActivityList(generic.ListView):
@@ -15,7 +21,6 @@ class ActivityList(generic.ListView):
     queryset = Activity.objects.order_by("-slug")
     template_name = "home.html"
     paginate_by = 10
-
 
 
 class ActivityDetail(View):

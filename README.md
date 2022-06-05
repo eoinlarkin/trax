@@ -63,6 +63,10 @@ https://stackoverflow.com/questions/51547441/django-forms-autofill-hide-foreign-
 https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django
 
 
+## Deleting a Post / Activity
+https://stackoverflow.com/questions/71016875/django-button-to-remove-row-in-sqlite3
+
+
 ## Challenges
 
 Updating the database after the upload
