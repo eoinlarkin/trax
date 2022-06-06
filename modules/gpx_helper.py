@@ -75,7 +75,11 @@ def gpx_download(webpath):
     import urllib.request
     urllib.request.urlretrieve(webpath, "temp.gpx")
 
-def generate_plots(gpx_file):
+def export_map_to_img(map):
+    print('This function generates an activity thumbnail image')
+
+
+def generate_plots(gpxPath, export_png=False, download_file=True):
     import os
     import folium
     import gpxpy
@@ -83,9 +87,22 @@ def generate_plots(gpx_file):
     import plotly.offline as opy
     import plotly.express as px
 
-    gpxPath = gpx_file
-    urllib.request.urlretrieve(gpxPath, "temp.gpx")
+    def heart_rate():
+        fig = px.area(
+            gpx_df, x="time", y="heart_rate", color_discrete_sequence=["crimson"]
+        )
+        return opy.plot(fig, auto_open=False, output_type="div")
 
+    def elevation_plot():
+        fig = px.area(
+            gpx_df, x="time", y="elevation", color_discrete_sequence=["darkorchid"]
+        )
+        return opy.plot(fig, auto_open=False, output_type="div")
+
+    if download_file:
+        urllib.request.urlretrieve(gpxPath, "temp.gpx")
+    
+    gpx_df = get_dataframe_from_gpx(os.path.join(os.getcwd(), "temp.gpx"))
     gpx_file = open(os.path.join(os.getcwd(), "temp.gpx"), "r")
     gpx = gpxpy.parse(gpx_file)
     points = []
@@ -107,20 +124,9 @@ def generate_plots(gpx_file):
             [max_lat, max_lon],
         ]
     )
-
-    gpx_df = get_dataframe_from_gpx(os.path.join(os.getcwd(), "temp.gpx"))
-    myMap = myMap._repr_html_()  # exporting for use in django
-
-    def heart_rate():
-        fig = px.area(
-            gpx_df, x="time", y="heart_rate", color_discrete_sequence=["crimson"]
-        )
-        return opy.plot(fig, auto_open=False, output_type="div")
-
-    def elevation_plot():
-        fig = px.area(
-            gpx_df, x="time", y="elevation", color_discrete_sequence=["darkorchid"]
-        )
-        return opy.plot(fig, auto_open=False, output_type="div")
-
-    return myMap, elevation_plot(), heart_rate()
+    
+    if export_png:
+        export_map_to_img(myMap)
+    else:
+        myMap = myMap._repr_html_()  # exporting for use in django
+        return myMap, elevation_plot(), heart_rate()
