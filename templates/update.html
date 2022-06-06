@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% load cloudinary %}
+
+{% block content %}
+
+  <!-- Page Content -->
+
+  <!-- <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Upload">
+  </form> -->
+
+
+  <div class="main">
+    <!-- Create a Form -->
+    <form action="/update/{{activity.slug}}/" method="POST">
+      {% csrf_token %}
+      <tr>
+          <td> Name</td>
+          <td><input type="text" name="title" value={{activity.title}}></td>
+      </tr>
+      <tr>
+          <td> Description</td>
+          <td><input type="text" name="description" value={{activity.description}}></td>
+      </tr>
+      <tr>
+          <td><button>Submit</button></td>
+      </tr>
+  </form>
+
+ 
+</div>
+
+
+{% endblock content %}

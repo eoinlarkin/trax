@@ -71,3 +71,7 @@ https://stackoverflow.com/questions/71016875/django-button-to-remove-row-in-sqli
 
 ## Updating the database after the upload
 https://stackoverflow.com/questions/7349865/django-using-modelform-to-edit-existing-database-entry
+
+
+## CRUD Tutorial in Django:
+https://www.geeksforgeeks.org/django-crud-create-retrieve-update-delete-function-based-views/

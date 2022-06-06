@@ -14,6 +14,7 @@ class ActivityDeleteView(mixins.LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('home')
 
 
+
 class ActivityList(generic.ListView):
     """View to create the activity list for main page"""
 
@@ -63,7 +64,7 @@ def about(request):
     return render(request, "about.html", context)
 
 
-def AddActivity(request):
+def add_activity(request):
     # djanogo docs: https://docs.djangoproject.com/en/4.0/topics/forms/
     # https://cloudinary.com/documentation/django_image_and_video_upload#django_forms_and_models
 
@@ -98,6 +99,23 @@ def AddActivity(request):
         form = ActivityForm()
     return render(request, "upload.html", context)
 
+
+def edit(request,slug):
+    '''
+    Function to redirect to the update activity page
+    '''
+    activity=Activity.objects.get(slug=slug)
+    return render(request,'update.html',{'activity':activity})
+
+# update view for details
+def update_activity(request, slug):
+ 
+    # fetch the object related to passed id
+    object = get_object_or_404(Activity, slug = slug)
+    form = ActivityForm(request.POST, instance=object)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse("activity_detail", args=[slug]))
 
 class ActivityLike(View):
     """

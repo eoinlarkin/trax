@@ -11,6 +11,8 @@
   {% csrf_token %}
   <button type="submit" class="btn">Delete</button>
   </form>
+
+  <a href="{% url 'edit' activity.slug %}">Edit</a></td>
   {% endif %}     
 </div>
 
