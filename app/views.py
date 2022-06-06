@@ -7,6 +7,7 @@ from .forms import ActivityForm
 from django.contrib.auth import get_user_model, mixins
 import modules.gpx_helper as gpx_helper
 import modules.slug_helper as slug_helper
+import cloudinary
 
 
 class ActivityDeleteView(mixins.LoginRequiredMixin, generic.DeleteView):
@@ -19,7 +20,7 @@ class ActivityList(generic.ListView):
     """View to create the activity list for main page"""
 
     model = Activity
-    queryset = Activity.objects.order_by("-slug")
+    queryset = Activity.objects.order_by("-date_created")
     template_name = "home.html"
     paginate_by = 10
 
@@ -79,8 +80,8 @@ def add_activity(request):
             object.user = request.user
             slug_str = "%s %s" % (object.title, request.user) # generate a starting slug
             slug_helper.unique_slugify(object, slug_str) # use slugify to ensure unique
-            print('slug is working')
-            print(slug_str)
+            #print('slug is working')
+            #print(slug_str)
             object.save() # save activity
             slug_str = object.slug # store slug to edit activity 
 
@@ -93,6 +94,8 @@ def add_activity(request):
             
             # updating the activity:
             Activity.objects.filter(slug=slug_str).update(distance=calc_distance)
+            thumbnail = cloudinary.uploader.upload('static/media/img/generated_thumbnail.png')
+            Activity.objects.filter(slug=slug_str).update(gpx_thumb_path=thumbnail['secure_url'])
             return HttpResponseRedirect("/")
 
     else:

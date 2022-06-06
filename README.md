@@ -75,3 +75,4 @@ https://stackoverflow.com/questions/7349865/django-using-modelform-to-edit-exist
 
 ## CRUD Tutorial in Django:
 https://www.geeksforgeeks.org/django-crud-create-retrieve-update-delete-function-based-views/
+https://studygyaan.com/django/django-crud-create-retrieve-update-delete-function-based-views

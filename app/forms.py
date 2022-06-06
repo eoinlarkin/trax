@@ -6,5 +6,5 @@ class ActivityForm(ModelForm):
         model = Activity
         #fields = ['gpx_file']
         fields = '__all__'
-        exclude = ('user','likes','distance','slug', 'starttime', 'endtime', 'average_heartrate') 
+        exclude = ('user','likes','distance','slug', 'starttime', 'endtime', 'average_heartrate', 'gpx_thumbnail', 'gpx_thumb_path') 
     

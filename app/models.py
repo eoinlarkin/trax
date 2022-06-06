@@ -13,6 +13,8 @@ class Activity(models.Model):
     title = models.CharField(max_length=25,default='Trax Activity')
     description = models.CharField(max_length=1000, default='')
     gpx_file = CloudinaryField('', default='manual', resource_type='raw')
+    gpx_thumbnail = models.CharField(max_length=1000, default='https://res.cloudinary.com/dapgpdd7z/image/upload/v1654524799/thumbnail_default_oxyqoe.png')
+    gpx_thumb_path = models.CharField(max_length=1000, default='https://res.cloudinary.com/dapgpdd7z/image/upload/v1654524799/thumbnail_default_oxyqoe.png')
     likes = models.ManyToManyField(User, related_name='activity_like', blank=True)
 
     def gen(self, **kwargs):
@@ -20,7 +22,6 @@ class Activity(models.Model):
         slug_helper.unique_slugify(self, slug_str) 
         super(Activity, self).save(**kwargs)
         #return self.slug
-
     class Meta:
         ordering = ["-date_created"]
     
