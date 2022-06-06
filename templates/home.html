@@ -2,13 +2,6 @@
 {% load static %}
 {% block content %}
 
-<h1>Trax Home Test</h1>
-
-<a href="{% url 'upload' %}" class="">Upload</a><br>
-<a href="{% url 'home' %}" class="">Activity View</a><br>
-<a href="{% url 'about' %}" class="">About</a><br>
-
-
 {% for activity in activity_list %}
 <div>
   <a href="{% url 'activity_detail' activity.slug  %}">
