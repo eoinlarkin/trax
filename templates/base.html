@@ -17,9 +17,10 @@
     <title>Trax</title>
 </head>
 
+<body>
 
  <!-- Navigation -->
- <nav class="bg-blue-100 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+ <nav class="fixed z-10 top-0 w-full bg-blue-100 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
       
       <!-- Logo and Name -->
@@ -74,22 +75,32 @@
       </div>
     </div>
   </nav>
-
-
-
-<body>
-
+  
+  
+  <!-- <div class="container bg-white mx-auto mt-24 md:mt-16 border-solid border-2 border-red-800"> -->
     
-
-    <main>
+    <main class="container h-screen mx-auto mt-0 mb-0 border-solid border-2 border-red-800"> 
         {% block content %}
+        
+          <!--Container-->
+        
+          
+          
+               
         <!-- Content Goes here -->
+        
+         
         {% endblock content %}
-    </main>
+</main>
+
+
+<!-- </div>  -->
+
 
 
     <!-- Sticky footer tat the bottom with contact links-->
-    <footer class="fixed inset-x-0 bottom-0 p-4 bg-gray-100 rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+
+    <footer class="fixed bottom-0 w-full bg-blue-100 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="{% url 'home' %}" class="hover:underline">Trax</a>
     </span>
