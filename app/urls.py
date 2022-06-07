@@ -3,8 +3,8 @@ from .views import ActivityList, ActivityDetail, ActivityLike, update_activity
 from .import views
 
 urlpatterns = [
-    path('', ActivityList.as_view(),name='home'),
-    #path('', views.home,name='home'),
+    #path('', ActivityList.as_view(),name='home'),
+    path('', views.home,name='home'),
     path('<slug:slug>/', ActivityDetail.as_view(), name='activity_detail'),
     path('like/<slug:slug>', ActivityLike.as_view(), name='activity_like'),
     path('upload', views.add_activity, name='upload'),

@@ -14,6 +14,8 @@ https://hatarilabs.com/ih-en/developing-geospatial-webapps-with-python-and-djang
 # Overlay gpx on Folium Map:
 https://gpxplotter.readthedocs.io/en/latest/auto_examples/maps/plot_000_segment.html#sphx-glr-auto-examples-maps-plot-000-segment-py
 
+# Django Authentication
+https://docs.djangoproject.com/en/1.11/topics/auth/default/
 
 
 ## Cloudinary: Upload of non image files

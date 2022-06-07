@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.views import generic, View
 from django.urls import reverse_lazy
@@ -8,7 +9,6 @@ from django.contrib.auth import get_user_model, mixins
 import modules.gpx_helper as gpx_helper
 import modules.slug_helper as slug_helper
 import cloudinary
-
 
 class ActivityDeleteView(mixins.LoginRequiredMixin, generic.DeleteView):
     model = Activity
@@ -52,7 +52,7 @@ class ActivityDetail(View):
             },
         )
 
-
+@login_required(login_url='/accounts/login/')
 def home(request):
     """Function to return the home page"""
     context = {}
