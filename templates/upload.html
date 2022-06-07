@@ -4,9 +4,9 @@
 {% block content %}
 
   <!-- Page Content -->
-  <div class="container mx-auto bg-red-200 mt-24 md:mt-36 justify-center grid place-items-center h-4/5">
+  <div class="container mx-auto justify-center grid place-items-center h-full">
   <div class="grid place-items-center">
-    <div class="shadow-lg py-12 px-4 sm:px-6 lg:px-8 max-w-md space-y-8 bg-green-400">
+    <div class="shadow-lg py-12 px-4 sm:px-6 lg:px-8 max-w-md space-y-8 bg-gray-200/75">
       
       <div>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Upload an activity:</h2>
@@ -30,7 +30,7 @@
           <!-- Description -->
           <div>
             <label for="id_description" class="">Description:</label>
-            <input id="id_description" name="description" type="text" maxlength='1000' required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" value="Describe your activity....!">
+            <textarea id="id_description" rows="4" cols="50" name="description" type="text" maxlength='1000' required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">Describe your activity....!</textarea>
           </div>
 
           <!--  Upload File -->
@@ -51,6 +51,7 @@
         </div>
       </form>
 
+</div>
 </div>
 </div>
 {% endblock content %}
