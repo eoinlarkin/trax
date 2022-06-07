@@ -18,7 +18,7 @@
   <title>Trax</title>
 </head>
 
-<body class="flex flex-col h-screen">
+<body class="flex flex-col h-screen justify-between">
   <header>
 
     <!-- Navigation -->
@@ -101,7 +101,7 @@
     </nav>
   </header>
 
-  <div class='mt-32'>
+  <div class='mt-32 flex-1'>
     {% block content %}
 
 
@@ -113,7 +113,7 @@
 
 
   <!-- Bottom footer with contact links-->
-  <footer class="w-full text-center bg-gray-100 text-gray-600">
+  <footer class="bottom-0 w-full text-center bg-gray-100 text-gray-600">
     <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
 
       <div class="flex justify-center">

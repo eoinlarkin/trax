@@ -93,5 +93,8 @@ https://unsplash.com/photos/fpNBYsymggk
 **Image Integration**
 Wasn't able to get the tailwind integration working with the CSS. Wrote the image directly to the website instead
 
+**Getting Footer to stay at bottom**
+https://stackoverflow.com/questions/55210829/how-to-fix-footer-in-the-end-of-the-page
+
 
 ## Flowbite Card Integration

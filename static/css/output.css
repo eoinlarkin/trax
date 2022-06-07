@@ -682,6 +682,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 1.5rem;
 }
 
+.mb-auto {
+  margin-bottom: auto;
+}
+
 .block {
   display: block;
 }
@@ -782,6 +786,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: 28rem;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -812,8 +824,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   place-items: center;
 }
 
+.content-start {
+  align-content: flex-start;
+}
+
 .items-center {
   align-items: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -848,6 +872,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .self-center {
   align-self: center;
+}
+
+.justify-self-auto {
+  justify-self: auto;
+}
+
+.justify-self-start {
+  justify-self: start;
 }
 
 .whitespace-nowrap {
@@ -1123,6 +1155,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-center {
   text-align: center;
+}
+
+.align-top {
+  vertical-align: top;
 }
 
 .align-middle {
