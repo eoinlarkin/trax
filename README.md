@@ -97,4 +97,7 @@ Wasn't able to get the tailwind integration working with the CSS. Wrote the imag
 https://stackoverflow.com/questions/55210829/how-to-fix-footer-in-the-end-of-the-page
 
 
+**Using Google Fonts in Tailwind**
+https://daily-dev-tips.com/posts/using-google-fonts-in-a-tailwind-project/
+
 ## Flowbite Card Integration
