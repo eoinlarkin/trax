@@ -79,3 +79,16 @@ https://studygyaan.com/django/django-crud-create-retrieve-update-delete-function
 
 ## fixed navbar tailwind
 https://stackoverflow.com/questions/60169463/tailwindcss-fixed-navbar
+
+## Attribution
+Images:
+Leaving Image
+https://unsplash.com/photos/zQnI-b2aSxI
+
+Snow Image
+https://unsplash.com/photos/fpNBYsymggk
+
+### Bugs
+
+**Image Integration**
+Wasn't able to get the tailwind integration working with the CSS. Wrote the image directly to the website instead
