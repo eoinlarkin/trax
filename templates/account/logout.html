@@ -1,9 +1,10 @@
-{% extends "base.html" %}
+{% extends "base_no_footer.html" %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
+<div class="rounded-lg shadow-lg h-screen bg-runner bg-cover">
 
 <div class="container mx-auto bg-red-200 mt-24 md:mt-36 justify-center grid place-items-center h-4/5">
   <div class="grid place-items-center">
@@ -22,6 +23,11 @@
               <span class="absolute left-0 inset-y-0 flex items-center pl-3">
               </span>
               {% trans "Sign Out" %}
+            </button>
+            <button type="submit" action="{% url 'home' %}" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+              </span>
+              Cancel
             </button>
 
           </form>
