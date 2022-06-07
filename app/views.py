@@ -18,7 +18,6 @@ class ActivityDeleteView(mixins.LoginRequiredMixin, generic.DeleteView):
 
 class ActivityList(generic.ListView):
     """View to create the activity list for main page"""
-
     model = Activity
     queryset = Activity.objects.order_by("-date_created")
     template_name = "home.html"
@@ -56,7 +55,8 @@ class ActivityDetail(View):
 def home(request):
     """Function to return the home page"""
     context = {}
-    return render(request, "home.html", context)
+    #return render(request, "home.html", context)
+    return HttpResponseRedirect(reverse("activity_list"))
 
 
 def about(request):
