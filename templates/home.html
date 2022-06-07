@@ -3,36 +3,41 @@
 {% block content %}
 
 {% for activity in activity_list %}
-<div>
-  <a href="{% url 'activity_detail' activity.slug  %}">
-    <h2>{{ activity.title }}</h2>
-  </a>
-  <img src="{{ activity.gpx_thumb_path }}"> 
-  <!-- <img src="{% static 'media/img/thumbnail_default.png' %}"> -->
-  <p>
-    Slug: {{ activity.slug }} <br>
-    Uploaded By: {{ activity.user }} <br>
-    Date Created: {{ activity.date_created }} <br>
-  </p>
-    <p><i class="far fa-heart"></i>{{ activity.number_of_likes }}</p>
-    </div>
+<div class="container flex flex-wrap items-center mx-auto">
 
-  </div>
+  <div class="flex flex-col items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl mb-10">
+    <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ activity.gpx_thumb_path }}" alt="">
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <a href="{% url 'activity_detail' activity.slug  %}"><h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ activity.title }}</h5></a>
+        {% if activity.user == user %}
+        <p class="mb-2 text-base italic tracking-tight text-gray-900"><strong>You</strong> completed an activity on {{ activity.date_created }}</p>
+        {% else %}
+        <p class="mb-2 text-base italic tracking-tight text-gray-900"><strong>{{ activity.user }}</strong> completed an activity on {{ activity.date_created }}</p> 
+        {% endif %}
+        <p class="mb-3 font-normal text-gray-700">{{ activity.description }}</p>
+        <p><i class="text-red-800 far fa-heart"></i> {{ activity.number_of_likes }}</p>
+    </div>
+</div>
+
 {% endfor %}
 
-
+<div class="container mb-10">
 {% if is_paginated %}
+
 <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
+  <div class="container flex flex-col items-center">
+    <div class="pagination">
         {% if page_obj.has_previous %}
-        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a>
         {% endif %}
         {% if page_obj.has_next %}
-        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-
+        <a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a>
         {% endif %}
-    </ul>
+    </div>
+  </div>
 </nav>
+
 {% endif %}
+</div>
 
 {% endblock content %}

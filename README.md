@@ -92,3 +92,6 @@ https://unsplash.com/photos/fpNBYsymggk
 
 **Image Integration**
 Wasn't able to get the tailwind integration working with the CSS. Wrote the image directly to the website instead
+
+
+## Flowbite Card Integration
