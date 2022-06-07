@@ -16,6 +16,11 @@ import dj_database_url
 if os.path.isfile('env.py'): # will not exist in production
     import env
 
+# import mimetypes
+# Require to get Heroku to identify css files
+# mimetypes.add_type("text/css", ".css", True)
+# mimetypes.add_type("text/html", ".css", True)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -29,7 +34,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['trax-webapp.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['trax-webapp.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
@@ -65,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'trax.urls'
