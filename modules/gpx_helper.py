@@ -62,10 +62,13 @@ def gpx_metrics(file_name):
     '''
     Function to return key metrics from the gpx file
     '''
+    import os
+
+    # gpx = gpxpy.parse(open(file_name))  
     gpx = gpxpy.parse(open(file_name))  
-    gpx_df = get_dataframe_from_gpx(gpx)
     track = gpx.tracks[0]
     tot_distance = track.segments[0].length_3d()
+    gpx_df = get_dataframe_from_gpx(os.path.join(os.getcwd(), file_name))
     avg_heartrate = gpx_df['heart_rate'].mean()
     start_time = gpx_df['time'].min()
     end_time = gpx_df['time'].max()

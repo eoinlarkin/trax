@@ -76,6 +76,7 @@ def add_activity(request):
         context["posted"] = form.instance
 
         if form.is_valid():
+            print('form is valid')
             object = form.save(commit=False)
             object.user = request.user
             slug_str = "%s %s" % (object.title, request.user) # generate a starting slug
@@ -90,10 +91,17 @@ def add_activity(request):
             # fname = get_object_or_404(queryset, slug=form.get_slug()).gpx_file.url
             fname = get_object_or_404(queryset, slug=slug_str).gpx_file.url
             gpx_helper.gpx_download(fname)  # downloading the gpx file
+            tot_distance, avg_heartrate, start_time, end_time = gpx_helper.gpx_metrics('temp.gpx')
             calc_distance = gpx_helper.gpx_distance("temp.gpx") / 1000
             
             # updating the activity:
-            Activity.objects.filter(slug=slug_str).update(distance=calc_distance)
+            Activity.objects.filter(slug=slug_str).update(distance=tot_distance)
+            Activity.objects.filter(slug=slug_str).update(heartrate_avg=avg_heartrate)
+            Activity.objects.filter(slug=slug_str).update(start_time=start_time)
+            Activity.objects.filter(slug=slug_str).update(end_time=end_time)
+            print(start_time)
+            print(end_time)
+            print(avg_heartrate)
             thumbnail = cloudinary.uploader.upload('static/media/img/generated_thumbnail.png')
             Activity.objects.filter(slug=slug_str).update(gpx_thumb_path=thumbnail['secure_url'])
             return HttpResponseRedirect("/")
