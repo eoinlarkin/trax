@@ -133,3 +133,20 @@ def generate_plots(gpxPath, export_png=False, download_file=True):
     else:
         myMap = myMap._repr_html_()  # exporting for use in django
         return myMap, elevation_plot(), heart_rate()
+
+def generate_thumbnail():
+    import os
+    import plotly.offline as opy
+    import plotly.express as px
+
+    gpx_df = get_dataframe_from_gpx(os.path.join(os.getcwd(), "temp.gpx"))
+    fig = px.scatter(gpx_df, x="latitude", y="longitude", color_discrete_sequence=["darkcyan"])
+    fig.update_layout(xaxis=dict(showgrid=False),
+                      yaxis=dict(showgrid=False),
+                      paper_bgcolor='rgba(0,0,0,0)',
+                      plot_bgcolor='rgba(0,0,0,0)',
+                      margin=dict(l=0, r=0, t=0, b=0))
+    fig.update_xaxes(visible=False)
+    fig.update_yaxes(visible=False)
+    fig.write_image("activity_thumbnail.png",width=300, height=300)
+    

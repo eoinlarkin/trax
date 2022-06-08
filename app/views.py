@@ -102,7 +102,8 @@ def add_activity(request):
             print(start_time)
             print(end_time)
             print(avg_heartrate)
-            thumbnail = cloudinary.uploader.upload('static/media/img/generated_thumbnail.png')
+            gpx_helper.generate_thumbnail()
+            thumbnail = cloudinary.uploader.upload('activity_thumbnail.png')
             Activity.objects.filter(slug=slug_str).update(gpx_thumb_path=thumbnail['secure_url'])
             return HttpResponseRedirect("/")
 
