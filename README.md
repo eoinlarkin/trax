@@ -103,3 +103,7 @@ https://stackoverflow.com/questions/55210829/how-to-fix-footer-in-the-end-of-the
 https://daily-dev-tips.com/posts/using-google-fonts-in-a-tailwind-project/
 
 ## Flowbite Card Integration
+
+## Plotly
+How to build scatterplots:
+https://plotly.com/python/line-and-scatter/

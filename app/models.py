@@ -28,8 +28,8 @@ class Activity(models.Model):
     class Meta:
         ordering = ["-date_created"]
     
-    # def __str__(self):
-    #     return self.slug
+    def __str__(self):
+        return self.description
 
     def number_of_likes(self):
         return self.likes.count()    

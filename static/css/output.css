@@ -758,6 +758,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 8rem;
 }
 
+.h-1 {
+  height: 0.25rem;
+}
+
 .w-full {
   width: 100%;
 }
