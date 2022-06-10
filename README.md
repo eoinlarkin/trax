@@ -238,7 +238,15 @@ How to build scatterplots:
 https://plotly.com/python/line-and-scatter/
 
 
+## Feature Notes
+Added defensive validation to the file upload page; this now will only allow the user to upload '.gpx. files. This was enabled through the `accept='.gpx'` dialog for the file upload. Instructions for how to achieve this were sourced from [stack overflow](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)
+
+
+
 # Code Institute Requirements
+
+
+
 
 - LO1	Use an Agile methodology to plan and design a Full-Stack Web application using an MVC framework and related contemporary technologies.
 - LO2	Implement a data model, application features and business logic to manage, query and manipulate data to meet given needs in a particular real-world domain.
