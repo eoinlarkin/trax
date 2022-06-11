@@ -228,6 +228,12 @@ Wasn't able to get the tailwind integration working with the CSS. Wrote the imag
 https://stackoverflow.com/questions/55210829/how-to-fix-footer-in-the-end-of-the-page
 
 
+**Update Activity**
+The initial code for updating the activity was actually overriding the activity uploaded date. On investigatio, I realised that while the full model was updating. 
+This was resolved by writing a custom method for the Actitity Form class, which would only update the Activity Title and Description fields. The solution for this was 
+The solution was modelled on a solution to a similar issue which was discussed on [stackoverflow](https://stackoverflow.com/questions/33422783/django-modelform-need-to-save-only-selected-fields)
+
+
 **Using Google Fonts in Tailwind**
 https://daily-dev-tips.com/posts/using-google-fonts-in-a-tailwind-project/
 

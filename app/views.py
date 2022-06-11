@@ -126,7 +126,7 @@ def update_activity(request, slug):
     object = get_object_or_404(Activity, slug = slug)
     form = ActivityForm(request.POST, instance=object)
     if form.is_valid():
-        form.save()
+        form.update_activity()
         return HttpResponseRedirect(reverse("activity_detail", args=[slug]))
 
 class ActivityLike(View):
