@@ -55,14 +55,14 @@
             <!-- Home Menu -->
             <li>
               <a href="{% url 'home' %}"
-                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Home</a>
             </li>
             {% else %}
             <!-- Activity Feed Menu -->
             <li>
               <a href="{% url 'activity_list' %}"
-                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Activity Feed</a>
             </li>
             {% endif %}
@@ -71,19 +71,19 @@
             {% if user.is_authenticated %}
             <li>
               <a href="{% url 'account_logout' %}"
-                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Logout</a>
             </li>
 
             {% else %}
             <li>
               <a href="{% url 'account_signup' %}"
-                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Register</a>
             </li>
             <li>
               <a href="{% url 'account_login' %}"
-                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Login</a>
             </li>
             {% endif %}
@@ -92,7 +92,7 @@
             {% if user.is_authenticated %}
             <li>
               <a href="{% url 'upload' %}"
-                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Upload</a>
             </li>
             {% endif %}
@@ -100,7 +100,7 @@
             <!-- About -->
             <li>
               <a href="{% url 'about' %}"
-                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0
                 aria-current="page">About</a>
             </li>
 
