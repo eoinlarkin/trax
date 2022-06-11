@@ -144,4 +144,5 @@ class ActivityLike(View):
         else:
             activity.likes.add(request.user)
 
-        return HttpResponseRedirect(reverse("activity_detail", args=[slug]))
+        #Refreshing the current page if the user likes an activity
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

@@ -13,10 +13,31 @@
             <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48
         md:rounded-none md:rounded-l-lg" src="{{ activity.gpx_thumb_path }}" alt="">
             <div class="flex flex-col p-4 leading-normal">
-                <a href="{% url 'activity_detail' activity.slug %}">
-                    <h5 class="text-2xl
-            font-bold tracking-tight text-gray-900">{{ activity.title }}</h5>
-                </a>
+
+                <div>
+
+                    <a href="{% url 'activity_detail' activity.slug %}">
+                        <p class="text-2xl font-bold tracking-tight text-gray-900 inline"> {{ activity.title }} </p>
+                    </a>
+
+                    <span class="ml-16 text-xl">
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'activity_like' activity.slug %}" method="POST" class="inline-block">
+                        {% csrf_token %} {% if liked %}
+                        <button type="submit" name="" value="{{ activity.slug }}"><i
+                        class="fas fa-heart text-cyan-800 hover:text-pink-800"></i><button>
+                        {% else %}
+                        <button type="submit" name="" value="{{activity.slug}}"><i
+                            class="far fa-heart text-cyan-800 hover:text-pink-800"></i></button> {% endif %}
+                    </form>
+                    {% else %}
+                    <span><i class="far fa-heart text-cyan-800"></i></span> {% endif %}
+                    <span> {{ activity.number_of_likes }} </span>
+                    </span>
+
+                </div>
+
+
                 {% if activity.user == user %}
                 <p class="mb-3 text-base tracking-tight text-gray-900"><span class="inline font-bold text-pink-800">You</span><span class="inline
             italic"> completed an activity on {{ activity.end_time }}</span></p>
@@ -25,11 +46,18 @@
             }}</span></p>
                 {% endif %}
                 <p class="mb-4 font-normal text-gray-700">{{ activity.description }}</p>
-                <p><span class="mt-4 font-normal text-xs text-gray-700">Uploaded on: {{
-            activity.date_created }}</span>
-                    <span class=""><i class="text-cyan-800 far fa-heart"></i> {{
-            activity.number_of_likes }}</span>
+
+                <!--  Description and Like Button -->
+                <p class="mt-4 font-normal text-xs text-gray-700">
+
+                    Uploaded on: {{activity.date_created }}
                 </p>
+
+
+
+
+
+
             </div>
         </div>
     </div>
