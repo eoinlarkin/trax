@@ -1,97 +1,99 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <!-- Page Content -->
 
 
 <div class="container flex flex-wrap items-center justify-between mx-auto">
-  <div class="flex flex-grow items-center mx-auto md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
-  <p class="h-1 text-cyan-800">{{ activity.title }}</p>
+    <div class="flex flex-grow items-center mx-auto md:flex-row md:min-w-2xl
+    md:max-w-2xl mb-10">
+        <p class="h-1 text-cyan-800">{{ activity.title }}</p>
 
-  <p>
-    {% if user == activity.user %}
-    <form method="POST" action="{% url 'delete' slug=activity.slug %}">
-      {% csrf_token %}
-      <button type="submit" class="btn">Delete</button>
-    </form>
+        <p>
+            {% if user == activity.user %}
+            <form method="POST" action="{% url 'delete' slug=activity.slug %}">
+                {% csrf_token %}
+                <button type="submit" class="btn">Delete</button>
+            </form>
 
-    <a href="{% url 'edit' activity.slug %}">Edit</a></td>
-    {% endif %}
-  </p>
+            <a href="{% url 'edit' activity.slug %}">Edit</a></td>
+            {% endif %}
+        </p>
 
-  <p>
-    <strong>
+        <p>
+            <strong>
       {% if user.is_authenticated %}
       <form action="{% url 'activity_like' activity.slug %}" method="POST">
         {% csrf_token %}
         {% if liked %}
-        <button type="submit" name="blogspot_id" value="{{ activity.slug }}"><i class="fas fa-heart"></i><button>
+        <button type="submit" name="blogspot_id" value="{{ activity.slug }}"><i
+            class="fas fa-heart"></i><button>
             {% else %}
-            <button type="submit" name="blogspot_id" value="{{activity.slug}}"><i class="far fa-heart"></i></button>
+            <button type="submit" name="blogspot_id" value="{{activity.slug}}"><i
+                class="far fa-heart"></i></button>
             {% endif %}
-      </form>
-      {% else %}
-      <span><i class="far fa-heart"></i></span>
-      {% endif %}
-      <span> {{ activity.number_of_likes }} </span>
-    </strong>
-  </p>
-</div>
+          </form>
+          {% else %}
+          <span><i class="far fa-heart"></i></span>
+          {% endif %}
+          <span> {{ activity.number_of_likes }} </span>
+        </strong>
+        </p>
+    </div>
 </div>
 
 
 
 
 <div class="container flex flex-wrap items-center justify-between mx-auto">
+    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border
+      shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
 
-  <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+        <div class="flex flex-col p-4 leading-normal">
 
-    <div class="flex flex-col p-4 leading-normal">      
-
-    <h1>Distance:</h1>
-    <p>{{ activity.distance }}</p>
-    <h1>Description:</h1>
-    <p>{{ activity.description }}</p>
-  </div>
-</div>
-</div>
-
-
-<div class="container flex flex-wrap items-center justify-between mx-auto">
-
-  <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
-
-    <div class="flex flex-grow flex-col p-4 leading-normal">  
-    <p class="h-1 text-cyan-800 mb-6">Map Plot</p>
-    <p>{{ my_map|safe }}</p>
-
-  </div>
-</div>
+            <h1>Distance:</h1>
+            <p>{{ activity.distance }}</p>
+            <h1>Description:</h1>
+            <p>{{ activity.description }}</p>
+        </div>
+    </div>
 </div>
 
 
 <div class="container flex flex-wrap items-center justify-between mx-auto">
+    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border
+      shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
 
-  <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+        <div class="flex flex-grow flex-col p-4 leading-normal">
+            <p class="h-1 text-cyan-800 mb-6">Map Plot</p>
+            <p>{{ my_map|safe }}</p>
 
-    <div class="flex flex-grow flex-col p-4 leading-normal">  
-    <p class="h-1 text-cyan-800 mb-3">Heart Rate Plot</p>
-    <p>{{ heart_rate|safe }}</p>
-
-  </div>
+        </div>
+    </div>
 </div>
+
+
+<div class="container flex flex-wrap items-center justify-between mx-auto">
+    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border
+      shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+
+        <div class="flex flex-grow flex-col p-4 leading-normal">
+            <p class="h-1 text-cyan-800 mb-3">Heart Rate Plot</p>
+            <p>{{ heart_rate|safe }}</p>
+
+        </div>
+    </div>
 </div>
 
 <div class="container flex flex-wrap items-center justify-between mx-auto">
+    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border
+      shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
 
-  <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+        <div class="flex flex-grow flex-col p-4 leading-normal">
+            <p class="h-1 text-cyan-800 mb-3">Elevation Plot</p>
+            <p>{{ elev_plot|safe }}</p>
 
-    <div class="flex flex-grow flex-col p-4 leading-normal">  
-    <p class="h-1 text-cyan-800 mb-3">Elevation Plot</p>
-    <p>{{ elev_plot|safe }}</p>
-
-  </div>
-</div>
+        </div>
+    </div>
 </div>
 
 

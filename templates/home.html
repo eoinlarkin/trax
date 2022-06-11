@@ -1,52 +1,57 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-
-{% for activity in activity_list %}
+{% extends 'base.html' %} {% load static %} {% block content %} {% for activity in activity_list %}
 <div class="container flex flex-wrap items-center justify-between mx-auto">
 
-  {% if activity.user == user %}
-  <div class="flex flex-col flex-grow items-center mx-auto bg-white rounded-lg border-pink-800/60  border-2 shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
-  {% else %}
-  <div class="flex flex-col flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">  
-  {% endif %}
-
-    <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ activity.gpx_thumb_path }}" alt="">
-    <div class="flex flex-col p-4 leading-normal">
-        <a href="{% url 'activity_detail' activity.slug  %}"><h5 class="text-2xl font-bold tracking-tight text-gray-900">{{ activity.title }}</h5></a>
-        {% if activity.user == user %}
-        <p class="mb-3 text-base tracking-tight text-gray-900"><span class="inline font-bold text-pink-800">You</span><span class="inline italic"> completed an activity on {{ activity.end_time }}</span></p>
+    {% if activity.user == user %}
+    <div class="flex flex-col flex-grow items-center mx-auto bg-white rounded-lg
+    border-pink-800/60 border-2 shadow-md md:flex-row md:min-w-2xl md:max-w-2xl
+    mb-10">
         {% else %}
-        <p class="mb-3 text-base tracking-tight text-gray-900"><span class="inline font-bold text-pink-800">{{ activity.user }}</span><span class="inline italic"> completed an activity on {{ activity.end_time }}</span></p> 
-        {% endif %}
-        <p class="mb-4 font-normal text-gray-700">{{ activity.description }}</p>
-        
-          <p><span class="mt-4 font-normal text-xs text-gray-700">Uploaded on: {{ activity.date_created }}</span>
-            <span class=""><i class="text-cyan-800 far fa-heart"></i> {{ activity.number_of_likes }}</span>
-          </p>
+        <div class="flex flex-col flex-grow items-center mx-auto bg-white rounded-lg
+      border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+            {% endif %}
+
+            <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48
+        md:rounded-none md:rounded-l-lg" src="{{ activity.gpx_thumb_path }}" alt="">
+            <div class="flex flex-col p-4 leading-normal">
+                <a href="{% url 'activity_detail' activity.slug %}">
+                    <h5 class="text-2xl
+            font-bold tracking-tight text-gray-900">{{ activity.title }}</h5>
+                </a>
+                {% if activity.user == user %}
+                <p class="mb-3 text-base tracking-tight text-gray-900"><span class="inline font-bold text-pink-800">You</span><span class="inline
+            italic"> completed an activity on {{ activity.end_time }}</span></p>
+                {% else %}
+                <p class="mb-3 text-base tracking-tight text-gray-900"><span class="inline font-bold text-pink-800">{{ activity.user }}</span><span class="inline italic"> completed an activity on {{ activity.end_time
+            }}</span></p>
+                {% endif %}
+                <p class="mb-4 font-normal text-gray-700">{{ activity.description }}</p>
+                <p><span class="mt-4 font-normal text-xs text-gray-700">Uploaded on: {{
+            activity.date_created }}</span>
+                    <span class=""><i class="text-cyan-800 far fa-heart"></i> {{
+            activity.number_of_likes }}</span>
+                </p>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 
-{% endfor %}
+    {% endfor %}
 
-<div class="container mb-10">
-{% if is_paginated %}
+    <div class="container mb-10">
+        {% if is_paginated %}
 
-<nav aria-label="Page navigation">
-  <div class="container flex flex-col items-center">
-    <div class="pagination">
-        {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a>
-        {% endif %}
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a>
+        <nav aria-label="Page navigation">
+            <div class="container flex flex-col items-center">
+                <div class="pagination">
+                    {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo;
+            PREV </a> {% endif %} {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+            NEXT &raquo;</a> {% endif %}
+                </div>
+            </div>
+        </nav>
+
         {% endif %}
     </div>
-  </div>
-</nav>
 
-{% endif %}
-</div>
-
-{% endblock content %}
+    {% endblock content %}
