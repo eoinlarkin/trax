@@ -6,7 +6,7 @@
 <!-- Page Content -->
 <div class="container mx-auto justify-center grid place-items-center h-full mb-32">
   <div class="grid place-items-center">
-    <div class="shadow-lg py-12 px-4 sm:px-6 lg:px-8 max-w-md space-y-8 bg-gray-200/75">
+    <div class="shadow-lg px-4 sm:px-6 lg:px-8 max-w-md space-y-8 bg-gray-200/75">
 
       <div>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Upload an activity:</h2>
@@ -25,7 +25,7 @@
           <div class="mb-4">
             <label for="id_title" class="text-cyan-800">Title:</label>
             <input id="id_title" name="title" type="text" maxlength='25' required value="Trax Activity"
-              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-pink-800 focus:border-pink-800 focus:z-10 sm:text-sm">
           </div>
 
           <!-- Description -->
@@ -33,21 +33,18 @@
             <div class="mb-4">
             <label for="id_description" class="text-cyan-800">Description:</label>
             <textarea id="id_description" rows="4" cols="50" name="description" type="text" maxlength='1000' required
-              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">Describe your activity....!</textarea>
+              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-pink-800 focus:border-pink-800 focus:z-10 sm:text-sm">Describe your activity....!</textarea>
           </div>
         </div>
 
           <!--  Upload File -->
 
           <div>
-            <label for="file_input" class="text-cyan-800">Upload file</label>
-            <input name="gpx_file" id="id_gpx_file" type="file" accept=".gpx"
-              class="block w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+            <label for="file_input" class="text-cyan-800">Upload file:</label>
+            <input name="gpx_file" id="id_gpx_file" type="file" accept=".gpx" required
+              class="block w-full text-sm text-cyan-800 bg-gray-50 border border-gray-300 cursor-pointer focus:outline-none ">
           </div>
         
-
- 
-
         <div class="">
 
           {% if redirect_field_value %}
@@ -55,7 +52,7 @@
           {% endif %}
 
           <button type="submit"
-            class="mt-6 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            class="mt-6 mb-4 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
             <span class="absolute left-0 inset-y-0 flex items-center pl-3"></span>Upload</button>
         </div>
       </div>
