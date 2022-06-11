@@ -23,17 +23,17 @@
   <header>
 
     <!-- Navigation -->
-    <nav class="fixed z-10 top-0 w-full bg-cyan-800 border-gray-200 px-2 sm:px-4 py-2.5">
+    <nav class="fixed z-10 top-0 w-full bg-cyan-800 border-neutral-100 px-2 sm:px-4 py-2.5">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
 
         <!-- Logo and Name -->
         <a href="{% url 'home' %}" class="flex place-items-start">
-          <span class="self-center text-xl font-semibold whitespace-nowrap text-neutral-100"><i class="fa-solid fa-map"></i> TRAX</span>
+          <span class="self-center text-xl font-semibold whitespace-nowrap text-neutral-100 hover:text-pink-800 md:p-1"><i class="fa-solid fa-map"></i> TRAX</span>
         </a>
 
         <!-- Hamburger Menu -->
         <button data-collapse-toggle="mobile-menu" type="button"
-          class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          class="inline-flex items-center p-2 ml-3 text-sm text-neutral-100 rounded-lg md:hidden hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-pink-800"
           aria-controls="mobile-menu" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -50,18 +50,19 @@
 
         <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
           <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+            
             {% if user.is_authenticated %}
             <!-- Home Menu -->
             <li>
               <a href="{% url 'home' %}"
-                class="block py-2 pr-4 pl-3 text-white bg-neutral-100 md:bg-transparent md:text-neutral-100 md:p-0 dark:text-white"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Home</a>
             </li>
             {% else %}
             <!-- Activity Feed Menu -->
             <li>
               <a href="{% url 'activity_list' %}"
-                class="block py-2 pr-4 pl-3 text-white bg-neutral-100 md:bg-transparent md:text-neutral-100 md:p-0 dark:text-white"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Activity Feed</a>
             </li>
             {% endif %}
@@ -70,19 +71,19 @@
             {% if user.is_authenticated %}
             <li>
               <a href="{% url 'account_logout' %}"
-                class="block py-2 pr-4 pl-3 text-white bg-neutral-100  md:bg-transparent md:text-neutral-100 md:p-0 dark:text-white"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Logout</a>
             </li>
 
             {% else %}
             <li>
               <a href="{% url 'account_signup' %}"
-                class="block py-2 pr-4 pl-3 text-white bg-neutral-100 md:bg-transparent md:text-neutral-100 md:p-0 dark:text-white"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Register</a>
             </li>
             <li>
               <a href="{% url 'account_login' %}"
-                class="block py-2 pr-4 pl-3 text-white bg-neutral-100 md:bg-transparent md:text-neutral-100 md:p-0 dark:text-white"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Login</a>
             </li>
             {% endif %}
@@ -91,7 +92,7 @@
             {% if user.is_authenticated %}
             <li>
               <a href="{% url 'upload' %}"
-                class="block py-2 pr-4 pl-3 text-white bg-neutral-100 rounded md:bg-transparent md:text-neutral-100 md:p-0 dark:text-white"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
                 aria-current="page">Upload</a>
             </li>
             {% endif %}
@@ -99,7 +100,7 @@
             <!-- About -->
             <li>
               <a href="{% url 'about' %}"
-                class="block py-2 pr-4 pl-3 text-white bg-neutral-100 rounded md:bg-transparent md:text-neutral-100 md:p-0 dark:text-white"
+                class="block py-2 pr-4 pl-3 text-neutral-100  align-middle rounded bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0
                 aria-current="page">About</a>
             </li>
 
@@ -108,8 +109,9 @@
         </div>
       </div>
     </nav>
-   </header>
-        {% block content %}         
+  </header>
+
+  {% block content %}         
                
         <!-- Content Goes here -->
         

@@ -2,18 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.nav-bar-height {
-    height: 10vh;
-}
 
-.margin-before-body {
-    margin-top: 10vh;
+@layer components {
+.hover-red {
+    a:hover {
+        color: red;
+        }
+    
 }
-
-.body-height {
-    height: 82.5vh;
-}
-
-.footer-height {
-    height: 7.5vh;
 }

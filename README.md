@@ -242,6 +242,10 @@ https://plotly.com/python/line-and-scatter/
 Added defensive validation to the file upload page; this now will only allow the user to upload '.gpx. files. This was enabled through the `accept='.gpx'` dialog for the file upload. Instructions for how to achieve this were sourced from [stack overflow](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)
 
 
+## Running Tailwind Css
+
+`npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch`
+
 
 # Code Institute Requirements
 
