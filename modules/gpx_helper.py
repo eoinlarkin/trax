@@ -87,8 +87,8 @@ def gpx_metrics(file_name):
     avg_heartrate = int(gpx_df["heart_rate"].mean())
     start_time = gpx_df["time"].min()
     end_time = gpx_df["time"].max()
-    max_elev = gpx_df["elevation"].max()
-    min_elev = gpx_df["elevation"].min()
+    max_elev = int(gpx_df["elevation"].max())
+    min_elev = int(gpx_df["elevation"].min())
     return tot_distance, avg_heartrate, start_time, end_time, max_elev, min_elev
 
 

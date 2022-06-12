@@ -98,7 +98,7 @@ def add_activity(request):
                 avg_hr,
                 start_time,
                 end_time,
-                max_elv,
+                max_elev,
                 min_elev,
             ) = gpx_helper.gpx_metrics("temp.gpx")
 
@@ -107,6 +107,8 @@ def add_activity(request):
             Activity.objects.filter(slug=slug_str).update(heartrate_avg=avg_hr)
             Activity.objects.filter(slug=slug_str).update(start_time=start_time)
             Activity.objects.filter(slug=slug_str).update(end_time=end_time)
+            Activity.objects.filter(slug=slug_str).update(elev_max=max_elev)
+            Activity.objects.filter(slug=slug_str).update(elev_min=min_elev)
             gpx_helper.generate_thumbnail()
             thumbnail = cloudinary.uploader.upload("activity_thumbnail.png")
             Activity.objects.filter(slug=slug_str).update(
