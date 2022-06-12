@@ -1,10 +1,13 @@
-## Table of Contents
+
+![](/docs/screenshots/trax-responsive-preview.png)
 
 ## Overview
 
 TRAX is a web application for the uploading, sharing and analysing activities which have been recorded in the GPX file format. TRAX is inspired by the [Strava](https://www.strava.com) web service.
 
 The web application has been built using the Django framework and utilises a PostgreSQL database and the Cloudinary storage solution for the storing of activities. The application has been deployed to Heroku and can be accessed at the following link [trax-webapp.herokuapp.com](https://trax-webapp.herokuapp.com/).
+
+## Table of Contents
 
 ## Objectives
 
@@ -46,7 +49,7 @@ There were no significant differences in the final design implemented and the pr
 
 ### Color Palette
 
-<img src="./docs/trax_palette.png" alt="color-palette" width=400px height=200px>
+<img src="./docs/img/trax_palette.png" alt="color-palette" width=400px height=200px>
 
 A broad color palette was chosen for the site with a range of complimenting colors chosen. In choosing the color palette, my objective was to select a color palette that would create a strong visual identity with a number of colors with high contrast.
 
@@ -70,22 +73,26 @@ For Fonts, I used the [default Tailwindcss fonts](https://tailwindcss.com/docs/f
 
 ### Implemented Features
 
-#### Landing Page
+- #### Landing Page
 
-#### Register Page
+- #### Register Page
 
-#### Sigin Page
+- #### Sigin Page
 
-#### Logout Page
+- #### Logout Page
 
-### Activity Upload Page
-- Added defensive validation to the file upload page; this now will only allow the user to upload '.gpx. files. This was enabled through the `accept='.gpx'` dialog for the file upload. Instructions for how to achieve this were sourced from [stack overflow](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)
+- ### Activity Upload Page
+  - Added defensive validation to the file upload page; this now will only allow the user to upload '.gpx. files. This was enabled through the `accept='.gpx'` dialog for the file upload. Instructions for how to achieve this were sourced from [stack overflow](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)
 
-#### About Page
+- #### About Page
 
-#### Activity Feed Page
+- #### Activity Detail Page
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-activity-feed.png" alt="activity-feed"/>
+    </details>
+  - 
 
-#### Activity Detail Page
 
 #### Edit Activiy Page
 

@@ -66,16 +66,15 @@
     <nav aria-label="Page navigation">
         <div class="pagination">
             {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
-                <button type="submit"
-                    class="mt-1 mb-1  mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
-                    &laquo; PREV </a> {% endif %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="inline">
+                <span class="mt-1 mb-1  mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
+                    &laquo; PREV</span></a> {% endif %}
 
             {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="page-link">
-                <button type="submit"
-                    class="mt-1 mb-1  mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
-                    NEXT &raquo;</a> {% endif %}
+            <a href="?page={{ page_obj.next_page_number }}" class="inline">
+                <span class="mt-1 mb-1  mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
+                    NEXT &raquo;</span></a> {% endif %}
+            
         </div>
     </nav>
 
