@@ -2,104 +2,130 @@
 
 <!-- Page Content -->
 
-
-<div class="container flex flex-wrap items-center justify-between mx-auto">
-    <div class="flex flex-grow items-center mx-auto md:flex-row md:min-w-2xl
-    md:max-w-2xl mb-10">
-        <p class="h-1 text-cyan-800">{{ activity.title }}</p>
-
-        <p>
-            {% if user == activity.user %}
-            <form method="POST" action="{% url 'delete' slug=activity.slug %}">
-                {% csrf_token %}
-                <button type="submit" class="btn">Delete</button>
-            </form>
-
-            <a href="{% url 'edit' activity.slug %}">Edit</a></td>
-            {% endif %}
-        </p>
-
-        <!--  Like button for the activity -->
-        <p>
-            <strong>
-          {% if user.is_authenticated %}
-          <form action="{% url 'activity_like' activity.slug %}" method="POST">
-            {% csrf_token %}
-            {% if liked %}
-            <button type="submit" name="" value="{{ activity.slug }}"><i
-                class="fas fa-heart text-cyan-800 hover:text-pink-800"></i><button>
+<!--    Card: Cotainer with Title, Like button and description      -->
+    <div class="items-center mx-auto p-4 bg-white rounded-lg border shadow-md  md:min-w-2xl md:max-w-2xl mb-10">    
+       
+        <!--    Activty Name and Like Button -->
+        <div class="flex justify-start  ">
+            <p class="text-cyan-800  mr-12 text-2xl">
+                {{ activity.title }}
+                {% if activity.user == user %}
+                    <span class=" text-pink-800">by You</span>
                 {% else %}
-                <button type="submit" name="" value="{{activity.slug}}"><i
-                    class="far fa-heart text-cyan-800 hover:text-pink-800"></i></button>
+                    <span class=" text-pink-800">by {{ activity.user }}</span>
                 {% endif %}
-          </form>
-          {% else %}
-              <span><i class="far fa-heart text-cyan-800"></i></span>
-              {% endif %}
-              <span> {{ activity.number_of_likes }} </span>
-          </strong>
+            </p>
+
+            <!--  Like button for the activity -->
+            <p>
+                <strong>
+            {% if user.is_authenticated %}
+            <form action="{% url 'activity_like' activity.slug %}" method="POST">
+                {% csrf_token %}
+                {% if liked %}
+                <button type="submit" name="" value="{{ activity.slug }}"><i
+                    class="fas fa-heart text-cyan-800 hover:text-pink-800 text-xl"></i><button>
+                    {% else %}
+                    <button type="submit" name="" value="{{activity.slug}}"><i
+                        class="far fa-heart text-cyan-800 hover:text-pink-800 text-xl"></i></button>
+                    {% endif %}
+            </form>
+            {% else %}
+                <span><i class="far fa-heart text-cyan-800"></i></span>
+                {% endif %}
+                <span> {{ activity.number_of_likes }} </span>
+            </strong>
+            </p>
+        </div>
+     
+        <!--  Activity Description --> 
+        <div>
+           <p class="mt-4 mb-4 font-normal text-gray-500">{{ activity.description }}</p>
+        </div>
+
+        
+        <!--  Edit / Delete Buttons -->
+        <div class="flex justify-start">
+            <p>
+                {% if user == activity.user %}
+                <form method="POST" action="{% url 'delete' slug=activity.slug %}">
+                    {% csrf_token %}
+                    <button type="submit" class="mt-1 mb-1 mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">Delete</button>
+                </form>
+    
+                <a href="{% url 'edit' activity.slug %}">
+                <button type="submit" class="mt-1 mb-1  mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
+                Edit</a>    
+                {% endif %}
+            </p>
+            </div>
+
+        <!--  Uploaded On Date -->   
+        <div>   
+        <p class="mt-4 font-normal text-xs text-gray-700">
+            Uploaded on: {{activity.date_created }}
         </p>
-    </div>
-</div>
-
-
-
-
-<div class="container flex flex-wrap items-center justify-between mx-auto">
-    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border
-      shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
-
-        <div class="flex flex-col p-4 leading-normal">
-
-            <h1>Distance:</h1>
-            <p>{{ activity.distance }}</p>
-            <h1>Description:</h1>
-            <p>{{ activity.description }}</p>
         </div>
     </div>
-</div>
 
 
-<div class="container flex flex-wrap items-center justify-between mx-auto">
-    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border
-      shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+<!--    Card: Table with activity detail      -->
+
+    <div class="p-4 flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+        
+        <div class="flex flex-grow flex-col leading-normal">
+            <p class="text-cyan-800 text-xl">
+                Key Activity Metrics:
+            </p>
+        
+        <table class="p-4 text-gray-500 leading-loose table-auto overflow-x-auto align-middle">
+            <tbody>
+                <tr class="border-b border-t">
+                    <td>Distance:</td>                    
+                    <td>{{ activity.distance }} km</td>
+                </tr>
+                <tr class="bg-gray-50 border-b">
+                    <td>Average Heart Rate:</td>                    
+                    <td>{{ activity.heartrate_avg }} bpm</td>
+                </tr>
+                <tr class="border-b">
+                    <td>Start Time:</td>                    
+                    <td>{{ activity.start_time }}</td>
+                </tr>
+                <tr class="bg-gray-50 border-b">
+                    <td>End Time:</td>                    
+                    <td>{{ activity.end_time }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+<!--    Card: Activity Map      -->
+    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
 
         <div class="flex flex-grow flex-col p-4 leading-normal">
-            <p class="h-1 text-cyan-800 mb-6">Map Plot</p>
+            <p class="text-cyan-800 text-xl">Activity Map:</p>
             <p>{{ my_map|safe }}</p>
-
         </div>
     </div>
-</div>
 
-
-<div class="container flex flex-wrap items-center justify-between mx-auto">
-    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border
-      shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+<!--    Card: Heart Rate Plot      -->
+    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
 
         <div class="flex flex-grow flex-col p-4 leading-normal">
-            <p class="h-1 text-cyan-800 mb-3">Heart Rate Plot</p>
+            <p class="text-cyan-800 text-xl">Heart Rate Plot:</p>
             <p>{{ heart_rate|safe }}</p>
-
         </div>
     </div>
-</div>
 
-<div class="container flex flex-wrap items-center justify-between mx-auto">
-    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border
-      shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
-
+<!--    Card: Activity Elevation Plot      -->
+    <div class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
         <div class="flex flex-grow flex-col p-4 leading-normal">
-            <p class="h-1 text-cyan-800 mb-3">Elevation Plot</p>
+            <p class="text-cyan-800 text-xl">Elevation Plot:</p>
             <p>{{ elev_plot|safe }}</p>
-
         </div>
     </div>
-</div>
-
-
-
-
-
 
 {% endblock content %}
