@@ -21,7 +21,8 @@
       <p>Once you have created an account you can upload activity files from your activity tracker. Currently TRAX
         supports files in gpx file format.</p>
       <p>Try it for yourself with the following
-        <a download="example-gpx-file.gpx" href="https://www.dropbox.com/s/0loi1xoikte3jqx/run-phoenix-park-7km.gpx?dl=0"  class='hover:text-pink-800 text-cyan-800' target="_blank">sample file</a>.</p>
+        <a download="example-gpx-file-hike.gpx" href="{% static 'test-gpx/hike-wicklow-djouce.gpx' %}"  class='hover:text-pink-800 text-cyan-800' target="_blank">sample file</a>.
+      </p>
     </div>
     
     <!--  Upload Dialog Image -->
@@ -65,7 +66,9 @@
       <p class="text-xl font-bold tracking-wide text-pink-800">Heart Rate Analysis</p>
       <p>If the activity file contains heart rate data, the heart rate plot will provide a visualisation of the heart
         rate during the activity</p>
-      <p>This is great for activities such as intervals - try it with the following gpx file !</p>
+      <p>This is great for activities such as intervals - try it with the following 
+        <a download="example-gpx-file-elevation.gpx" href="{% static 'test-gpx/run-intervals-phoneix-park.gpx' %}"  class='hover:text-pink-800 text-cyan-800' target="_blank">gpx file</a>!
+      </p>
 
     </div>
 
@@ -78,7 +81,8 @@
     <div class="flex flex-col space-y-4 order-9">
       <p class="text-xl font-bold tracking-wide text-pink-800">Elevation Analysis</p>
       <p>Finally the elevation plot will provide a visualisation of the elevation over the duration of the activity.</p>
-      <p>This provides additional insight for activities with significant changes in elevation - try it with this file.
+      <p>This provides additional insight for activities with significant changes in elevation - try it with        
+        <a download="example-gpx-file-elevation.gpx" href="{% static 'test-gpx/cycling-kerry-dingle-120km.gpx' %}"  class='hover:text-pink-800 text-cyan-800' target="_blank">this file</a>.
       </p>
 
     </div>
