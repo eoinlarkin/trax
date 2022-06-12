@@ -162,7 +162,7 @@ def generate_thumbnail():
 
     gpx_df = get_dataframe_from_gpx(os.path.join(os.getcwd(), "temp.gpx"))
     fig = px.scatter(
-        gpx_df, x="latitude", y="longitude", color_discrete_sequence=["darkcyan"]
+        gpx_df, y="latitude", x="longitude", color_discrete_sequence=["darkcyan"]
     )
     fig.update_layout(
         xaxis=dict(showgrid=False),
