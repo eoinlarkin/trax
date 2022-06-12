@@ -7,19 +7,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{% static 'css/output.css' %}" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-  <!-- Flowbite javascript file -->
-  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
 
+  <link href="{% static 'css/output.css' %}" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
   <title>Trax</title>
 </head>
 
-
-<body class="flex flex-col h-screen">
+<body class="flex flex-col h-screen justify-between">
   <header>
 
     <!-- Navigation -->
@@ -103,18 +100,17 @@
               <a href="{% url 'about' %}"
                 class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0 aria-current="
                 page ">About</a>
-                            </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </header>
+                        </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
     {% block content %}
-
     <!-- Content Goes here -->
-
     {% endblock content %}
+
 
     <!-- Flowbite javascript file -->
     <script src=" https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"> </script> </body> </html>
