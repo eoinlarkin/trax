@@ -1144,6 +1144,14 @@ input:checked + .toggle-bg {
   margin-top: 7rem;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.ml-8 {
+  margin-left: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -1640,6 +1648,11 @@ input:checked + .toggle-bg {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .pr-4 {

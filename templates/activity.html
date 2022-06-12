@@ -17,25 +17,23 @@
             </p>
 
             <!--  Like button for the activity -->
-            <p>
-                <strong>
-            {% if user.is_authenticated %}
-            <form action="{% url 'activity_like' activity.slug %}" method="POST">
-                {% csrf_token %}
-                {% if liked %}
-                <button type="submit" name="" value="{{ activity.slug }}"><i
-                    class="fas fa-heart text-cyan-800 hover:text-pink-800 text-xl"></i><button>
-                    {% else %}
-                    <button type="submit" name="" value="{{activity.slug}}"><i
-                        class="far fa-heart text-cyan-800 hover:text-pink-800 text-xl"></i></button>
+            <div>
+                {% if user.is_authenticated %}
+                <form action="{% url 'activity_like' activity.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if liked %}
+                    <button type="submit" name="" value="{{ activity.slug }}">
+                        <i class="fas fa-heart text-cyan-800 hover:text-pink-800 text-xl"></i><button>
+                        {% else %}
+                        <button type="submit" name="" value="{{activity.slug}}"><i class="far fa-heart text-cyan-800 hover:text-pink-800 text-xl"></i></button>
+                        {% endif %}
+                </form>
+                {% else %}
+                    <span><i class="far fa-heart text-cyan-800"></i></span>
                     {% endif %}
-            </form>
-            {% else %}
-                <span><i class="far fa-heart text-cyan-800"></i></span>
-                {% endif %}
-                <span> {{ activity.number_of_likes }} </span>
-            </strong>
-            </p>
+                    <span class="ml-2">{{ activity.number_of_likes }}</span>
+
+            </div>
         </div>
      
         <!--  Activity Description --> 
