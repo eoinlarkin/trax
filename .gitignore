@@ -5,7 +5,7 @@ env.py
 __pycache__/
 *.py[cod]
 node_modules/
-*.gpx
+temp.gpx
 test.py
 testing/
 tempCodeRunnerFile.py
