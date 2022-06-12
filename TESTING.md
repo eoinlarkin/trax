@@ -92,4 +92,23 @@ No significant issues were detected across the various browsers / operating syst
 ## Functionality
 
 
-### Known Bugs
+### Bugs
+
+#### Resolved Bugs
+
+---
+
+**Update Activity**
+The initial code for updating the activity was actually overriding the activity uploaded date. On investigation, I realised that while the full model was updating. 
+This was resolved by writing a custom method for the Actitity Form class, which would only update the Activity Title and Description fields. The solution for this was 
+The solution was modelled on a solution to a similar issue which was discussed on [stackoverflow](https://stackoverflow.com/questions/33422783/django-modelform-need-to-save-only-selected-fields)
+
+---
+
+**Update Activity**
+This wasn't working as expected. Instead the following argument was set in the model to resolve this
+```start_time = models.DateTimeField(auto_now_add=True)```
+
+---
+#### Unresolved Bugs:
+There are no known bugs in the final deployment of the site.

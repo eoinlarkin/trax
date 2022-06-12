@@ -64,16 +64,6 @@ def get_dataframe_from_gpx(fname: str) -> pd.DataFrame:
     return pd.DataFrame(data, columns=COLUMN_NAMES)
 
 
-def gpx_distance(file_name):
-    """
-    Function to return the total distance in the gpx file
-    """
-    gpx = gpxpy.parse(open(file_name))
-    track = gpx.tracks[0]
-    tot_distance = track.segments[0].length_3d()
-    return tot_distance
-
-
 def gpx_metrics(file_name):
     """
     Function to return key metrics from the gpx file
@@ -101,6 +91,7 @@ def gpx_metrics(file_name):
 
 
 def gpx_download(webpath):
+    ''' Used to download the gpx files to a temporary file for plotting / reading'''
     import urllib.request
 
     urllib.request.urlretrieve(webpath, "temp.gpx")
