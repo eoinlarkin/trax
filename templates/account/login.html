@@ -8,7 +8,7 @@
  {% block content %}
 
  <div class="rounded-lg shadow-lg h-screen bg-hiking_img bg-cover"
-     style='background-image: url(" {% static "media/img/runner_img.jpg" %}" );'>
+     style="background-image: url(' {% static 'media/img/runner_img.jpg' %}' )">
      <div class="container mx-auto mt-24 md:mt-36 justify-center grid place-items-center body-height">
          <div class="grid place-items-center">
              <div class="shadow-lg py-12 px-4 sm:px-6 lg:px-8 max-w-md w-full space-y-8 rounded bg-gray-200/75 border-cyan-800 border-2">
@@ -44,7 +44,7 @@
 
                      <div class="flex items-center justify-between">
                          <div class="flex items-center">
-                             <input id="remember-me" name="remember" type="checkbox" class="h-4  w-4 text-teal-800 focus:ring-teal-800 border-gray-300 rounded">
+                             <input id="remember-me" name="id_remember" type="checkbox" class="h-4  w-4 text-teal-800 focus:ring-teal-800 border-gray-300 rounded">
                              <label for="id_remember" class="ml-2 block text-sm text-gray-900">
                                  Remember me </label>
                          </div>

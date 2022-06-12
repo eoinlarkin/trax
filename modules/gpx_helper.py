@@ -11,7 +11,8 @@ def get_gpx_point_data(
     Return a tuple containing some key data about `point`.
     """
 
-    # The XML namespaces used by the GPX file for extensions, used when parsing the extensions
+    # The XML namespaces used by the GPX file for extensions,
+    # used when parsing the extensions
     NAMESPACES = {
         "garmin_tpe": "http://www.garmin.com/xmlschemas/TrackPointExtension/v1"
     }
@@ -89,17 +90,20 @@ def gpx_metrics(file_name):
     end_time = gpx_df["time"].max()
     max_elev = int(gpx_df["elevation"].max())
     min_elev = int(gpx_df["elevation"].min())
-    return tot_distance, avg_heartrate, start_time, end_time, max_elev, min_elev
+    return (
+        tot_distance,
+        avg_heartrate,
+        start_time,
+        end_time,
+        max_elev,
+        min_elev,
+    )
 
 
 def gpx_download(webpath):
     import urllib.request
 
     urllib.request.urlretrieve(webpath, "temp.gpx")
-
-
-def export_map_to_img(map):
-    print("This function generates an activity thumbnail image")
 
 
 def generate_plots(gpxPath, export_png=False, download_file=True):
@@ -112,13 +116,19 @@ def generate_plots(gpxPath, export_png=False, download_file=True):
 
     def heart_rate():
         fig = px.area(
-            gpx_df, x="time", y="heart_rate", color_discrete_sequence=["crimson"]
+            gpx_df,
+            x="time",
+            y="heart_rate",
+            color_discrete_sequence=["crimson"],
         )
         return opy.plot(fig, auto_open=False, output_type="div")
 
     def elevation_plot():
         fig = px.area(
-            gpx_df, x="time", y="elevation", color_discrete_sequence=["darkorchid"]
+            gpx_df,
+            x="time",
+            y="elevation",
+            color_discrete_sequence=["darkorchid"],
         )
         return opy.plot(fig, auto_open=False, output_type="div")
 
@@ -162,7 +172,10 @@ def generate_thumbnail():
 
     gpx_df = get_dataframe_from_gpx(os.path.join(os.getcwd(), "temp.gpx"))
     fig = px.scatter(
-        gpx_df, y="latitude", x="longitude", color_discrete_sequence=["darkcyan"]
+        gpx_df,
+        y="latitude",
+        x="longitude",
+        color_discrete_sequence=["darkcyan"],
     )
     fig.update_layout(
         xaxis=dict(showgrid=False),
