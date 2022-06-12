@@ -5,84 +5,81 @@
 
 <div class="container flex flex-wrap items-center justify-between mx-auto">
 
-    {% if activity.user == user %}
     <div
-        class="flex flex-col flex-grow items-center mx-auto bg-white rounded-lg border-pink-800/60 border-2 shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
-        {% else %}
-        <div
-            class="flex flex-col flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+        class="{% if activity.user == user %} border-pink-800/60 {% endif %} flex flex-col flex-grow items-center mx-auto bg-white rounded-lg  border-2 shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+
+        <div class="flex flex-col p-2 sm:p-4 leading-normal w-full">
+            <div>
+                <a href="{% url 'activity_detail' activity.slug %}">
+                    <p class="text-xl sm:text-2xl font-bold tracking-tight text-teal-800 hover:text-pink-800 inline">
+                        {{ activity.title }} </p>
+                </a>
+
+                <!--    Span for the Like Button for the Activity -->
+                <span class="ml-4 text-base sm:text-2xl">
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'activity_like' activity.slug %}" method="POST" class="inline-block">
+                        {% csrf_token %} {% if liked %}
+                        <button type="submit" name="" value="{{ activity.slug }}"><i
+                                class="fas fa-heart text-cyan-800 hover:text-pink-800"></i><button>
+                                {% else %}
+                                <button type="submit" name="" value="{{activity.slug}}"><i
+                                        class="far fa-heart text-cyan-800 hover:text-pink-800"></i></button>
+                                {% endif %}
+                    </form>
+                    {% else %}
+                    <span><i class="far fa-heart text-cyan-800"></i></span> {% endif %}
+                    <span> {{ activity.number_of_likes }} </span>
+                </span>
+
+            </div>
+
+
+            {% if activity.user == user %}
+            <p class="mb-3 text-base tracking-tight text-gray-900">
+                <span class="inline font-bold text-pink-800">You</span>
+                <span class="inline italic"> completed an activity on {{ activity.end_time }}</span></p>
+            {% else %}
+            <p class="mb-3 text-base tracking-tight text-gray-900">
+                <span class="inline font-bold text-pink-800">{{ activity.user }}</span>
+                <span class="inline italic">completed an activity on {{ activity.end_time }}</span></p>
             {% endif %}
-            <img src="{{ activity.gpx_thumb_path }}" alt=""
-                class="object-cover p-4 w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
+            <p class="mt-2 mb-2 font-normal text-gray-500">{{ activity.description }}</p>
 
-            <div class="flex flex-col p-4 leading-normal">
-                <div>
-                    <a href="{% url 'activity_detail' activity.slug %}">
-                        <p class="text-2xl font-bold tracking-tight text-teal-800 hover:text-pink-800 inline">
-                            {{ activity.title }} </p>
-                    </a>
-
-                    <!--    Span for the Like Button for the Activity -->
-                    <span class="ml-16 text-xl">
-                        {% if user.is_authenticated %}
-                        <form action="{% url 'activity_like' activity.slug %}" method="POST" class="inline-block">
-                            {% csrf_token %} {% if liked %}
-                            <button type="submit" name="" value="{{ activity.slug }}"><i
-                                    class="fas fa-heart text-cyan-800 hover:text-pink-800"></i><button>
-                                    {% else %}
-                                    <button type="submit" name="" value="{{activity.slug}}"><i
-                                            class="far fa-heart text-cyan-800 hover:text-pink-800"></i></button>
-                                    {% endif %}
-                        </form>
-                        {% else %}
-                        <span><i class="far fa-heart text-cyan-800"></i></span> {% endif %}
-                        <span> {{ activity.number_of_likes }} </span>
-                    </span>
-
-                </div>
-
-
-                {% if activity.user == user %}
-                <p class="mb-3 text-base tracking-tight text-gray-900">
-                    <span class="inline font-bold text-pink-800">You</span>
-                    <span class="inline italic"> completed an activity on {{ activity.end_time }}</span></p>
-                {% else %}
-                <p class="mb-3 text-base tracking-tight text-gray-900">
-                    <span class="inline font-bold text-pink-800">{{ activity.user }}</span>
-                    <span class="inline italic">completed an activity on {{ activity.end_time }}</span></p>
-                {% endif %}
-                <p class="mt-2 mb-2 font-normal text-gray-500">{{ activity.description }}</p>
-
-                <!--  Description and Like Button -->
-                <p class="mt-4 font-normal text-xs text-gray-700">
-                    Uploaded on: {{activity.date_created }}
-                </p>
-            </div>
+            <!--  Description and Like Button -->
+            <p class="mt-4 font-normal text-xs text-gray-700">
+                Uploaded on: {{activity.date_created }}
+            </p>
         </div>
+
+        <img src="{{ activity.gpx_thumb_path }}" alt=""
+            class="object-cover p-4 h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
+
     </div>
+</div>
 
-    {% endfor %}
+{% endfor %}
 
-    <div class="container flex flex-col items-center justify-center mb-10 mx-auto">
-        {% if is_paginated %}
+<div class="container flex flex-col items-center justify-center mb-10 mx-auto">
+    {% if is_paginated %}
 
-        <nav aria-label="Page navigation">
-            <div class="pagination">
-                {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
-                    <button type="submit"
-                        class="mt-1 mb-1  mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
-                        &laquo; PREV </a> {% endif %}
+    <nav aria-label="Page navigation">
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
+                <button type="submit"
+                    class="mt-1 mb-1  mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
+                    &laquo; PREV </a> {% endif %}
 
-                {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="page-link">
-                    <button type="submit"
-                        class="mt-1 mb-1  mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
-                        NEXT &raquo;</a> {% endif %}
-            </div>
-        </nav>
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                <button type="submit"
+                    class="mt-1 mb-1  mr-4 group relative w-16 flex justify-center py-2 px-2 border border-transparent text-xs font-medium rounded-md text-white bg-cyan-800 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-800">
+                    NEXT &raquo;</a> {% endif %}
+        </div>
+    </nav>
 
-        {% endif %}
-    </div>
+    {% endif %}
+</div>
 
-    {% endblock content %}
+{% endblock content %}

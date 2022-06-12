@@ -1,4 +1,5 @@
 
+
 ## Functionality
 
 ### Navigation Bar
@@ -15,22 +16,53 @@
 
 
 
-
 ## Performance
+Performance was tested using Chrome Lighthouse for the following views
+
+- Home
+- Activity
+- About
+- Register
+- Login
+
+### Desktop
+
+|Home   |Activity    | About   |Register   |Login   |
+|---|---|---|---|---|
+|   |   |   |   |   |
+
+### Mobile
+
+|Home   |Activity    | About   |Register   |Login   |
+|---|---|---|---|---|
+|   |   |   |   |   |
 
 ## Validators
 
 ### HTML
+
+The W3 HTML validatior was used to validate the 
+
+- :heavy_check_mark: Home Page
+
+- [ ] Mercury
+- [x] Venus
+- [x] Earth (Orbit/Moon)
+- [x] Mars
+- [ ] Jupiter
+- [ ] Saturn
+- [ ] Uranus
+- [ ] Neptune
+- [ ] Comet Haley
+
 ### CSS
 ### JavaScript
 ### PEP8
 
-Compatibility
-Hardware
-Browsers
 
-New Visitor
-Repeat users
-All users.
-Website owner
+### Compatibility
+
+## Functionality
+
+
 ### Known Bugs
