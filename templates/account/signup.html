@@ -1,19 +1,25 @@
-{% extends "base_no_footer.html" %} {% load static %} {% load i18n %} {% block head_title %}{% trans "Signup" %}{% endblock %} {% block content %}
+{% extends "base_no_footer.html" %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}
+{% trans "Signup" %}
+{% endblock %}
+{% block content %}
 
-<div class="rounded-lg shadow-lg h-screen bg-runner bg-cover" style='background-image: url(" {% static"media/img/hiking_img.jpg" %}" );'>
-    <div class="container mx-auto mt-24 md:mt-36 justify-center grid
-    place-items-center body-height">
+<div class="rounded-lg shadow-lg h-screen bg-runner bg-cover"
+    style='background-image: url(" {% static "media/img/hiking_img.jpg" %}" );'>
+    <div class="container mx-auto mt-24 md:mt-36 justify-center grid place-items-center body-height">
         <div class="grid place-items-center">
-            <div class="shadow-lg py-12 px-4 sm:px-6 lg:px-8 max-w-md space-y-8
-        rounded bg-gray-200/75 border-cyan-800 border-2">
+            <div
+                class="shadow-lg py-12 px-4 sm:px-6 lg:px-8 max-w-md space-y-8 rounded bg-gray-200/75 border-cyan-800 border-2">
                 <div>
-                    <img class="mx-auto h-12 w-auto" src="{% static
-            'media/img/trax-logo.png' %}" alt="Workflow">
-                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">{% trans "Sign up for an account" %}</h2>
+                    <img class="mx-auto h-12 w-auto" src="{% static 'media/img/trax-logo.png' %}" alt="Workflow">
+                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                        {% trans "Sign up for an account" %}</h2>
                     <p class="mt-2 text-center text-sm text-gray-600">
                         Already have an account? Then please
-                        <a href="{{ login_url }}" class="font-medium text-teal-800
-              hover:text-teal-800">{% blocktrans %} sign in.{% endblocktrans %}</a>
+                        <a href="{{ login_url }}" class="font-medium text-teal-800 hover:text-teal-800">{% blocktrans %}
+                            sign in.{% endblocktrans %}</a>
                     </p>
                 </div>
                 <form class="mt-8 space-y-6" action="{% url 'account_signup' %}" method="POST">
@@ -25,41 +31,37 @@
                         <!-- User Name -->
                         <div>
                             <label for="id_username" class="sr-only">Username:</label>
-                            <input id="id_username" name="username" type="text" autocomplete="username" minlength='1' maxlength='20' required class="appearance-none rounded-none relative block w-full px-3
-                py-2 border border-gray-300 placeholder-gray-500 text-gray-900
-                rounded-t-md focus:outline-none focus:ring-teal-800
-                focus:border-teal-800 focus:z-10 sm:text-sm" placeholder="Username">
+                            <input id="id_username" name="username" type="text" autocomplete="username" minlength='1'
+                                maxlength='20' required
+                                class="appearance-none rounded-none relative block w-full px-3  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-800 focus:border-teal-800 focus:z-10 sm:text-sm"
+                                placeholder="Username">
                         </div>
 
                         <!-- Email -->
                         <div>
                             <label for="id_email" class="sr-only">Email (optional):</label>
-                            <input id="id_password" name="email" type="email" autocomplete="email" class="appearance-none rounded-none
-                relative block w-full px-3 py-2 border border-gray-300
-                placeholder-gray-500 text-gray-900 rounded-t-md
-                focus:outline-none focus:ring-teal-800 focus:border-teal-800
-                focus:z-10 sm:text-sm" placeholder="Email address (optional)">
+                            <input id="id_password" name="email" type="email" autocomplete="email"
+                                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-800 focus:border-teal-800 focus:z-10 sm:text-sm"
+                                placeholder="Email address (optional)">
                         </div>
 
 
                         <!-- Password -->
                         <div>
                             <label for="id_password1" class="sr-only">Password:</label>
-                            <input id="id_password" name="password1" type="password" autocomplete="current-password" required class="appearance-none
-                rounded-none relative block w-full px-3 py-2 border
-                border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md
-                focus:outline-none focus:ring-teal-800 focus:border-teal-800
-                focus:z-10 sm:text-sm" placeholder="Password">
+                            <input id="id_password" name="password1" type="password" autocomplete="current-password"
+                                required
+                                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-800 focus:border-teal-800 focus:z-10 sm:text-sm"
+                                placeholder="Password">
                         </div>
 
                         <!-- Password Validation -->
                         <div>
                             <label for="id_password2" class="sr-only">Password (again):</label>
-                            <input id="id_password2" name="password2" type="password" autocomplete="current-password" required class="appearance-none
-                rounded-none relative block w-full px-3 py-2 border
-                border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md
-                focus:outline-none focus:ring-teal-800 focus:border-teal-800
-                focus:z-10 sm:text-sm" placeholder="Password (again)">
+                            <input id="id_password2" name="password2" type="password" autocomplete="current-password"
+                                required
+                                class="appearance-none rounded-none relative block w-full px-3 py-2 border  border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-800 focus:border-teal-800 focus:z-10 sm:text-sm"
+                                placeholder="Password (again)">
                         </div>
 
                     </div>
@@ -68,44 +70,28 @@
                     <div>
 
                         {% if redirect_field_value %}
-                        <input type="hidden" name="{{ redirect_field_name }}" value="{{
-              redirect_field_value }}" /> {% endif %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
 
-                        <button type="submit" class="group relative w-full flex
-              justify-center py-2 px-4 border border-transparent text-sm
-              font-medium rounded-md text-white bg-pink-800 hover:bg-teal-800
-              focus:outline-none focus:ring-2 focus:ring-offset-2
-              focus:ring-cyan-800">
-              <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                <!-- Heroicon name: solid/lock-closed -->
-                <svg class="h-5 w-5 text-white group-hover:text-pink-800"
-                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                  fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012
-                    2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3
-                    3 0 016 0z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-                {% trans "Sign Up" %}
-              </button>
+                        <button type="submit"
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-800 hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-800">
+                            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                                <!-- Heroicon name: solid/lock-closed -->
+                                <svg class="h-5 w-5 text-white group-hover:text-pink-800"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            {% trans "Sign Up" %}
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
 
     </div>
-
-    <!-- <h1>{% trans "Sign Up" %}</h1>
-
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form> -->
 
     {% endblock %}
