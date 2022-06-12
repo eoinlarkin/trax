@@ -10,14 +10,15 @@ import modules.gpx_helper as gpx_helper
 import modules.slug_helper as slug_helper
 import cloudinary
 
+
 class ActivityDeleteView(mixins.LoginRequiredMixin, generic.DeleteView):
     model = Activity
-    success_url = reverse_lazy('home')
-
+    success_url = reverse_lazy("home")
 
 
 class ActivityList(generic.ListView):
     """View to create the activity list for main page"""
+
     model = Activity
     queryset = Activity.objects.order_by("-date_created")
     template_name = "home.html"
@@ -51,11 +52,12 @@ class ActivityDetail(View):
             },
         )
 
-@login_required(login_url='/accounts/login/')
+
+@login_required(login_url="/accounts/login/")
 def home(request):
     """Function to return the home page"""
     context = {}
-    #return render(request, "home.html", context)
+    # return render(request, "home.html", context)
     return HttpResponseRedirect(reverse("activity_list"))
 
 
@@ -76,35 +78,40 @@ def add_activity(request):
         context["posted"] = form.instance
 
         if form.is_valid():
-            print('form is valid')
+            print("form is valid")
             object = form.save(commit=False)
             object.user = request.user
-            slug_str = "%s %s" % (object.title, request.user) # generate a starting slug
-            slug_helper.unique_slugify(object, slug_str) # use slugify to ensure unique
-            #print('slug is working')
-            #print(slug_str)
-            object.save() # save activity
-            slug_str = object.slug # store slug to edit activity 
+            slug_str = "%s %s" % (
+                object.title,
+                request.user,
+            )  # generate a starting slug
+            slug_helper.unique_slugify(object, slug_str)  # use slugify to ensure unique
+            object.save()  # save activity
+            slug_str = object.slug  # store slug to edit activity
 
             # Updating the model entry after the file has been uploaded
             queryset = Activity.objects
-            # fname = get_object_or_404(queryset, slug=form.get_slug()).gpx_file.url
             fname = get_object_or_404(queryset, slug=slug_str).gpx_file.url
             gpx_helper.gpx_download(fname)  # downloading the gpx file
-            tot_distance, avg_heartrate, start_time, end_time = gpx_helper.gpx_metrics('temp.gpx')
-            calc_distance = gpx_helper.gpx_distance("temp.gpx") / 1000
-            
+            (
+                tot_dist,
+                avg_hr,
+                start_time,
+                end_time,
+                max_elv,
+                min_elev,
+            ) = gpx_helper.gpx_metrics("temp.gpx")
+
             # updating the activity:
-            Activity.objects.filter(slug=slug_str).update(distance=tot_distance)
-            Activity.objects.filter(slug=slug_str).update(heartrate_avg=avg_heartrate)
+            Activity.objects.filter(slug=slug_str).update(distance=tot_dist)
+            Activity.objects.filter(slug=slug_str).update(heartrate_avg=avg_hr)
             Activity.objects.filter(slug=slug_str).update(start_time=start_time)
             Activity.objects.filter(slug=slug_str).update(end_time=end_time)
-            print(start_time)
-            print(end_time)
-            print(avg_heartrate)
             gpx_helper.generate_thumbnail()
-            thumbnail = cloudinary.uploader.upload('activity_thumbnail.png')
-            Activity.objects.filter(slug=slug_str).update(gpx_thumb_path=thumbnail['secure_url'])
+            thumbnail = cloudinary.uploader.upload("activity_thumbnail.png")
+            Activity.objects.filter(slug=slug_str).update(
+                gpx_thumb_path=thumbnail["secure_url"]
+            )
             return HttpResponseRedirect("/")
 
     else:
@@ -112,22 +119,24 @@ def add_activity(request):
     return render(request, "upload.html", context)
 
 
-def edit(request,slug):
-    '''
+def edit(request, slug):
+    """
     Function to redirect to the update activity page
-    '''
-    activity=Activity.objects.get(slug=slug)
-    return render(request,'update.html',{'activity':activity})
+    """
+    activity = Activity.objects.get(slug=slug)
+    return render(request, "update.html", {"activity": activity})
+
 
 # update view for details
 def update_activity(request, slug):
- 
+
     # fetch the object related to passed id
-    object = get_object_or_404(Activity, slug = slug)
+    object = get_object_or_404(Activity, slug=slug)
     form = ActivityForm(request.POST, instance=object)
     if form.is_valid():
         form.update_activity()
         return HttpResponseRedirect(reverse("activity_detail", args=[slug]))
+
 
 class ActivityLike(View):
     """
@@ -144,5 +153,5 @@ class ActivityLike(View):
         else:
             activity.likes.add(request.user)
 
-        #Refreshing the current page if the user likes an activity
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        # Refreshing the current page if the user likes an activity
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
