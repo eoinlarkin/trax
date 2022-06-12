@@ -1,23 +1,81 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
 
-<div class="container flex flex-col justify-center items-center mx-auto">
-<div>TRAX</div>
-<div>This is the Over view text</div>
-<div class="grid place-items-center grid-cols-2 gap-2">
-    <div>Upload Dialog</div> 
-    <div>Upload Picture</div>
+<div class="container flex flex-col  items-center mx-auto space-y-4 ">
+  <div class="text-2xl uppercase font-bold tracking-widest text-teal-800">Trax</div>
+  <div class='text-center flex flex-col space-y-4 max-w-md'>
+    <p>Trax is a website for the uploading, sharing and analysing of activity files. Using Trax, you can upload and view
+      your activites as well as viewing and liking activities by other uses.</p>
+    <p>
+      The site has a number of unique features:
+    </p>
+  </div>
 
-    <div>Activity Details Text</div>
-    <div>Activity Details Picture</div>
+  <div class="grid items-center text-center md:text-left grid-cols-1 md:grid-cols-2 gap-2 rounded-md shadow-md p-4">
 
-    <div>Heart Rate Text</div>
-    <div>Heart Rate Picture</div>
+    <!--  Upload Dialog Text -->
+    <div class="flex flex-col space-y-4 order-1 md:order-1">
+      <p class="text-xl font-bold tracking-wide text-pink-800">Upload Files</p>
+      <p>Once you have created an account you can upload activity files from your activity tracker. Currently TRAX
+        supports files in gpx file format.</p>
+      <p>Try it for yourself with the following sample file.</p>
+    </div>
 
-    <div>Map Text</div>
-    <div>Map Picture</div>
+    <!--  Upload Dialog Image -->
+    <div class="p-8 order-2 md:order-2">
+      <img src="{% static 'media/img/trax-file-upload.png' %}">
+    </div>
 
-    <div>Elevation Text</div>
-    <div>Elevation Picture</div>
+    <!--  Activity Details Text -->
+    <div class="flex flex-col space-y-4 md:order-4 order-3">
+      <p class="text-xl font-bold tracking-wide text-pink-800">Activity Details View</p>
+      <p>After uploading a file, click in to view additional details.</p>
+      <p>Metrics such as distance, average heart rate and the minimum and maximum elevation are automatically calculated.</p>
+    </div>
+
+    <!--  Activity Details Image -->
+    <div class="p-8 order-3 md:order-3">
+      <img src="{% static 'media/img/trax-file-upload.png' %}">
+    </div>
+
+
+    <!--  Map Text -->
+    <div class="flex justify-start flex-col order-5 space-y-4">
+      <p class="text-xl font-bold tracking-wide text-pink-800 ">Map Plot</p>
+      <p>In addition to calculating key metrics, TRAX will automatically plot your activity track using <a href="https://www.openstreetmap.org/#map=7/53.465/-8.240" class='hover:text-pink-800 text-cyan-800' target="_blank">OpenStreetMap</a></p>
+    </div>
+
+    <!--  Map Image -->
+    <div class="p-8 order-6 ">
+      <img src="{% static 'media/img/trax-activity-map.png' %}">
+    </div>
+
+    <!--  Heart Rate Text -->
+    <div class="flex flex-col space-y-4 order-7  md:order-8">
+      <p class="text-xl font-bold tracking-wide text-pink-800">Heart Rate Analysis</p>
+      <p>If the activity file contains heart rate data, the heart rate plot will provide a visualisation of the heart rate during the activity</p>
+      <p>This is great for activities such as intervals - try it with the following gpx file !</p>
+
+    </div>
+
+    <!--  Heart Rate Image -->
+    <div class="p-8 order-8 md:order-7">
+      <img src="{% static 'media/img/trax-heart-rate-plot.png' %}">
+    </div>
+
+    <!--  Elevation Text -->
+    <div class="flex flex-col space-y-4 order-9">
+      <p class="text-xl font-bold tracking-wide text-pink-800">Elevation Analysis</p>
+      <p>Finally the elevation plot will provide a visualisation of the elevation over the duration of the activity.Text 1</p>
+      <p>This provides additional insight for activities with significant changes in elevation - try it with this file</p>
+
+    </div>
+
+    <!--  Elevation Image -->
+    <div class="p-8 order-10">
+      <img src="{% static 'media/img/trax-elevation-plot.png' %}">
+    </div>
 
   </div>
 </div>

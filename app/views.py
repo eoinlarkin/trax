@@ -34,7 +34,9 @@ class ActivityDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Activity.objects
         activity = get_object_or_404(queryset, slug=slug)
-        my_map, elev_plot, heart_rate = gpx_helper.generate_plots(activity.gpx_file.url)
+        my_map, elev_plot, heart_rate = gpx_helper.generate_plots(
+            activity.gpx_file.url
+        )
 
         liked = False
         if activity.likes.filter(id=self.request.user.id).exists():
@@ -85,7 +87,9 @@ def add_activity(request):
                 object.title,
                 request.user,
             )  # generate a starting slug
-            slug_helper.unique_slugify(object, slug_str)  # use slugify to ensure unique
+            slug_helper.unique_slugify(
+                object, slug_str
+            )  # use slugify to ensure unique
             object.save()  # save activity
             slug_str = object.slug  # store slug to edit activity
 
@@ -105,7 +109,9 @@ def add_activity(request):
             # updating the activity:
             Activity.objects.filter(slug=slug_str).update(distance=tot_dist)
             Activity.objects.filter(slug=slug_str).update(heartrate_avg=avg_hr)
-            Activity.objects.filter(slug=slug_str).update(start_time=start_time)
+            Activity.objects.filter(slug=slug_str).update(
+                start_time=start_time
+            )
             Activity.objects.filter(slug=slug_str).update(end_time=end_time)
             Activity.objects.filter(slug=slug_str).update(elev_max=max_elev)
             Activity.objects.filter(slug=slug_str).update(elev_min=min_elev)
