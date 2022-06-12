@@ -6,35 +6,37 @@
     <div class="items-center mx-auto p-4 bg-white rounded-lg border shadow-md  md:min-w-2xl md:max-w-2xl mb-10">    
        
         <!--    Activty Name and Like Button -->
-        <div class="flex justify-start  ">
-            <p class="text-cyan-800  mr-12 text-2xl">
-                {{ activity.title }}
-                {% if activity.user == user %}
-                    <span class=" text-pink-800">by You</span>
-                {% else %}
-                    <span class=" text-pink-800">by {{ activity.user }}</span>
-                {% endif %}
-            </p>
+        <div>
+                <p class="text-2xl tracking-tight text-teal-800 inline">
+                    {{ activity.title }} 
+                    
+                    {% if activity.user == user %}
+                        <span class=" text-pink-800">by You</span>
+                    {% else %}
+                        <span class=" text-pink-800">by {{ activity.user }}</span>
+                    {% endif %}
+                
+                </p>
 
-            <!--  Like button for the activity -->
-            <div>
+            <!--    Span for the Like Button for the Activity -->
+            <span class="ml-8 text-xl">
                 {% if user.is_authenticated %}
-                <form action="{% url 'activity_like' activity.slug %}" method="POST">
-                    {% csrf_token %}
-                    {% if liked %}
-                    <button type="submit" name="" value="{{ activity.slug }}">
-                        <i class="fas fa-heart text-cyan-800 hover:text-pink-800 text-xl"></i><button>
-                        {% else %}
-                        <button type="submit" name="" value="{{activity.slug}}"><i class="far fa-heart text-cyan-800 hover:text-pink-800 text-xl"></i></button>
-                        {% endif %}
+                <form action="{% url 'activity_like' activity.slug %}" method="POST" class="inline-block">
+                    {% csrf_token %} {% if liked %}
+                    <button type="submit" name="" value="{{ activity.slug }}"><i
+                            class="fas fa-heart text-cyan-800 hover:text-pink-800"></i><button>
+                            {% else %}
+                            <button type="submit" name="" value="{{activity.slug}}"><i
+                                    class="far fa-heart text-cyan-800 hover:text-pink-800"></i></button>
+                            {% endif %}
                 </form>
                 {% else %}
-                    <span><i class="far fa-heart text-cyan-800"></i></span>
-                    {% endif %}
-                    <span class="">{{ activity.number_of_likes }}</span>
+                <span><i class="far fa-heart text-cyan-800"></i></span> {% endif %}
+                <span class="ml-2"> {{ activity.number_of_likes }} </span>
+            </span>
 
-            </div>
         </div>
+
      
         <!--  Activity Description --> 
         <div>
