@@ -73,11 +73,25 @@ The corresponding names for the colors using Tailwind were as follows:
 
 
 ### Fonts
-
+For Fonts, I used the [default Tailwindcss fonts](https://tailwindcss.com/docs/font-family). Overall I was happy with the appearance of the site using the default fonts and I did not feel it was necessary to change these.
 
 ## Database Model & Schema
 
 ## Features
+
+## Navbar
+- [X] All Navbar links open the correct webpages
+- [X] Navbar elements
+- [X] All footer links resolve to valid webpages
+- [X] Hover and focus styles work correctly
+## Footer
+- [X] All footer links open in new windows
+- [X] All footer links resolve to valid webpages
+- [X] Hover and focus styles work correctly
+- [X] Details of the current logged in user are displayed correctly
+
+
+
 
 ### Landing Page
 
