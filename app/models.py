@@ -8,9 +8,9 @@ import modules.slug_helper as slug_helper
 class Activity(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
-    date_created = models.DateTimeField(auto_now=True)
-    start_time = models.DateTimeField(auto_now=True)
-    end_time = models.DateTimeField(auto_now=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    start_time = models.DateTimeField(auto_now_add=True)
+    end_time = models.DateTimeField(auto_now_add=True)
     distance = models.FloatField(default=0)
     heartrate_avg = models.FloatField(default=0)
     title = models.CharField(max_length=25,default='Trax Activity')

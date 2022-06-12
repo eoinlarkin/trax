@@ -221,6 +221,9 @@ https://stackoverflow.com/questions/60169463/tailwindcss-fixed-navbar
 
 ### Bugs
 
+
+
+
 **Image Integration**
 Wasn't able to get the tailwind integration working with the CSS. Wrote the image directly to the website instead
 
@@ -232,6 +235,10 @@ https://stackoverflow.com/questions/55210829/how-to-fix-footer-in-the-end-of-the
 The initial code for updating the activity was actually overriding the activity uploaded date. On investigatio, I realised that while the full model was updating. 
 This was resolved by writing a custom method for the Actitity Form class, which would only update the Activity Title and Description fields. The solution for this was 
 The solution was modelled on a solution to a similar issue which was discussed on [stackoverflow](https://stackoverflow.com/questions/33422783/django-modelform-need-to-save-only-selected-fields)
+
+**Update Activity**
+This wasn't working as expected. Instead the following argument was set in the model to resolve this
+```start_time = models.DateTimeField(auto_now_add=True)```
 
 
 **Using Google Fonts in Tailwind**
