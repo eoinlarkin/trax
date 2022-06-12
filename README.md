@@ -33,6 +33,7 @@ In order to implement the technical functionality, I defined and implemented a n
 In designing the site, I sought to combine a clean design which would highlight the site functionality. In order to accelerate development of the site, I used the [TailwindCSS framework](https://tailwindcss.com/).
 
 ### Wireframes
+Prior to developing the webiste, I iterated on the design using wireframes. The wireframes developed were as follows:
 
 - Login / Register / Logout Pages
 - Activity Feed Page
@@ -41,19 +42,23 @@ In designing the site, I sought to combine a clean design which would highlight 
 - Activity Detail Page
 - Upload Page
 
+There were no significant differences in the final design implemented and the proposed wireframes.
+
 ### Color Palette
 
-![Trax Palette](./docs/trax_palette.png 'Color Palette')
+<img src="./docs/trax_palette.png" alt="color-palette" width=400px height=200px>
 
 A broad color palette was chosen for the site with a range of complimenting colors chosen. In choosing the color palette, my objective was to select a color palette that would create a strong visual identity with a number of colors with high contrast.
 
-The corresponding names for the colors using Tailwind were as follows:
+In defining the colors in the HTML code, the [Tailwind color classes](https://tailwindcss.com/docs/customizing-colors) were used - the color names and their corresponding hex codes are as follows:
 
-- Neutral 100
-- Cyan 800
-- Teal 800
-- Pink 800
-- Gray 800
+| Color Name   | Hex Code   |
+|--------------|------------|
+| Neutral 100  |  `#f5f5f5` |
+| Cyan 800     |  `#155e75` |
+| Teal 800     |  `#115e59` |
+| Pink 800     |  `#9d174d` |
+| Gray 900     |  `#111827` |
 
 ### Fonts
 
@@ -63,36 +68,38 @@ For Fonts, I used the [default Tailwindcss fonts](https://tailwindcss.com/docs/f
 
 ## Features
 
-## Navbar
+### Implemented Features
 
-- [X] All Navbar links open the correct webpages
-- [X] Navbar elements
-- [X] All footer links resolve to valid webpages
-- [X] Hover and focus styles work correctly
+#### Landing Page
 
-## Footer
+#### Register Page
 
-- [X] All footer links open in new windows
-- [X] All footer links resolve to valid webpages
-- [X] Hover and focus styles work correctly
-- [X] Details of the current logged in user are displayed correctly
+#### Sigin Page
 
-### Landing Page
+#### Logout Page
 
-### Register Page
+### Activity Upload Page
+- Added defensive validation to the file upload page; this now will only allow the user to upload '.gpx. files. This was enabled through the `accept='.gpx'` dialog for the file upload. Instructions for how to achieve this were sourced from [stack overflow](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)
 
-### Sigin Page
+#### About Page
 
-### Logout Page
+#### Activity Feed Page
 
-### About Page
+#### Activity Detail Page
 
-### Activity Feed Page
+#### Edit Activiy Page
 
-### Activity Detail Page
 
-### Edit Activiy Page
 
+### Future Additional Features
+In developing the web application, I achieved all my major goals for features. However, the following potential future features could be implemented:
+
+- **Activity Deletion Confirmation**
+  Present a dialog to user to confirm before activity deletion
+- **Additional Activity Files**
+  Currently the file only supports `.gpx` files - this could be potentially extended to incorporate other activity file types such as `.fit` and `.tcx`
+- **Allow User Comments**
+   In addition to allowing users to like activities, a furhter enhancement would be to allow users the ability to comment on other user's activities.
 ## Testing
 
 The full suite of testing that was completed on the application can be found in the [TESTING.md](TESTING.md) file.
@@ -180,7 +187,7 @@ In developing the site, the following languages, tools and libraries were used:
 
 In developing the site, a number of tools, external libraries and resources were consulted.
 
-### Code / Libraries
+### Libraries
 
 In developing the site the following open source libraries were utilised:
 
@@ -194,7 +201,15 @@ In developing the site the following open source libraries were utilised:
 
   Plotly was used to generated the remaining plots and to plot and render the track thumbnail image
 
-### Attributions
+### Code
+The final code / tutorials  references were consulted when developing the site features:
+
+- #### [Limiting File Uploads](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)
+ This StackOverflow post was consulted to ensure that the file upload dialog would only accept `gpx` files.
+
+## Creating a Unique Slug
+<https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django>
+
 
 - #### GPX Parsing
 
@@ -204,18 +219,18 @@ Folium Integration
 <https://hatarilabs.com/ih-en/developing-geospatial-webapps-with-python-and-django-tutorial>
 
 #### GPXPY to dataframe
+
 <https://www.gpxz.io/blog/gpx-file-to-pandas>
 
 ## Deleting a Post / Activity
+
 <https://stackoverflow.com/questions/71016875/django-button-to-remove-row-in-sqlite3>
 
-## Creating a Unique Slug
-<https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django>
 
 - #### HTML / CSS
-  - Template code for the NavBar was sourced from the Flowbite Navbar Template
-  - Template code for the card layout was sourced from the Flowbite Card Template
-  - Template code for the Footer was sourced from the Tailwind Footer Template
+  - Template code for the NavBar was sourced from the [Flowbite Navbar Template](https://flowbite.com/docs/components/navbar/)
+  - Template code for the card layout was sourced from the [Flowbite Card Template](https://flowbite.com/docs/components/card/)
+  - Template code for the Footer was sourced from the [Tailwind Components Footer Template](https://tailwind-elements.com/docs/standard/navigation/footer/)
 
 - #### Images
 
@@ -231,22 +246,28 @@ Images for the **Register**, **Sign-In** and **Logout** page were sourced from U
 - [Strava](https://www.strava.com) for providing the original inspiration for the site
 
 - ## CRUD Tutorial in Django
+
 <https://www.geeksforgeeks.org/django-crud-create-retrieve-update-delete-function-based-views/>
 <https://studygyaan.com/django/django-crud-create-retrieve-update-delete-function-based-views>
 
 # Overlay gpx on Folium Map
+
 <https://gpxplotter.readthedocs.io/en/latest/auto_examples/maps/plot_000_segment.html#sphx-glr-auto-examples-maps-plot-000-segment-py>
 
 # Django Authentication
+
 <https://docs.djangoproject.com/en/1.11/topics/auth/default/>
 
 ## Cloudinary: Upload of non image files
+
 <https://stackoverflow.com/questions/36805137/how-to-pass-options-to-cloudinaryfield-in-django-model>
 
 ## Autogenerate the Slug
+
 <https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4>
 
 ## Django File Uploads
+
 <https://stackabuse.com/handling-file-uploads-with-django/>
 
 ## Convert gpx to data frame
@@ -261,21 +282,27 @@ Useful examples of building interactive maps
 <https://towardsdatascience.com/build-interactive-gps-activity-maps-from-gpx-files-using-folium-cf9eebba1fe7>
 
 ## Plotting Elevation Data
+
 <https://www.gpxz.io/blog/gpx-file-to-pandas>
 
 ## Rendering Plotly graphs - exporting to django
+
 <https://stackoverflow.com/questions/36846395/embedding-a-plotly-chart-in-a-django-template>
 
 ## Upload File and read contents to populate model
+
 <https://stackoverflow.com/questions/6091965/django-upload-a-file-and-read-its-content-to-populate-a-model>
 
 # Retrieve and Update database entries
+
 <https://stackoverflow.com/questions/2712682/how-to-select-a-record-and-update-it-with-a-single-queryset-in-django>
 
 ## Updating the database following upload
+
 <https://stackoverflow.com/questions/54534599/django-how-to-edit-value-and-store-back-in-database>
 
 ## Hide user and autopopulate
+
 <https://stackoverflow.com/questions/51547441/django-forms-autofill-hide-foreign-key-field>
 
 ## Plotly
@@ -285,4 +312,3 @@ How to build scatterplots:
 
 ## Feature Notes
 
-Added defensive validation to the file upload page; this now will only allow the user to upload '.gpx. files. This was enabled through the `accept='.gpx'` dialog for the file upload. Instructions for how to achieve this were sourced from [stack overflow](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)
