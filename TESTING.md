@@ -4,12 +4,12 @@
   * [Navigation Bar](#navigation-bar)
   * [Footer](#footer)
   * [Register Page](#register-page)
-  * [Sigin Page](#sigin-page)
+  * [Sign-in Page](#sign-in-page)
   * [Sign Out Page](#sign-out-page)
   * [About Page](#about-page)
   * [Activity Feed Page](#activity-feed-page)
   * [Activity Detail Page](#activity-detail-page)
-  * [Edit Activiy Page](#edit-activiy-page)
+  * [Edit Activity Page](#edit-activity-page)
 * [Performance](#performance)
   * [Mobile](#mobile)
   * [Desktop](#desktop)
@@ -22,7 +22,7 @@
   * [Resolved Bugs](#resolved-bugs)
   * [Unresolved Bugs](#unresolved-bugs)
 
-In order to validate the functionilty of the website, Functional and Non-Functional testing was completed. Testing was completed using a manual test approach.
+In order to validate the functionality of the website, Functional and Non-Functional testing was completed. Testing was completed using a manual test approach.
 
 ## Functionality
 
@@ -44,14 +44,19 @@ Site functionality was tested by user testing each functionality element on each
 
 ### Register Page
 
+* [X] Creating a new user works correctly
+* [X] Creating a new user works without an email address works correctly
 * [X] Hover and focus styles work correctly
+* [X] The Cover Image renders correctly and scales to various device sizes
+* [X] Deleting a user also removes their uploaded activities
 
-### Sigin Page
+### Sign-in Page
 
 * [X] The Sign In page renders correctly
 * [X] The Sign In form features defensive validation; it is not possible to sign in unless all fields are populated
 * [X] The Cover Image renders correctly and scales to various device sizes
 * [X] Hover and focus styles work correctly
+* [X] The link to the register page renders correctly
 
 ### Sign Out Page
 
@@ -70,16 +75,24 @@ Site functionality was tested by user testing each functionality element on each
 
 ### Activity Feed Page
 
+* [X] The Like button functions correctly
+* [X] Activities uploaded by the logged in user are highlighted
+* [X] Pagination works correctly
 * [X] The Activity Feed page renders correctly
 * [X] Hover and focus styles work correctly
 
 ### Activity Detail Page
 
-* [X] The Activity Detail page renders correctly
+* [X] All plots render correctly
+* [X] The activity metrics render correctly
+* [X] The edit button functions correctly
+* [X] The delete button functions correctly
 * [X] Hover and focus styles work correctly
 
-### Edit Activiy Page
+### Edit Activity Page
 
+* [X] The form data pre-populates correctly
+* [X] The activity updates correctly once the form is submitted
 * [X] Hover and focus styles work correctly
 
 ## Performance
@@ -112,9 +125,10 @@ Ultimately it was decided to accept this poor performance in order to take advan
 
 ### HTML
 
-The W3 HTML validatior was used to validate the HTML code of the site. The results were as follows:
+The W3 HTML validator was used to validate the HTML code of the site. The results were as follows:
 
 **No Errors**
+
 * :heavy_check_mark: [Home Page / Activity Feed](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Factivity_feed)
 * :heavy_check_mark: [Upload Activity](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fupload)
 * :heavy_check_mark: [Signup](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Fsignup%2F)
@@ -124,6 +138,7 @@ The W3 HTML validatior was used to validate the HTML code of the site. The resul
 * :heavy_check_mark: [Logout](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Flogout%2F)
 
 **Errors Reported**
+
 * :x: [Activity Detail](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fhowth-hill-cycle-lance%2F)
 
 * For the activity detail page, two errors were returned relating to the use of the *PyPlot* graphs. These errors (`webkitallowfullscreen` and `mozallowfullscreen`) were ignored
@@ -149,11 +164,11 @@ The following `.py` files were tested using the linter:
 
 Python files that were generated directly by Django which were not subsequently edited were not tested for PEP8 compliance. No issues were detected in the files other than in the `settings.py` file as follows:
 
-* For this file there were four lines which returned line too long errors. These related to the lenght of the Django password validator methods.
+* For this file there were four lines which returned line too long errors. These related to the length of the Django password validator methods.
 
 ### Compatibility
 
-In testing the website, compatability across browsers and operating systems were tested as follows:
+In testing the website, compatibility across browsers and operating systems were tested as follows:
 
 * Browsers
   * Chrome
@@ -167,23 +182,26 @@ No significant issues were detected across the various browsers / operating syst
 
 ## Bugs
 
+A number of various issues were encountered during the development of the site however the majority of these were resolved by reference to the Django documentation. The bugs outlined below were more significant and took trial and error to resolve successfully.
+
 ### Resolved Bugs
 
 ---
 
 **Update Activity**
-The initial code for updating the activity was actually overriding the activity uploaded date. On investigation, I realised that while the full model was updating.
-This was resolved by writing a custom method for the Actitity Form class, which would only update the Activity Title and Description fields. The solution for this was
-The solution was modelled on a solution to a similar issue which was discussed on [stackoverflow](https://stackoverflow.com/questions/33422783/django-modelform-need-to-save-only-selected-fields)
+The initial code for updating the activity was actually overriding the activity uploaded date. On investigation, I realised that while the full model was updating. This was resolved by writing a custom method for the Activity Form class, which would only update the Activity Title and Description fields. The solution for this was The solution was modelled on a solution to a similar issue which was discussed on [stackoverflow](https://stackoverflow.com/questions/33422783/django-modelform-need-to-save-only-selected-fields)
 
 ---
 
-**Update Activity**
-This wasn't working as expected. Instead the following argument was set in the model to resolve this
-```start_time = models.DateTimeField(auto_now_add=True)```
+**Signup / Login Page**
+Issues were initially encountered with styling the `allauth` login pages. This was eventually resolved by examining the developer tools output in Chrome for each of the forms and rebuilding the form with the same `label` and `name` ids
 
 ---
 
+**Start Time / End Time Database Fields**
+It was found that when updating the activity, the start time and end time database fields were being overwritten. Eventually it was determined that this was due to a parameter in the `DateTimeField` function model - it was necessary to change `auto_now` to `auto_now_add`. The `auto_now` argument results in the field being updated every time a change is made to the database entry. Django documentation was consulted to resolve this issue [link](https://docs.djangoproject.com/en/4.0/ref/models/fields/).
+
+---
 **Email Error**
 For users that input an optional email address, the site was generating an error on login. This was fixed by adding the following code to the `settings.py` file:
 `EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'`
