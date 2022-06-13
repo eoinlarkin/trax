@@ -62,14 +62,30 @@ In designing the site, I sought to combine a clean design which would highlight 
 ### Wireframes
 Prior to developing the webiste, I iterated on the design using wireframes. The wireframes developed were as follows:
 
-- Login / Register / Logout Pages
-- Activity Feed Page
-- About Page
-- Edit Activity
-- Activity Detail Page
-- Upload Page
+- **Home**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/wireframes/wireframe-home.png" alt="navbar"/>
+    </details>
+- **Login / Signup / Register**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/wireframes/wireframe-login-signup.png" alt="navbar"/>
+    </details>
+- **Activity Details**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/wireframes/wireframe-activity-details.png" alt="navbar"/>
+    </details>
+- **About**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/wireframes/wireframe-about.png" alt="navbar"/>
+    </details>
 
-There were no significant differences in the final design implemented and the proposed wireframes.
+The final design is consistent with the proposed wireframes. The only significant change was to the **Home** page. Initially the plan was to have the activity thumbnails display on the left side of the individual activity cards. 
+
+However, for smaller screen sizes, when this collapsed it felt more logical to have the activity description render first followed by the activity thumbnail. As a result, in the final design the thumbnails appear on the right side.
 
 ### Color Palette
 
