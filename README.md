@@ -68,35 +68,99 @@ In defining the colors in the HTML code, the [Tailwind color classes](https://ta
 For Fonts, I used the [default Tailwindcss fonts](https://tailwindcss.com/docs/font-family). Overall I was happy with the appearance of the site using the default fonts and I did not feel it was necessary to change these.
 
 ## Database Model & Schema
+In developing the web application, a single database table was defined to store details of the user activities.
+
+This contains a number of fields as follows:
+
+
+All features of the application were captured in this table; the django framework was relied on to manage tables detailing the users and other backend elements.
 
 ## Features
 
 ### Implemented Features
+In designing the site, I have sought to implement features to improve overall user functionability while meeting both the overall site objectives and implementing the proposed user stories.
 
-- #### Landing Page
+The following screenshots illustrate some of the key features of the site:
 
-- #### Register Page
 
-- #### Sigin Page
-
-- #### Logout Page
-
-- ### Activity Upload Page
-  - Added defensive validation to the file upload page; this now will only allow the user to upload '.gpx. files. This was enabled through the `accept='.gpx'` dialog for the file upload. Instructions for how to achieve this were sourced from [stack overflow](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)
-
-- #### About Page
-
-- #### Activity Detail Page
+- **Navbar**
   - <details>
     <summary><strong style="color:skyblue">Screenshot:</strong></summary>
-    <img src="./docs/screenshots/trax-activity-feed.png" alt="activity-feed"/>
+    <img src="./docs/screenshots/trax-navbar.png" alt="navbar"/>
     </details>
-  - 
-
-
-#### Edit Activiy Page
-
-
+  - The site features a standard navbar to aid with navigation of the site
+  - Depending on whether the user is logged in or not, the links presented to the user can change (e.g. the Logout link will never be presented to a guest user)
+  - The navbar features a hamburger menu which will be rendered on small screen devices  
+- **Footer**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-footer.png" alt="footer"/>
+    </details>
+  - The site features a standard footer with links to external resources and site attributions
+  - If the user is logged in the footer will display the username of the user
+- **Signup Page**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-signup-page.png" alt="signup-page"/>
+    </details>
+  - The signup page allows the user to signup for a new TRAX account.
+  - The signup form features defensive programming; the from will not submit unless all required fields are populated.
+  - The page features a cover image which scales responsively depending on the device that the user is accessing the site from.
+- **Login Page**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-login-page.png" alt="login-page"/>
+    </details>
+  - The login page allows the user to login to their TRAX account.
+  - The page features a cover image which scales responsively depending on the device that the user is accessing the site from.
+- **Logout Page**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-signout-page.png" alt="signout-page"/>
+    </details>
+  - The logout page allows the user to logout to their TRAX account.
+  - In addition to a *Sign Out* button, the page features a *Cancel* button which when clicked will return the user to the main activity feed.
+  - The page features a cover image which scales responsively depending on the device that the user is accessing the site from.
+- **Activity Feed Page**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-activity-feed.png" alt="login-page"/>
+    </details>
+  - The activity feed page features the list of activites uploaded by users.
+  - If an activity has been uploaded by the logged in user it is highlighted with a colored outline.
+  - The activity feed is paginated; each page contains up to 10 activities.
+- **Activity Upload Page**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-upload-page.png" alt="about-page"/>
+    </details>
+  - The user can input both an Activity Name and Description; all other database fields are calculated directly from the `.gpx` file.
+  - The page features defensive validation of the file upload type; the form will only allow users to upload files if they have the `.gpx.` file extension.
+- **About Page**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-about-page.png" alt="about-page"/>
+    </details>
+  - The about page is designed to serve both as an overview of the site features as well as acting as a tutorial on how to upload the `.gpx` files.
+  - The page features a responsive design with the two column alternating content layout collapsing to a single column layout on smaller devices.
+- **Activity Detail Page**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-activity-detail-page.png" alt="activity-feed"/>
+    </details>
+  - The activity detail page offers a number of features to aid the user in visualising and understanding their activity file:
+    - The activity name and summary are highlighted at the top of the page. The Heart Icon also acts as a button allowing logged in users to like activities
+    - If the activity relates to the current logged in user, the user has the option to either **Edit** or **Delete** the activity.
+    - Key metrics such as average heart rate, distance and elevation are summarised at the start of the page.
+    - Plots are displayed under the key metrics table, with a map providing an overview of the track and separate plots for both heart rate and elevation.
+- **Edit Activiy Page**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-edit-activity-page.png" alt="signout-page"/>
+    </details>
+  - The user can access this page if they choose to edit an activity that they have uploaded.
+  - Within this page, the user can edit either the activity name or description
+  - Defensive programming is employed to ensure tha the length of the data input is not longer than the maximum lengths specifed in the database schema.
 
 ### Future Additional Features
 In developing the web application, I achieved all my major goals for features. However, the following potential future features could be implemented:

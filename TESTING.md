@@ -64,14 +64,20 @@ Performance was tested using Chrome Lighthouse for the following views
 
 The W3 HTML validatior was used to validate the HTML code of the site. The results were as follows:
 
-- :heavy_check_mark: [Home Page / Activity Feed](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Factivity_feed)
-- :heavy_check_mark: [About](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fabout)
+
+
 - :heavy_check_mark: [Activity Detail](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fhowth-hill-cycle-lance%2F)
-- :heavy_check_mark: [Edit Activity](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fedit%2Fhowth-hill-cycle-lance%2F)
-- :heavy_check_mark: [Upload Activity](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fupload)
+
 - :heavy_check_mark: [Login](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Flogin%2F)
-- :heavy_check_mark: [Signup](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Fsignup%2F)
+
 - :heavy_check_mark: [Logout](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Flogout%2F)
+
+**No Errors**
+- :heavy_check_mark: [Home Page / Activity Feed](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Factivity_feed)
+- :heavy_check_mark: [Upload Activity](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fupload)
+- :heavy_check_mark: [Signup](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Fsignup%2F)
+- :heavy_check_mark: [Edit Activity](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fedit%2Fhowth-hill-cycle-lance%2F)
+- :heavy_check_mark: [About](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fabout)
 
 ## Issues
 
