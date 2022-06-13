@@ -184,6 +184,10 @@ This wasn't working as expected. Instead the following argument was set in the m
 
 ---
 
+**Email Error**
+For users that input an optional email address, the site was generating an error on login. This was fixed by adding the following code to the `settings.py` file:
+`EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'`
+
 ### Unresolved Bugs
 
 There are no known bugs in the final deployment of the site.
