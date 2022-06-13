@@ -5,7 +5,7 @@
 
 TRAX is a web application for the uploading, sharing and analysing activities which have been recorded in the GPX file format. TRAX is inspired by the [Strava](https://www.strava.com) web service.
 
-The web application has been built using the Django framework and utilises a PostgreSQL database and the Cloudinary storage solution for the storing of activities. The application has been deployed to Heroku and can be accessed at the following link [trax-webapp.herokuapp.com](https://trax-webapp.herokuapp.com/).
+The web application has been built using the Django framework and utilises a PostgreSQL database and the Cloudinary storage solution for the storing of activities. The application has been deployed to Heroku and can be accessed at the following link: [trax-webapp.herokuapp.com](https://trax-webapp.herokuapp.com/).
 
 ## Table of Contents
 
@@ -42,12 +42,12 @@ In developing the web application, I aimed to achieve the following technical ob
 
 ### User Stories
 
-In order to implement the technical functionality, I defined and implemented a number of user stories. User Stories were tracked in GitHub using an agile framework planning tool. The full agile board can be found [here](https://github.com/users/eoinlarkin/projects/1)
+In order to implement the technical functionality, I defined and implemented a number of user stories. User Stories were tracked in GitHub using an agile framework planning tool. The full agile board can be found [here](https://github.com/users/eoinlarkin/projects/1).
 
-- As a Site User: I can view a list of activites from other users
+- As a Site User: I can view a list of activities from other users
 - As a Site User: when I can click on an activity I can visualise further details
-- As a Site User / Admin: I can like favorite activities
-- As a Site User: I can add description to my activites
+- As a Site User / Admin: I can like favourite activities
+- As a Site User: I can add description to my activities
 - As a Site User: I can like or unlike a post
 - As a Site User: I can register an account
 - As a Site User: I can create, update and delete activity files
@@ -60,7 +60,7 @@ In designing the site, I sought to combine a clean design which would highlight 
 
 ### Wireframes
 
-Prior to developing the webiste, I iterated on the design using wireframes. The wireframes developed were as follows:
+Prior to developing the website, I iterated on the design using wireframes. The wireframes developed were as follows:
 
 - **Home**
   - <details>
@@ -85,7 +85,7 @@ Prior to developing the webiste, I iterated on the design using wireframes. The 
 
 The final design is consistent with the proposed wireframes. The only significant change was to the **Home** page. Initially the plan was to have the activity thumbnails display on the left side of the individual activity cards.
 
-However, for smaller screen sizes, when this collapsed it felt more logical to have the activity description render first followed by the activity thumbnail. As a result, in the final design the thumbnails appear on the right side.
+However, on smaller screen sizes, when this card collapsed it felt more logical to have the activity description render first followed by the activity thumbnail. As a result, in the final design the thumbnails appear on the right side.
 
 ### Color Palette
 
@@ -105,25 +105,25 @@ In defining the colors in the HTML code, the [Tailwind color classes](https://ta
 
 ### Fonts
 
-For Fonts, I used the [default Tailwindcss fonts](https://tailwindcss.com/docs/font-family). Overall I was happy with the appearance of the site using the default fonts and I did not feel it was necessary to change these.
+For Fonts, I used the [default Tailwind CSS fonts](https://tailwindcss.com/docs/font-family). Overall I was happy with the appearance of the site using the default fonts and I did not feel it was necessary to change these.
 
 ## Database Model & Schema
 
-In developing the web application, a single database table was defined to store details of the user activities. This table is named **Activity** and is defined in the `models.py` file. All features of the application were captured in this table; the django framework was relied on to manage tables detailing the users and other backend elements.
+In developing the web application, a single database table was defined to store details of the user activities. This table is named **Activity** and is defined in the `models.py` file. All features of the application were captured in this table; the Django framework was relied on to manage tables detailing the users and other backend elements.
 
 This **Activity** model contains a number of fields as follows:
 
 ![](docs/screenshots/trax-table-definition.png)
 
-It should be noted that only the fields higlighted are directly modifiable by the user. TRAX automates the population of the remaining fields by either reading these directly from the uploaded `.gpx` file or calculating them.
+It should be noted that only the fields highlighted are directly modifiable by the user. TRAX automates the population of the remaining fields by either reading these directly from the uploaded `.gpx` file or calculating them.
 
 For the activity thumbnail, this is generated during the upload process. Once the activity file is uploaded, an activity thumbnail is generated using `plotly` and saved as an `.png`. This file is then uploaded to Cloudinary the resulting Cloudinary path is stored in the database.
 
-The `views.py` file contains a function, `add_activity()` which calls the necessary functions to parse and generate the values for the automated fields before commiting the database entry to the database.
+The `views.py` file contains a function, `add_activity()` which calls the necessary functions to parse and generate the values for the automated fields before committing the database entry to the database.
 
 ## Features
 
-In designing the site, I have sought to implement features to improve overall user functionability while meeting both the overall site objectives and implementing the proposed user stories.
+In designing the site, I have sought to implement features to improve overall user functionality while meeting both the overall site objectives and implementing the proposed user stories.
 
 ### Implemented Features
 
@@ -172,8 +172,8 @@ The following screenshots illustrate some of the key features that were implemen
     <summary><strong style="color:skyblue">Screenshot:</strong></summary>
     <img src="./docs/screenshots/trax-activity-feed.png" alt="login-page"/>
     </details>
-  - The activity feed page features the list of activites uploaded by users.
-  - If an activity has been uploaded by the logged in user it is highlighted with a colored outline.
+  - The activity feed page features the list of activities uploaded by users.
+  - If an activity has been uploaded by the logged in user it is highlighted with a coloured outline.
   - The activity feed is paginated; each page contains up to 10 activities.
 - **Activity Upload Page**
   - <details>
@@ -199,14 +199,14 @@ The following screenshots illustrate some of the key features that were implemen
     - If the activity relates to the current logged in user, the user has the option to either **Edit** or **Delete** the activity.
     - Key metrics such as average heart rate, distance and elevation are summarised at the start of the page.
     - Plots are displayed under the key metrics table, with a map providing an overview of the track and separate plots for both heart rate and elevation.
-- **Edit Activiy Page**
+- **Edit Activity Page**
   - <details>
     <summary><strong style="color:skyblue">Screenshot:</strong></summary>
     <img src="./docs/screenshots/trax-edit-activity-page.png" alt="signout-page"/>
     </details>
   - The user can access this page if they choose to edit an activity that they have uploaded.
   - Within this page, the user can edit either the activity name or description
-  - Defensive programming is employed to ensure tha the length of the data input is not longer than the maximum lengths specifed in the database schema.
+  - Defensive programming is employed to ensure tha the length of the data input is not longer than the maximum lengths specified in the database schema.
 
 ### Future Additional Features
 
@@ -217,7 +217,7 @@ In developing the web application, I achieved all my major goals for features. H
 - **Additional Activity Files**
   Currently the file only supports `.gpx` files - this could be potentially extended to incorporate other activity file types such as `.fit` and `.tcx`
 - **Allow User Comments**
-   In addition to allowing users to like activities, a furhter enhancement would be to allow users the ability to comment on other user's activities.
+   In addition to allowing users to like activities, a further enhancement would be to allow users the ability to comment on other user's activities.
 
 ## Testing
 
@@ -234,7 +234,7 @@ In order to deploy the application to Heroku, the following steps should be foll
 1. Create a requirements.txt file:
    `pip freeze > requirements.txt`
 
-2. Define a Procfile with the following content for use by Heroku; this should sit in the the root directory:
+2. Define a `Procfile` with the following content for use by Heroku; this should sit in the the root directory:
   `web: gunicorn trax.wsgi`
 
 3. Create a new application in Heroku.
@@ -250,7 +250,7 @@ In order to deploy the application to Heroku, the following steps should be foll
 |DATABASE_URL   | *Heroku postgres database URL*  |
 |SECRET_KEY     | *application secret key*        |
 
-6. Create the database schmea locally by running the following Django commands:
+6. Create the database schema locally by running the following Django commands:
 
 ```
  python manage.py makemigrations
@@ -281,14 +281,14 @@ In developing the site, the following languages, tools and libraries were used:
 
 ### Tools
 
-- [VScode](https://code.visualstudio.com/)  
+- [VScode](https://code.visualstudio.com/)
   All coding was completed in VS Code.
-- [Heroku](https://www.heroku.com/)  
+- [Heroku](https://www.heroku.com/)
   Heroku was used for the deployment of the app.
-- [Django](https://www.djangoproject.com/)  
+- [Django](https://www.djangoproject.com/)
   The Django framework was used to develop the site.
 - [PostgreSQL](https://www.postgresql.org/)
-  This was chosen as the database underlying the site; this was also implemented directly in Herkou using a Heroku Resource.
+  This was chosen as the database underlying the site; this was also implemented directly in Heroku using a Heroku Resource.
 - [TailwindCSS](https://tailwindcss.com/)
   TailwindCSS was used as teh CSS framework to accelerate development of the site.
 - [coolors.co](https://coolors.co/)
@@ -297,7 +297,7 @@ In developing the site, the following languages, tools and libraries were used:
   Wireframes for the site were generated using Figma
 - [gauger.io](gauger.io)
   This website was used to generate the favicon using an icon from Font Awesome.
-- [Markdown TOC](https://ecotrust-canada.github.io/markdown-toc//)
+- [Markdown TOC](https://ecotrust-canada.github.io/markdown-toc/)
   For generating the formatted table of contents in markdown
 
 ## Credits
@@ -309,10 +309,10 @@ In developing the site, a number of tools, external libraries and resources were
 In developing the site the following open source libraries were utilised:
 
 - [gpxpy](https://github.com/tkrajina/gpxpy)
-  Python library for parsing GPX files; used to read the GPX files for plotting using
+  Python library for parsing GPX files; used to read the GPX files for plotting using both *folium* and *plotly*
 - [folium](https://python-visualization.github.io/folium/)
-  Folium was used for the generation of the maps used to display the track for each of the activites. Each of the cooridnates from the `.gpx` file were overlaid on the Folium map and rendered on the site.
-- [plotly.py](https://github.com/plotly/plotly.py)  
+  Folium was used for the generation of the maps used to display the track for each of the activities. Each of the coordinates from the `.gpx` file were overlaid on the Folium map and rendered on the site.
+- [plotly.py](https://github.com/plotly/plotly.py)
   Plotly was used to generated the remaining plots and to plot and render the track thumbnail image
 
 ### Code
@@ -321,19 +321,19 @@ The final code / tutorials  references were consulted when developing the site f
 
 - [Limiting File Uploads](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)  
  This StackOverflow post was consulted to ensure that the file upload dialog would only accept `gpx` files.
-- [Creating a Unique Slug](https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django)
-  In generating the slug for each activity, I decided to utilse the activity title as the basis. This resources was consulted and the code snippet was utilised to ensure that the slugs that are generated were unique.
+- [Creating a Unique Slug](https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django)  
+  In generating the slug for each activity, I decided to utilise the activity title as the basis. This resources was consulted and the code snippet was utilised to ensure that the slugs that are generated were unique.
 - [Upload File and read contents to populate model](https://stackoverflow.com/questions/6091965/django-upload-a-file-and-read-its-content-to-populate-a-model)  
-  This stackover flow was referenced in order to understand how to upload a file and then use the same file to populate the underlying database model.
-- **Folium Integration**
+  This stackoverflow was referenced in order to understand how to upload a file and then use the same file to populate the underlying database model.
+- **Folium Integration**  
   The following two tutorials were referenced in order to understand how to plot the `.gpx` files using the `folium` library:
   - [Folium and Django](https://hatarilabs.com/ih-en/developing-geospatial-webapps-with-python-and-django-tutorial)
   - [Overlay gpx on Folium Map](https://gpxplotter.readthedocs.io/en/latest/auto_examples/maps/plot_000_segment.html#sphx-glr-auto-examples-maps-plot-000-segment-py)
-- [GPXPY to dataframe](https://www.gpxz.io/blog/gpx-file-to-pandas)
-  In order to plot the `.gpx` file using **plotly** it was necessary to first convert thme to a pandas dataframe. This resource was consulted on how to achieve this.
-- [Deleting a Post / Activity](https://stackoverflow.com/questions/71016875/django-button-to-remove-row-in-sqlite3)
+- [GPXPY to dataframe](https://www.gpxz.io/blog/gpx-file-to-pandas)  
+  In order to plot the `.gpx` file using **plotly** it was necessary to first convert them to a pandas dataframe. This resource was consulted on how to achieve this.
+- [Deleting a Post / Activity](https://stackoverflow.com/questions/71016875/django-button-to-remove-row-in-sqlite3)  
   The following post was consulted in order to understand how to implement a button to delete user activities.
-- [Cloudinary: Upload of non image files](https://stackoverflow.com/questions/36805137/how-to-pass-options-to-cloudinaryfield-in-django-model)
+- [Cloudinary: Upload of non image files](https://stackoverflow.com/questions/36805137/how-to-pass-options-to-cloudinaryfield-in-django-model)  
   The following post was consulted in order to understand how non image files could be uploaded and stored in Cloudinary.
 
 ### HTML / CSS
@@ -345,12 +345,12 @@ The final code / tutorials  references were consulted when developing the site f
 ### Images
 
 Images for the **Register**, **Sign-In** and **Logout** page were sourced from Unsplash as follows:
-    - [Alessio Soggetti](https://unsplash.com/photos/GYr9A2CPMhY): Runner in fields
-    - [Eugene Zhyvchik](https://unsplash.com/photos/zQnI-b2aSxI): Hiker in Hills
-    - [Todd Diemer](https://unsplash.com/photos/fpNBYsymggk): Climbers in Mountains
+- [Alessio Soggetti](https://unsplash.com/photos/GYr9A2CPMhY): Runner in fields
+- [Eugene Zhyvchik](https://unsplash.com/photos/zQnI-b2aSxI): Hiker in Hills
+- [Todd Diemer](https://unsplash.com/photos/fpNBYsymggk): Climbers in Mountains
 
 ### Other
 
-- The CodeInstitue Modules on Python and in particular cloud deployment to Heroku
+- The Code Institute Modules on Python and in particular cloud deployment to Heroku
 - My friends and families who supported me by beta testing iterations of the site
 - [Strava](https://www.strava.com) for providing the original inspiration for the site

@@ -2,5 +2,11 @@
     "python.formatting.provider": "black",
     "emmet.includeLanguages": {
         "django-html": "html"
-    }
+    },
+    "cSpell.words": [
+        "Flowbite",
+        "folium",
+        "gunicorn",
+        "Procfile"
+    ]
 }
