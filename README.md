@@ -9,6 +9,30 @@ The web application has been built using the Django framework and utilises a Pos
 
 ## Table of Contents
 
+- [Objectives](#objectives)
+  * [User Stories](#user-stories)
+- [Design](#design)
+  * [Wireframes](#wireframes)
+  * [Color Palette](#color-palette)
+  * [Fonts](#fonts)
+- [Database Model & Schema](#database-model---schema)
+- [Features](#features)
+  * [Implemented Features](#implemented-features)
+  * [Future Additional Features](#future-additional-features)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  * [Heroku Deployment](#heroku-deployment)
+- [Technologies Used](#technologies-used)
+  * [Languages](#languages)
+  * [Tools](#tools)
+- [Credits](#credits)
+  * [Libraries](#libraries)
+  * [Code](#code)
+  * [HTML / CSS](#html---css)
+  * [Images](#images)
+  * [Other](#other)
+
+
 ## Objectives
 
 In developing the web application, I aimed to achieve the following technical objectives:
@@ -252,7 +276,7 @@ In developing the site, the following languages, tools and libraries were used:
   Wireframes for the site were generated using Figma
 - [gauger.io](gauger.io)
   This website was used to generate the favicon using an icon from Font Awesome.
-- [Markdown TOC](https://ecotrust-canada.github.io/)
+- [Markdown TOC](https://ecotrust-canada.github.io/markdown-toc//)
   For generating the formatted table of contents in markdown
 
 ## Credits
@@ -287,19 +311,19 @@ This stackover flow was referenced in order to understand how to upload a file a
 - [Autogenerate the Slug](https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4)
 - [Plotting Elevation Data](https://www.gpxz.io/blog/gpx-file-to-pandas)
 
-- #### HTML / CSS
+### HTML / CSS
   - Template code for the NavBar was sourced from the [Flowbite Navbar Template](https://flowbite.com/docs/components/navbar/)
   - Template code for the card layout was sourced from the [Flowbite Card Template](https://flowbite.com/docs/components/card/)
   - Template code for the Footer was sourced from the [Tailwind Components Footer Template](https://tailwind-elements.com/docs/standard/navigation/footer/)
 
-- #### Images
+### Images
 
 Images for the **Register**, **Sign-In** and **Logout** page were sourced from Unsplash as follows:
     - [Alessio Soggetti](https://unsplash.com/photos/GYr9A2CPMhY): Runner in fields
     - [Eugene Zhyvchik](https://unsplash.com/photos/zQnI-b2aSxI): Hiker in Hills
     - [Todd Diemer](https://unsplash.com/photos/fpNBYsymggk): Climbers in Mountains
 
-- #### Other
+### Other
 
 - The CodeInstitue Modules on Python and in particular cloud deployment to Heroku
 - My friends and families who supported me by beta testing iterations of the site
