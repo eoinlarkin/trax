@@ -1,50 +1,96 @@
 # Testing
 
+* [Functionality](#functionality)
+  * [Navigation Bar](#navigation-bar)
+  * [Footer](#footer)
+  * [Register Page](#register-page)
+  * [Sigin Page](#sigin-page)
+  * [Sign Out Page](#sign-out-page)
+  * [About Page](#about-page)
+  * [Activity Feed Page](#activity-feed-page)
+  * [Activity Detail Page](#activity-detail-page)
+  * [Edit Activiy Page](#edit-activiy-page)
+* [Performance](#performance)
+  * [Mobile](#mobile)
+  * [Desktop](#desktop)
+* [Validators](#validators)
+  * [HTML](#html)
+  * [JavaScript](#javascript)
+  * [PEP8](#pep8)
+  * [Compatibility](#compatibility)
+* [Bugs](#bugs)
+  * [Resolved Bugs](#resolved-bugs)
+  * [Unresolved Bugs](#unresolved-bugs)
+
 In order to validate the functionilty of the website, Functional and Non-Functional testing was completed. Testing was completed using a manual test approach.
 
-# Functionality
+## Functionality
 
+Site functionality was tested by user testing each functionality element on each of the site's pages. The testing results were as follows:
 
-## Navigation Bar
+### Navigation Bar
 
-- [X] All Navbar links open the correct webpages
-- [X] Navbar elements
-- [X] All footer links resolve to valid webpages
-- [X] Hover and focus styles work correctly
+* [X] All Navbar links open the correct webpages
+* [X] Navbar links that are not relevant to guest users are not rendered (e.g. Upload Link)
+* [X] Hover and focus styles work correctly
+* [X] The hamburger menu works correctly and renders on smaller device sizes
 
-## Footer
+### Footer
 
-- [X] All footer links open in new windows
-- [X] All footer links resolve to valid webpages
-- [X] Hover and focus styles work correctly
-- [X] Details of the current logged in user are displayed correctly
+* [X] All footer links open in new windows
+* [X] All footer links resolve to valid webpages
+* [X] Hover and focus styles work correctly
+* [X] Details of the current logged in user are displayed correctly
 
 ### Register Page
 
+* [X] Hover and focus styles work correctly
+
 ### Sigin Page
 
-### Logout Page
+* [X] The Sign In page renders correctly
+* [X] The Sign In form features defensive validation; it is not possible to sign in unless all fields are populated
+* [X] The Cover Image renders correctly and scales to various device sizes
+* [X] Hover and focus styles work correctly
+
+### Sign Out Page
+
+* [X] The Sign Out page renders correctly
+* [X] The Sign Out button successfully logs out a user
+* [X] The Cancel button returns the user to the home page
+* [X] The Cover Image renders correctly and scales to various device sizes
+* [X] Hover and focus styles work correctly
 
 ### About Page
 
+* [X] The About page renders correctly
+* [X] All Links open correctly
+* [X] Links to download example `.gpx` files work correctly
+* [X] Hover and focus styles work correctly
+
 ### Activity Feed Page
+
+* [X] The Activity Feed page renders correctly
+* [X] Hover and focus styles work correctly
 
 ### Activity Detail Page
 
+* [X] The Activity Detail page renders correctly
+* [X] Hover and focus styles work correctly
+
 ### Edit Activiy Page
 
-
-
+* [X] Hover and focus styles work correctly
 
 ## Performance
 
 Performance was tested using Chrome Lighthouse for the following views
 
-- Home
-- Activity
-- About
-- Register
-- Login
+* Home
+* Activity
+* About
+* Register
+* Login
 
 Overall performance was found to be strong, other than for the **activity detail** page. This page suffers from poor performance on both mobile and desktop. This is due to the complex nature of the plots / map which are being loaded by the page.
 
@@ -69,19 +115,19 @@ Ultimately it was decided to accept this poor performance in order to take advan
 The W3 HTML validatior was used to validate the HTML code of the site. The results were as follows:
 
 **No Errors**
-- :heavy_check_mark: [Home Page / Activity Feed](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Factivity_feed)
-- :heavy_check_mark: [Upload Activity](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fupload)
-- :heavy_check_mark: [Signup](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Fsignup%2F)
-- :heavy_check_mark: [Edit Activity](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fedit%2Fhowth-hill-cycle-lance%2F)
-- :heavy_check_mark: [About](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fabout)
-- :heavy_check_mark: [Login](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Flogin%2F)
-- :heavy_check_mark: [Logout](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Flogout%2F)
+* :heavy_check_mark: [Home Page / Activity Feed](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Factivity_feed)
+* :heavy_check_mark: [Upload Activity](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fupload)
+* :heavy_check_mark: [Signup](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Fsignup%2F)
+* :heavy_check_mark: [Edit Activity](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fedit%2Fhowth-hill-cycle-lance%2F)
+* :heavy_check_mark: [About](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fabout)
+* :heavy_check_mark: [Login](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Flogin%2F)
+* :heavy_check_mark: [Logout](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Faccounts%2Flogout%2F)
 
 **Errors Reported**
-- :heavy_check_mark: [Activity Detail](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fhowth-hill-cycle-lance%2F)
+* :x: [Activity Detail](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrax-webapp.herokuapp.com%2Fhowth-hill-cycle-lance%2F)
 
-- For the activity detail page, two errors were returned relating to the use of the *PyPlot* graphs. These errors (`webkitallowfullscreen` and `mozallowfullscreen`) were ignored
-- In addition errors were returned relating to unmatched `p` tags (three errors in total). On investigation it appears that these errors are being generated by the underlying `plotly` graphs. It was decided to accept these errors in order to take advantage of the `plotly` graphs.
+* For the activity detail page, two errors were returned relating to the use of the *PyPlot* graphs. These errors (`webkitallowfullscreen` and `mozallowfullscreen`) were ignored
+* In addition errors were returned relating to unmatched `p` tags (three errors in total). On investigation it appears that these errors are being generated by the underlying `plotly` graphs. It was decided to accept these errors in order to take advantage of the `plotly` graphs.
 
 ### JavaScript
 
@@ -93,29 +139,29 @@ PEP8 compliance was managed directly in VS Code using the [black](https://github
 
 The following `.py` files were tested using the linter:
 
-- :heavy_check_mark: **forms.py**
-- :heavy_check_mark: **models.py**
-- :heavy_check_mark: **urls.py**
-- :heavy_check_mark: **views.py**
-- :heavy_check_mark: **gpx_helper.py**
-- :heavy_check_mark: **slug_helper.py**
-- :heavy_check_mark: **settings.py**
+* :heavy_check_mark: **forms.py**
+* :heavy_check_mark: **models.py**
+* :heavy_check_mark: **urls.py**
+* :heavy_check_mark: **views.py**
+* :heavy_check_mark: **gpx_helper.py**
+* :heavy_check_mark: **slug_helper.py**
+* :heavy_check_mark: **settings.py**
 
 Python files that were generated directly by Django which were not subsequently edited were not tested for PEP8 compliance. No issues were detected in the files other than in the `settings.py` file as follows:
 
-- For this file there were four lines which returned line too long errors. These related to the lenght of the Django password validator methods.
+* For this file there were four lines which returned line too long errors. These related to the lenght of the Django password validator methods.
 
 ### Compatibility
 
 In testing the website, compatability across browsers and operating systems were tested as follows:
 
-- Browsers
-  - Chrome
-  - Safari
-- Operating Systems
-  - iOS
-  - Windows 10
-  - Linux (Manjaro Distribution)
+* Browsers
+  * Chrome
+  * Safari
+* Operating Systems
+  * iOS
+  * Windows 10
+  * Linux (Manjaro Distribution)
 
 No significant issues were detected across the various browsers / operating systems tested.
 
