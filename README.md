@@ -180,11 +180,11 @@ The full suite of testing that was completed on the application can be found in 
 
 ## Deployment
 
-[Heroku](https://www.heroku.com/) was chosen as the hosting platform for the application. followed:
+[Heroku](https://www.heroku.com/) was chosen as the hosting platform for the application.
 
 ### Heroku Deployment
 
-In order to deploy the application to Heroku, the following steps should be
+In order to deploy the application to Heroku, the following steps should be followed:
 
 1. Create a requirements.txt file:
    `pip freeze > requirements.txt`
@@ -232,25 +232,23 @@ In developing the site, the following languages, tools and libraries were used:
 - Python
 - HTML
 - CSS
-- JavaScript
 - Jinga
 
 ### Tools
 
-- VScode
+- VScode  
   All coding was completed in VS Code.
-- Heroku
+- Heroku  
   Heroku was used for the deployment of the app.
-- Django
+- [Django](https://www.djangoproject.com/)  
+  The Django framework was used to develop the site. 
 - PostgreSQL
+  This was chosen as the database underlying the site; this was also implemented directly in Herkou using a Heroku Resource.
 - [TailwindCSS](https://tailwindcss.com/)
   TailwindCSS was used as teh CSS framework to accelerate development of the site.
-- Folium
-- plotly
-- gpxpy
-- coolors.co
+- [coolors.co](https://coolors.co/)
   Potential site palettes were tested with Coolors.
-- Figma
+- [Figma](https://www.figma.com/templates/wireframe-kits/)
   Wireframes for the site were generated using Figma
 - [gauger.io](gauger.io)
   This website was used to generate the favicon using an icon from Font Awesome.
@@ -265,41 +263,29 @@ In developing the site, a number of tools, external libraries and resources were
 
 In developing the site the following open source libraries were utilised:
 
-- #### gpxpy
-
+- [gpxpy](https://github.com/tkrajina/gpxpy)
   Python library for parsing GPX files; used to read the GPX files for plotting using
-
-- ### folium
-
-- #### [plotly.py](https://github.com/plotly/plotly.py)
-
+- [folium](https://python-visualization.github.io/folium/)
+- [plotly.py](https://github.com/plotly/plotly.py)  
   Plotly was used to generated the remaining plots and to plot and render the track thumbnail image
 
 ### Code
 The final code / tutorials  references were consulted when developing the site features:
 
-- #### [Limiting File Uploads](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)
+- [Limiting File Uploads](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)  
  This StackOverflow post was consulted to ensure that the file upload dialog would only accept `gpx` files.
-
-## Creating a Unique Slug
-<https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django>
-
-
-- #### GPX Parsing
-
-- #### Map Generation
-
-Folium Integration
-<https://hatarilabs.com/ih-en/developing-geospatial-webapps-with-python-and-django-tutorial>
-
-#### GPXPY to dataframe
-
-<https://www.gpxz.io/blog/gpx-file-to-pandas>
-
-## Deleting a Post / Activity
-
-<https://stackoverflow.com/questions/71016875/django-button-to-remove-row-in-sqlite3>
-
+- [Creating a Unique Slug](https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django)
+- [Upload File and read contents to populate model](https://stackoverflow.com/questions/6091965/django-upload-a-file-and-read-its-content-to-populate-a-model)  
+This stackover flow was referenced in order to understand how to upload a file and then use the same file to populate the underlying database model
+- **Folium Integration**
+  The following two tutorials were referenced in order to understand how to plot the `.gpx` files using the `folium` library:
+  - [Folium and Django](https://hatarilabs.com/ih-en/developing-geospatial-webapps-with-python-and-django-tutorial)
+  - [Overlay gpx on Folium Map](https://gpxplotter.readthedocs.io/en/latest/auto_examples/maps/plot_000_segment.html#sphx-glr-auto-examples-maps-plot-000-segment-py)
+- [GPXPY to dataframe](https://www.gpxz.io/blog/gpx-file-to-pandas)
+- [Deleting a Post / Activity](https://stackoverflow.com/questions/71016875/django-button-to-remove-row-in-sqlite3)
+- [Cloudinary: Upload of non image files](https://stackoverflow.com/questions/36805137/how-to-pass-options-to-cloudinaryfield-in-django-model)
+- [Autogenerate the Slug](https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4)
+- [Plotting Elevation Data](https://www.gpxz.io/blog/gpx-file-to-pandas)
 
 - #### HTML / CSS
   - Template code for the NavBar was sourced from the [Flowbite Navbar Template](https://flowbite.com/docs/components/navbar/)
@@ -318,71 +304,3 @@ Images for the **Register**, **Sign-In** and **Logout** page were sourced from U
 - The CodeInstitue Modules on Python and in particular cloud deployment to Heroku
 - My friends and families who supported me by beta testing iterations of the site
 - [Strava](https://www.strava.com) for providing the original inspiration for the site
-
-- ## CRUD Tutorial in Django
-
-<https://www.geeksforgeeks.org/django-crud-create-retrieve-update-delete-function-based-views/>
-<https://studygyaan.com/django/django-crud-create-retrieve-update-delete-function-based-views>
-
-# Overlay gpx on Folium Map
-
-<https://gpxplotter.readthedocs.io/en/latest/auto_examples/maps/plot_000_segment.html#sphx-glr-auto-examples-maps-plot-000-segment-py>
-
-# Django Authentication
-
-<https://docs.djangoproject.com/en/1.11/topics/auth/default/>
-
-## Cloudinary: Upload of non image files
-
-<https://stackoverflow.com/questions/36805137/how-to-pass-options-to-cloudinaryfield-in-django-model>
-
-## Autogenerate the Slug
-
-<https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4>
-
-## Django File Uploads
-
-<https://stackabuse.com/handling-file-uploads-with-django/>
-
-## Convert gpx to data frame
-
-Code from the following github repository was used to parse the gpx data and convert it to a dataframe:
-<https://github.com/bunburya/fitness_tracker_data_parsing/blob/main/parse_gpx.py>
-
-## Mapping data in Python / GPX
-
-This is a useful resource. He built a map of his camino journey.
-Useful examples of building interactive maps
-<https://towardsdatascience.com/build-interactive-gps-activity-maps-from-gpx-files-using-folium-cf9eebba1fe7>
-
-## Plotting Elevation Data
-
-<https://www.gpxz.io/blog/gpx-file-to-pandas>
-
-## Rendering Plotly graphs - exporting to django
-
-<https://stackoverflow.com/questions/36846395/embedding-a-plotly-chart-in-a-django-template>
-
-## Upload File and read contents to populate model
-
-<https://stackoverflow.com/questions/6091965/django-upload-a-file-and-read-its-content-to-populate-a-model>
-
-# Retrieve and Update database entries
-
-<https://stackoverflow.com/questions/2712682/how-to-select-a-record-and-update-it-with-a-single-queryset-in-django>
-
-## Updating the database following upload
-
-<https://stackoverflow.com/questions/54534599/django-how-to-edit-value-and-store-back-in-database>
-
-## Hide user and autopopulate
-
-<https://stackoverflow.com/questions/51547441/django-forms-autofill-hide-foreign-key-field>
-
-## Plotly
-
-How to build scatterplots:
-<https://plotly.com/python/line-and-scatter/>
-
-## Feature Notes
-
