@@ -68,20 +68,23 @@ In defining the colors in the HTML code, the [Tailwind color classes](https://ta
 For Fonts, I used the [default Tailwindcss fonts](https://tailwindcss.com/docs/font-family). Overall I was happy with the appearance of the site using the default fonts and I did not feel it was necessary to change these.
 
 ## Database Model & Schema
-In developing the web application, a single database table was defined to store details of the user activities.
+In developing the web application, a single database table was defined to store details of the user activities. This table is named **Activity** and is defined in the `models.py` file. All features of the application were captured in this table; the django framework was relied on to manage tables detailing the users and other backend elements.
 
-This contains a number of fields as follows:
+This **Activity** model contains a number of fields as follows:
 
+![](docs/screenshots/trax-table-definition.png)
 
-All features of the application were captured in this table; the django framework was relied on to manage tables detailing the users and other backend elements.
+It should be noted that only the fields higlighted are directly modifiable by the user. TRAX automates the population of the remaining fields by either reading these directly from the uploaded `.gpx` file or calculating them. 
+
+For the activity thumbnail, this is generated during the upload process. Once the activity file is uploaded, an activity thumbnail is generated using `plotly` and saved as an `.png`. This file is then uploaded to Cloudinary the resulting Cloudinary path is stored in the database.
+
+The `views.py` file contains a function, `add_activity()` which calls the necessary functions to parse and generate the values for the automated fields before commiting the database entry to the database.
 
 ## Features
-
-### Implemented Features
 In designing the site, I have sought to implement features to improve overall user functionability while meeting both the overall site objectives and implementing the proposed user stories.
 
-The following screenshots illustrate some of the key features of the site:
-
+### Implemented Features
+The following screenshots illustrate some of the key features that were implemented in the development of the site:
 
 - **Navbar**
   - <details>
