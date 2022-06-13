@@ -10,28 +10,27 @@ The web application has been built using the Django framework and utilises a Pos
 ## Table of Contents
 
 - [Objectives](#objectives)
-  * [User Stories](#user-stories)
+  - [User Stories](#user-stories)
 - [Design](#design)
-  * [Wireframes](#wireframes)
-  * [Color Palette](#color-palette)
-  * [Fonts](#fonts)
+  - [Wireframes](#wireframes)
+  - [Color Palette](#color-palette)
+  - [Fonts](#fonts)
 - [Database Model & Schema](#database-model---schema)
 - [Features](#features)
-  * [Implemented Features](#implemented-features)
-  * [Future Additional Features](#future-additional-features)
+  - [Implemented Features](#implemented-features)
+  - [Future Additional Features](#future-additional-features)
 - [Testing](#testing)
 - [Deployment](#deployment)
-  * [Heroku Deployment](#heroku-deployment)
+  - [Heroku Deployment](#heroku-deployment)
 - [Technologies Used](#technologies-used)
-  * [Languages](#languages)
-  * [Tools](#tools)
+  - [Languages](#languages)
+  - [Tools](#tools)
 - [Credits](#credits)
-  * [Libraries](#libraries)
-  * [Code](#code)
-  * [HTML / CSS](#html---css)
-  * [Images](#images)
-  * [Other](#other)
-
+  - [Libraries](#libraries)
+  - [Code](#code)
+  - [HTML / CSS](#html---css)
+  - [Images](#images)
+  - [Other](#other)
 
 ## Objectives
 
@@ -60,6 +59,7 @@ In order to implement the technical functionality, I defined and implemented a n
 In designing the site, I sought to combine a clean design which would highlight the site functionality. In order to accelerate development of the site, I used the [TailwindCSS framework](https://tailwindcss.com/).
 
 ### Wireframes
+
 Prior to developing the webiste, I iterated on the design using wireframes. The wireframes developed were as follows:
 
 - **Home**
@@ -83,7 +83,7 @@ Prior to developing the webiste, I iterated on the design using wireframes. The 
     <img src="./docs/wireframes/wireframe-about.png" alt="navbar"/>
     </details>
 
-The final design is consistent with the proposed wireframes. The only significant change was to the **Home** page. Initially the plan was to have the activity thumbnails display on the left side of the individual activity cards. 
+The final design is consistent with the proposed wireframes. The only significant change was to the **Home** page. Initially the plan was to have the activity thumbnails display on the left side of the individual activity cards.
 
 However, for smaller screen sizes, when this collapsed it felt more logical to have the activity description render first followed by the activity thumbnail. As a result, in the final design the thumbnails appear on the right side.
 
@@ -108,22 +108,25 @@ In defining the colors in the HTML code, the [Tailwind color classes](https://ta
 For Fonts, I used the [default Tailwindcss fonts](https://tailwindcss.com/docs/font-family). Overall I was happy with the appearance of the site using the default fonts and I did not feel it was necessary to change these.
 
 ## Database Model & Schema
+
 In developing the web application, a single database table was defined to store details of the user activities. This table is named **Activity** and is defined in the `models.py` file. All features of the application were captured in this table; the django framework was relied on to manage tables detailing the users and other backend elements.
 
 This **Activity** model contains a number of fields as follows:
 
 ![](docs/screenshots/trax-table-definition.png)
 
-It should be noted that only the fields higlighted are directly modifiable by the user. TRAX automates the population of the remaining fields by either reading these directly from the uploaded `.gpx` file or calculating them. 
+It should be noted that only the fields higlighted are directly modifiable by the user. TRAX automates the population of the remaining fields by either reading these directly from the uploaded `.gpx` file or calculating them.
 
 For the activity thumbnail, this is generated during the upload process. Once the activity file is uploaded, an activity thumbnail is generated using `plotly` and saved as an `.png`. This file is then uploaded to Cloudinary the resulting Cloudinary path is stored in the database.
 
 The `views.py` file contains a function, `add_activity()` which calls the necessary functions to parse and generate the values for the automated fields before commiting the database entry to the database.
 
 ## Features
+
 In designing the site, I have sought to implement features to improve overall user functionability while meeting both the overall site objectives and implementing the proposed user stories.
 
 ### Implemented Features
+
 The following screenshots illustrate some of the key features that were implemented in the development of the site:
 
 - **Navbar**
@@ -206,6 +209,7 @@ The following screenshots illustrate some of the key features that were implemen
   - Defensive programming is employed to ensure tha the length of the data input is not longer than the maximum lengths specifed in the database schema.
 
 ### Future Additional Features
+
 In developing the web application, I achieved all my major goals for features. However, the following potential future features could be implemented:
 
 - **Activity Deletion Confirmation**
@@ -214,6 +218,7 @@ In developing the web application, I achieved all my major goals for features. H
   Currently the file only supports `.gpx` files - this could be potentially extended to incorporate other activity file types such as `.fit` and `.tcx`
 - **Allow User Comments**
    In addition to allowing users to like activities, a furhter enhancement would be to allow users the ability to comment on other user's activities.
+
 ## Testing
 
 The full suite of testing that was completed on the application can be found in the [TESTING.md](TESTING.md) file.
@@ -276,13 +281,13 @@ In developing the site, the following languages, tools and libraries were used:
 
 ### Tools
 
-- VScode  
+- [VScode](https://code.visualstudio.com/)  
   All coding was completed in VS Code.
-- Heroku  
+- [Heroku](https://www.heroku.com/)  
   Heroku was used for the deployment of the app.
 - [Django](https://www.djangoproject.com/)  
-  The Django framework was used to develop the site. 
-- PostgreSQL
+  The Django framework was used to develop the site.
+- [PostgreSQL](https://www.postgresql.org/)
   This was chosen as the database underlying the site; this was also implemented directly in Herkou using a Heroku Resource.
 - [TailwindCSS](https://tailwindcss.com/)
   TailwindCSS was used as teh CSS framework to accelerate development of the site.
@@ -306,31 +311,36 @@ In developing the site the following open source libraries were utilised:
 - [gpxpy](https://github.com/tkrajina/gpxpy)
   Python library for parsing GPX files; used to read the GPX files for plotting using
 - [folium](https://python-visualization.github.io/folium/)
+  Folium was used for the generation of the maps used to display the track for each of the activites. Each of the cooridnates from the `.gpx` file were overlaid on the Folium map and rendered on the site.
 - [plotly.py](https://github.com/plotly/plotly.py)  
   Plotly was used to generated the remaining plots and to plot and render the track thumbnail image
 
 ### Code
+
 The final code / tutorials  references were consulted when developing the site features:
 
 - [Limiting File Uploads](https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file)  
  This StackOverflow post was consulted to ensure that the file upload dialog would only accept `gpx` files.
 - [Creating a Unique Slug](https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django)
+  In generating the slug for each activity, I decided to utilse the activity title as the basis. This resources was consulted and the code snippet was utilised to ensure that the slugs that are generated were unique.
 - [Upload File and read contents to populate model](https://stackoverflow.com/questions/6091965/django-upload-a-file-and-read-its-content-to-populate-a-model)  
-This stackover flow was referenced in order to understand how to upload a file and then use the same file to populate the underlying database model
+  This stackover flow was referenced in order to understand how to upload a file and then use the same file to populate the underlying database model.
 - **Folium Integration**
   The following two tutorials were referenced in order to understand how to plot the `.gpx` files using the `folium` library:
   - [Folium and Django](https://hatarilabs.com/ih-en/developing-geospatial-webapps-with-python-and-django-tutorial)
   - [Overlay gpx on Folium Map](https://gpxplotter.readthedocs.io/en/latest/auto_examples/maps/plot_000_segment.html#sphx-glr-auto-examples-maps-plot-000-segment-py)
 - [GPXPY to dataframe](https://www.gpxz.io/blog/gpx-file-to-pandas)
+  In order to plot the `.gpx` file using **plotly** it was necessary to first convert thme to a pandas dataframe. This resource was consulted on how to achieve this.
 - [Deleting a Post / Activity](https://stackoverflow.com/questions/71016875/django-button-to-remove-row-in-sqlite3)
+  The following post was consulted in order to understand how to implement a button to delete user activities.
 - [Cloudinary: Upload of non image files](https://stackoverflow.com/questions/36805137/how-to-pass-options-to-cloudinaryfield-in-django-model)
-- [Autogenerate the Slug](https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4)
-- [Plotting Elevation Data](https://www.gpxz.io/blog/gpx-file-to-pandas)
+  The following post was consulted in order to understand how non image files could be uploaded and stored in Cloudinary.
 
 ### HTML / CSS
-  - Template code for the NavBar was sourced from the [Flowbite Navbar Template](https://flowbite.com/docs/components/navbar/)
-  - Template code for the card layout was sourced from the [Flowbite Card Template](https://flowbite.com/docs/components/card/)
-  - Template code for the Footer was sourced from the [Tailwind Components Footer Template](https://tailwind-elements.com/docs/standard/navigation/footer/)
+
+- Template code for the NavBar was sourced from the [Flowbite Navbar Template](https://flowbite.com/docs/components/navbar/)
+- Template code for the card layout was sourced from the [Flowbite Card Template](https://flowbite.com/docs/components/card/)
+- Template code for the Footer was sourced from the [Tailwind Components Footer Template](https://tailwind-elements.com/docs/standard/navigation/footer/)
 
 ### Images
 
