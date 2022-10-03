@@ -74,8 +74,6 @@ def home(request):
 def about(request):
     """Function to return the about page"""
     context = {}
-    messages.success(request, "Home page loaded !")
-    print("page load !!!")
     return render(request, "about.html", context)
 
 
