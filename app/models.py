@@ -18,7 +18,7 @@ class Activity(models.Model):
     elev_min = models.IntegerField(default=0)
     title = models.CharField(max_length=25, default="Trax Activity")
     description = models.CharField(max_length=1000, default="")
-    gpx_file = CloudinaryField("", default="manual", resource_type="raw")
+    gpx_file = CloudinaryField("", default="manual", resource_type="raw", blank=True)
     gpx_thumb_path = models.CharField(
         max_length=1000,
         default="https://res.cloudinary.com/dapgpdd7z/image/upload/v1654524799/thumbnail_default_oxyqoe.png",

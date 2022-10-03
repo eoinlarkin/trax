@@ -1,5 +1,7 @@
 from django.forms import ModelForm
 from .models import Activity
+from django.contrib import admin
+
 
 
 class ActivityForm(ModelForm):
@@ -31,3 +33,5 @@ class ActivityForm(ModelForm):
             ]
         )
         return super(ActivityForm, self).save(commit=commit)
+
+
