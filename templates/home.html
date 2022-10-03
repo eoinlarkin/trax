@@ -1,3 +1,4 @@
+<!doctype html>
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
@@ -21,7 +22,7 @@
                     <form action="{% url 'activity_like' activity.slug %}" method="POST" class="inline-block">
                         {% csrf_token %} {% if liked %}
                         <button type="submit" name="" value="{{ activity.slug }}"><i
-                                class="fas fa-heart text-cyan-800 hover:text-pink-800"></i><button>
+                                class="fas fa-heart text-cyan-800 hover:text-pink-800"></i></button>
                                 {% else %}
                                 <button type="submit" name="" value="{{activity.slug}}"><i
                                         class="far fa-heart text-cyan-800 hover:text-pink-800"></i></button>

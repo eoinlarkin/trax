@@ -1,98 +1,162 @@
-{% extends 'base.html' %}
-{% block content %}
-{% load static %}
+<!doctype html>
+{% extends 'base.html' %} {% block content %} {% load static %}
 
-<div class="container flex flex-col  items-center mx-auto space-y-4 mt-0">
-  <div class="text-2xl uppercase font-bold tracking-widest text-teal-800">Trax</div>
-  <div class='text-center flex flex-col space-y-4 max-w-md'>
-    <p>Trax is a website for the uploading, sharing and analysing of activity files. Using Trax, you can upload and view
-      your activites as well as viewing and liking activities by other uses.</p>
+<div class="container flex flex-col items-center mx-auto space-y-4 mt-0">
+  <div class="text-2xl uppercase font-bold tracking-widest text-teal-800">
+    Trax
+  </div>
+  <div class="text-center flex flex-col space-y-4 max-w-md">
     <p>
-      The site has a number of unique features:
+      Trax is a website for the uploading, sharing and analysing of activity
+      files. Using Trax, you can upload and view your activites as well as
+      viewing and liking activities by other uses.
     </p>
+    <p>The site has a number of unique features:</p>
   </div>
 
   <div
-    class="grid items-center text-center md:text-left grid-cols-1 md:grid-cols-2 gap-2 rounded-md shadow-md pt-0 px-4 pb-4">
-
+    class="grid items-center text-center md:text-left grid-cols-1 md:grid-cols-2 gap-2 rounded-md shadow-md pt-0 px-4 pb-4"
+  >
     <!--  Upload Dialog Text -->
     <div class="flex flex-col space-y-4 order-1 md:order-1">
       <p class="text-xl font-bold tracking-wide text-pink-800">Upload Files</p>
-      <p>Once you have created an account you can upload activity files from your activity tracker. Currently TRAX
-        supports files in gpx file format.</p>
-      <p>Try it for yourself with the following
-        <a download="example-gpx-file-hike.gpx" href="{% static 'test-gpx/hike-wicklow-djouce.gpx' %}"  class='hover:text-pink-800 text-cyan-800' target="_blank">sample file</a>.
+      <p>
+        Once you have created an account you can upload activity files from your
+        activity tracker. Currently TRAX supports files in gpx file format.
+      </p>
+      <p>
+        Try it for yourself with the following
+        <a
+          download="example-gpx-file-hike.gpx"
+          href="{% static 'test-gpx/hike-wicklow-djouce.gpx' %}"
+          class="hover:text-pink-800 text-cyan-800"
+          target="_blank"
+          >sample file</a
+        >.
       </p>
     </div>
-    
+
     <!--  Upload Dialog Image -->
     <div class="p-8 order-2 md:order-2">
-      <img src="{% static 'media/img/trax-file-upload.png' %}" alt="file-upload">
+      <img
+        src="{% static 'media/img/trax-file-upload.png' %}"
+        alt="file-upload"
+      />
     </div>
 
     <!--  Activity Details Text -->
     <div class="flex flex-col space-y-4 md:order-4 order-3">
-      <p class="text-xl font-bold tracking-wide text-pink-800">Activity Details View</p>
-      <p>After uploading a file, click on the Activiy Title in your feed to view additional details.</p>
-      <p>Metrics such as distance, average heart rate and the minimum and maximum elevation are automatically
-        calculated.</p>
-      <p>The activity title and description can be modified using the <span class="text-pink-800">edit</span> button.
+      <p class="text-xl font-bold tracking-wide text-pink-800">
+        Activity Details View
       </p>
-      <p>Alternatively the activity can be removed completely by clicking on <span class="text-pink-800">delete</span>.
+      <p>
+        After uploading a file, click on the Activiy Title in your feed to view
+        additional details.
+      </p>
+      <p>
+        Metrics such as distance, average heart rate and the minimum and maximum
+        elevation are automatically calculated.
+      </p>
+      <p>
+        The activity title and description can be modified using the
+        <span class="text-pink-800">edit</span> button.
+      </p>
+      <p>
+        Alternatively the activity can be removed completely by clicking on
+        <span class="text-pink-800">delete</span>.
       </p>
     </div>
 
     <!--  Activity Details Image -->
     <div class="p-8 order-3 md:order-3">
-      <img src="{% static 'media/img/trax-activity-overview.png' %}" alt="activity-details-image">
+      <img
+        src="{% static 'media/img/trax-activity-overview.png' %}"
+        alt="activity-details-image"
+      />
     </div>
-
 
     <!--  Map Text -->
     <div class="flex justify-start flex-col order-5 space-y-4">
-      <p class="text-xl font-bold tracking-wide text-pink-800 ">Map Plot</p>
-      <p>In addition to calculating key metrics, TRAX will automatically plot your activity track using <a
-          href="https://www.openstreetmap.org/#map=7/53.465/-8.240" class='hover:text-pink-800 text-cyan-800'
-          target="_blank">OpenStreetMap</a>.</p>
+      <p class="text-xl font-bold tracking-wide text-pink-800">Map Plot</p>
+      <p>
+        In addition to calculating key metrics, TRAX will automatically plot
+        your activity track using
+        <a
+          href="https://www.openstreetmap.org/#map=7/53.465/-8.240"
+          class="hover:text-pink-800 text-cyan-800"
+          target="_blank"
+          >OpenStreetMap</a
+        >.
+      </p>
     </div>
 
     <!--  Map Image -->
-    <div class="p-8 order-6 ">
-      <img src="{% static 'media/img/trax-activity-map.png' %}" alt="map-plot">
+    <div class="p-8 order-6">
+      <img
+        src="{% static 'media/img/trax-activity-map.png' %}"
+        alt="map-plot"
+      />
     </div>
 
     <!--  Heart Rate Text -->
-    <div class="flex flex-col space-y-4 order-7  md:order-8">
-      <p class="text-xl font-bold tracking-wide text-pink-800">Heart Rate Analysis</p>
-      <p>If the activity file contains heart rate data, the heart rate plot will provide a visualisation of the heart
-        rate during the activity</p>
-      <p>This is great for activities such as intervals - try it with the following 
-        <a download="example-gpx-file-elevation.gpx" href="{% static 'test-gpx/run-intervals-phoneix-park.gpx' %}" 
-        class='hover:text-pink-800 text-cyan-800' target="_blank">gpx file</a>!
+    <div class="flex flex-col space-y-4 order-7 md:order-8">
+      <p class="text-xl font-bold tracking-wide text-pink-800">
+        Heart Rate Analysis
       </p>
-
+      <p>
+        If the activity file contains heart rate data, the heart rate plot will
+        provide a visualisation of the heart rate during the activity
+      </p>
+      <p>
+        This is great for activities such as intervals - try it with the
+        following
+        <a
+          download="example-gpx-file-elevation.gpx"
+          href="{% static 'test-gpx/run-intervals-phoneix-park.gpx' %}"
+          class="hover:text-pink-800 text-cyan-800"
+          target="_blank"
+          >gpx file</a
+        >!
+      </p>
     </div>
 
     <!--  Heart Rate Image -->
     <div class="p-8 order-8 md:order-7">
-      <img src="{% static 'media/img/trax-heart-rate-plot.png' %}" alt="heart-rate-plot">
+      <img
+        src="{% static 'media/img/trax-heart-rate-plot.png' %}"
+        alt="heart-rate-plot"
+      />
     </div>
 
     <!--  Elevation Text -->
     <div class="flex flex-col space-y-4 order-9">
-      <p class="text-xl font-bold tracking-wide text-pink-800">Elevation Analysis</p>
-      <p>Finally the elevation plot will provide a visualisation of the elevation over the duration of the activity.</p>
-      <p>This provides additional insight for activities with significant changes in elevation - try it with        
-        <a download="example-gpx-file-elevation.gpx" href="{% static 'test-gpx/cycle-howth-hill.gpx' %}"  class='hover:text-pink-800 text-cyan-800' target="_blank">this file</a>.
+      <p class="text-xl font-bold tracking-wide text-pink-800">
+        Elevation Analysis
       </p>
-
+      <p>
+        Finally the elevation plot will provide a visualisation of the elevation
+        over the duration of the activity.
+      </p>
+      <p>
+        This provides additional insight for activities with significant changes
+        in elevation - try it with
+        <a
+          download="example-gpx-file-elevation.gpx"
+          href="{% static 'test-gpx/cycle-howth-hill.gpx' %}"
+          class="hover:text-pink-800 text-cyan-800"
+          target="_blank"
+          >this file</a
+        >.
+      </p>
     </div>
 
     <!--  Elevation Image -->
     <div class="p-8 order-10">
-      <img src="{% static 'media/img/trax-elevation-plot.png' %}" alt="elevation-plot">
+      <img
+        src="{% static 'media/img/trax-elevation-plot.png' %}"
+        alt="elevation-plot"
+      />
     </div>
-
   </div>
 </div>
 {% endblock content %}
