@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-
+{% load static %}
 <!-- Page Content -->
 
 <!--    Card: Cotainer with Title, Like button and description      -->
@@ -112,34 +112,48 @@
     </div>
 </div>
 
+<div>
+    {% if activity.gpx_file_uploaded == False %}
 
-<!--    Card: Activity Map      -->
-<div
-    class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
-
-    <div class="flex flex-grow flex-col p-4 leading-normal">
-        <p class="text-cyan-800 text-xl">Activity Map:</p>
-        <p>{{ my_map|safe }}</p>
+    <div class="p-4 flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md flex-col md:min-w-2xl md:max-w-2xl mb-10 space-y-4">
+        <p class="text-center">This is a manual activity !</p>
+        <p class="text-center">Activities that have been uploaded using the gpx uploader will automatically show key metrics charts such as the route, elevation and heart rate.</p>
+        {% if user.is_authenticated %}
+        <p class="text-center">Try <a href="{% url 'upload' %}">uploading a gpx file</a> to have your activity metrics automatically populated.</p>
+        <p class="text-center">A sample gpx file can be downloaded from <a download="example-gpx-file-hike.gpx" href="{% static 'test-gpx/hike-wicklow-djouce.gpx' %}" class="hover:text-pink-800 text-cyan-800" target="_blank">here</a>.</p>
+        {% endif %}
     </div>
-</div>
 
-<!--    Card: Heart Rate Plot      -->
-<div
-    class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+    {% else %}
+    <!--    Card: Activity Map      -->
+    <div
+        class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
 
-    <div class="flex flex-grow flex-col p-4 leading-normal">
-        <p class="text-cyan-800 text-xl">Heart Rate Plot:</p>
-        <p>{{ heart_rate|safe }}</p>
+        <div class="flex flex-grow flex-col p-4 leading-normal">
+            <p class="text-cyan-800 text-xl">Activity Map:</p>
+            <p>{{ my_map|safe }}</p>
+        </div>
     </div>
-</div>
 
-<!--    Card: Activity Elevation Plot      -->
-<div
-    class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
-    <div class="flex flex-grow flex-col p-4 leading-normal">
-        <p class="text-cyan-800 text-xl">Elevation Plot:</p>
-        <p>{{ elev_plot|safe }}</p>
+    <!--    Card: Heart Rate Plot      -->
+    <div
+        class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+
+        <div class="flex flex-grow flex-col p-4 leading-normal">
+            <p class="text-cyan-800 text-xl">Heart Rate Plot:</p>
+            <p>{{ heart_rate|safe }}</p>
+        </div>
     </div>
+
+    <!--    Card: Activity Elevation Plot      -->
+    <div
+        class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
+        <div class="flex flex-grow flex-col p-4 leading-normal">
+            <p class="text-cyan-800 text-xl">Elevation Plot:</p>
+            <p>{{ elev_plot|safe }}</p>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock content %}

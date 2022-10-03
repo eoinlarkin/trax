@@ -34,9 +34,10 @@ class ActivityDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Activity.objects
         activity = get_object_or_404(queryset, slug=slug)
-        my_map, elev_plot, heart_rate = gpx_helper.generate_plots(
-            activity.gpx_file.url
-        )
+        if activity.gpx_file_uploaded is True:
+            my_map, elev_plot, heart_rate = gpx_helper.generate_plots(activity.gpx_file.url)
+        else:
+            my_map, elev_plot, heart_rate = "","",""       
 
         liked = False
         if activity.likes.filter(id=self.request.user.id).exists():
@@ -80,7 +81,6 @@ def add_activity(request):
         context["posted"] = form.instance
 
         if form.is_valid():
-            print("form is valid")
             object = form.save(commit=False)
             object.user = request.user
             slug_str = "%s %s" % (
@@ -115,6 +115,7 @@ def add_activity(request):
             Activity.objects.filter(slug=slug_str).update(end_time=end_time)
             Activity.objects.filter(slug=slug_str).update(elev_max=max_elev)
             Activity.objects.filter(slug=slug_str).update(elev_min=min_elev)
+            Activity.objects.filter(slug=slug_str).update(gpx_file_uploaded=True)
             gpx_helper.generate_thumbnail()
             thumbnail = cloudinary.uploader.upload("activity_thumbnail.png")
             Activity.objects.filter(slug=slug_str).update(
