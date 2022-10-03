@@ -37,8 +37,8 @@
 
 </head>
 
-<body class="flex flex-col h-screen justify-between">
-  <header>
+<body class="min-h-screen">
+  <header class="mb-24">
 
     <!-- Navigation -->
     <nav class="fixed z-10 top-0 w-full bg-cyan-800 border-neutral-100 px-2 sm:px-4 py-2.5">
@@ -125,28 +125,23 @@
           </ul>
         </div>
       </div>
-
-
-
     </nav>
  </header>
 
 
- <div class="mt-24 flex-1">
+ <div class="w-full">
   {% if messages %}
   {% for message in messages %}
-    <div>
       {% include 'toast.html' %}
-    </div>
   {% endfor %}
   {% endif %}
   </div>
 
 
 
-  <div class="flex-1">
+  <div>
 
-    <div class="mt-12">
+    <div class="mt-0">
       {% block content %}
       <!-- Content Goes here -->
       {% endblock content %}
@@ -156,7 +151,8 @@
 
 
   <!-- Bottom footer with contact links-->
-  <footer class=" bottom-0 w-full text-center bg-gray-100 text-gray-600 ">
+  <footer class="sticky top-[100vh]">
+    <div class="w-full text-center bg-gray-100 text-gray-600"> 
     <div class=" flex justify-center items-center p-6 border-b border-gray-300 ">
 
       <div class=" flex justify-center ">
@@ -201,6 +197,7 @@
         <p>
           <p>Made with <i class=" fa fa-heart text-pink-800 "></i> in D7</p>
     </div>
+  </div>
   </footer>
 
   <!-- Flowbite javascript file-->

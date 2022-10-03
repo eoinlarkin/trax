@@ -149,6 +149,7 @@ def update_activity(request, slug):
     form = ActivityForm(request.POST, instance=object)
     if form.is_valid():
         form.update_activity()
+        messages.success(request, "Your activity has been updated successfully !")
         return HttpResponseRedirect(reverse("activity_detail", args=[slug]))
 
 
