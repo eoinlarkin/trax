@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from .views import ActivityList, ActivityDetail, ActivityLike, update_activity
 from . import views
 

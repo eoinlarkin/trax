@@ -1,20 +1,19 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.views import generic, View
-from django.urls import reverse_lazy
 from .models import Activity
 from .forms import ActivityForm
-from django.contrib.auth import get_user_model, mixins
+from django.contrib.auth import mixins
 import modules.gpx_helper as gpx_helper
 import modules.slug_helper as slug_helper
 import cloudinary
 
 
 class ActivityDeleteView(mixins.LoginRequiredMixin, generic.DeleteView):
-    ''' Class to delete an activity '''
+    """Class to delete an activity"""
+
     # Appraoch based on following stackoverflow post:
     # https://stackoverflow.com/a/62755310
     model = Activity
@@ -43,9 +42,11 @@ class ActivityDetail(View):
         queryset = Activity.objects
         activity = get_object_or_404(queryset, slug=slug)
         if activity.gpx_file_uploaded is True:
-            my_map, elev_plot, heart_rate = gpx_helper.generate_plots(activity.gpx_file.url)
+            my_map, elev_plot, heart_rate = gpx_helper.generate_plots(
+                activity.gpx_file.url
+            )
         else:
-            my_map, elev_plot, heart_rate = "","",""       
+            my_map, elev_plot, heart_rate = "", "", ""
 
         liked = False
         if activity.likes.filter(id=self.request.user.id).exists():
@@ -67,16 +68,14 @@ class ActivityDetail(View):
 @login_required(login_url="/accounts/login/")
 def home(request):
     """Function to return the home page"""
-    context = {}
-    # return render(request, "home.html", context)
     return HttpResponseRedirect(reverse("activity_list"))
 
 
 def about(request):
     """Function to return the about page"""
     context = {}
-    messages.success(request, 'Home page loaded !')
-    print('page load !!!')
+    messages.success(request, "Home page loaded !")
+    print("page load !!!")
     return render(request, "about.html", context)
 
 
@@ -97,9 +96,7 @@ def add_activity(request):
                 object.title,
                 request.user,
             )  # generate a starting slug
-            slug_helper.unique_slugify(
-                object, slug_str
-            )  # use slugify to ensure unique
+            slug_helper.unique_slugify(object, slug_str)  # use slugify to ensure unique
             object.save()  # save activity
             slug_str = object.slug  # store slug to edit activity
 
@@ -119,9 +116,7 @@ def add_activity(request):
             # updating the activity:
             Activity.objects.filter(slug=slug_str).update(distance=tot_dist)
             Activity.objects.filter(slug=slug_str).update(heartrate_avg=avg_hr)
-            Activity.objects.filter(slug=slug_str).update(
-                start_time=start_time
-            )
+            Activity.objects.filter(slug=slug_str).update(start_time=start_time)
             Activity.objects.filter(slug=slug_str).update(end_time=end_time)
             Activity.objects.filter(slug=slug_str).update(elev_max=max_elev)
             Activity.objects.filter(slug=slug_str).update(elev_min=min_elev)
