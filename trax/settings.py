@@ -15,8 +15,8 @@ import os
 import dj_database_url
 from django.contrib.messages import constants as messages
 
-# if os.path.isfile("env.py"):  # will not exist in production
-#     import env
+if os.path.isfile("env.py"):  # will not exist in production
+    import env
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -152,7 +152,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = BASE_DIR
 
 MEDIA_URL = "/media/"
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
