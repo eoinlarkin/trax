@@ -27,6 +27,14 @@
     gtag('config', 'G-6DF8T3HS5G');
   </script>
 
+
+    <!-- Jquery -->
+    <script
+  src="https://code.jquery.com/jquery-3.6.1.slim.js"
+  integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk="
+  crossorigin="anonymous"></script>
+
+
 </head>
 
 <body class="flex flex-col h-screen justify-between">
@@ -117,13 +125,33 @@
           </ul>
         </div>
       </div>
-    </nav>
-  </header>
 
-  <div class='mt-24 flex-1'>
-    {% block content %}
-    <!-- Content Goes here -->
-    {% endblock content %}
+
+
+    </nav>
+ </header>
+
+
+ <div class="mt-8 flex-1">
+  {% if messages %}
+  {% for message in messages %}
+    <div>
+      {% include 'toast.html' %}
+    </div>
+  {% endfor %}
+  {% endif %}
+  </div>
+
+
+
+  <div class="flex-1">
+
+    <div class="mt-12">
+      {% block content %}
+      <!-- Content Goes here -->
+      {% endblock content %}
+    </div>
+
   </div>
 
 
@@ -178,5 +206,9 @@
   <!-- Flowbite javascript file-->
   <script src=" https://unpkg.com/flowbite@1.4.7/dist/flowbite.js "></script>
 </body>
+
+  <!-- Loading script for dismissing toast messages -->
+  <script src="{% static 'js/toast.js' %}"></script>
+
 
 </html>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.views import generic, View
 from django.urls import reverse_lazy
@@ -67,6 +68,8 @@ def home(request):
 def about(request):
     """Function to return the about page"""
     context = {}
+    messages.success(request, 'Home page loaded !')
+    print('page load !!!')
     return render(request, "about.html", context)
 
 
