@@ -54,6 +54,14 @@ In order to implement the technical functionality, I defined and implemented a n
 - As a Site User: Information from the uploaded activity file is parsed automatically and populated in the database
 - As a Site Admin / User: The site features an About page with detail on the site features
 
+In addition to mapping the user stories to Project Kanban board for tracking, development of the webapp was split into the following Sprint milestones:
+
+- 01 - Develop Initial Functionality
+- 02 - Style and theme site
+- 03 - Enhance Functionality
+- 04 - Bug fixes and Documentation
+
+
 ## Design
 
 In designing the site, I sought to combine a clean design which would highlight the site functionality. In order to accelerate development of the site, I used the [TailwindCSS framework](https://tailwindcss.com/).
