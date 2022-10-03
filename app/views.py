@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.views import generic, View
 from django.urls import reverse_lazy
@@ -13,8 +14,14 @@ import cloudinary
 
 
 class ActivityDeleteView(mixins.LoginRequiredMixin, generic.DeleteView):
+    ''' Class to delete an activity '''
+    # Appraoch based on following stackoverflow post:
+    # https://stackoverflow.com/a/62755310
     model = Activity
-    success_url = reverse_lazy("home")
+
+    def get_success_url(self):
+        messages.success(self.request, "Your activity has been deleted successfully !")
+        return reverse("home")
 
 
 class ActivityList(generic.ListView):
