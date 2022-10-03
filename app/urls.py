@@ -4,10 +4,10 @@ from . import views
 
 urlpatterns = [
     # path('', ActivityList.as_view(),name='home'),
-    path("/", views.home, name="home"),
+    path("", views.home, name="home"),
     path("activity_feed/", ActivityList.as_view(), name="activity_list"),
     path("<slug:slug>/", ActivityDetail.as_view(), name="activity_detail"),
-    path("like/<slug:slug>", ActivityLike.as_view(), name="activity_like"),
+    path("like/<slug:slug>/", ActivityLike.as_view(), name="activity_like"),
     path("upload/", views.add_activity, name="upload"),
     path("about/", views.about, name="about"),
     path("edit/<slug:slug>/", views.edit, name="edit"),
