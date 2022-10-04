@@ -9,7 +9,7 @@ class ActivityAdmin(admin.ModelAdmin):
     https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude
     """
 
-    exclude = ("gpx_file", "gpx_thumb_path")
+    exclude = ("gpx_file", "gpx_thumb_path", "gpx_file_uploaded")
 
 
 # Reginstering the Activity model and Admin panel version:
