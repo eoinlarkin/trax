@@ -16,7 +16,7 @@ import dj_database_url
 from django.contrib.messages import constants as messages
 
 if os.path.isfile("env.py"):  # will not exist in production
-    import env
+    import env  # noqa F401
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +30,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
@@ -73,8 +73,8 @@ MESSAGE_TAGS = {
 }
 
 MIDDLEWARE = [
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    #"whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -120,8 +120,7 @@ DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation\
-            .UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa E501 
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
