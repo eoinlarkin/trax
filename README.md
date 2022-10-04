@@ -10,27 +10,31 @@ The web application has been built using the Django framework and utilises a Pos
 ## Table of Contents
 
 - [Objectives](#objectives)
-  - [User Stories](#user-stories)
+  * [User Stories](#user-stories)
+- [Agile Development](#agile-development)
+  * [Kanban Board](#kanban-board)
+  * [Sprints](#sprints)
+  * [Issue Tracking](#issue-tracking)
 - [Design](#design)
-  - [Wireframes](#wireframes)
-  - [Color Palette](#color-palette)
-  - [Fonts](#fonts)
+  * [Wireframes](#wireframes)
+  * [Color Palette](#color-palette)
+  * [Fonts](#fonts)
 - [Database Model & Schema](#database-model---schema)
 - [Features](#features)
-  - [Implemented Features](#implemented-features)
-  - [Future Additional Features](#future-additional-features)
+  * [Implemented Features](#implemented-features)
+  * [Future Additional Features](#future-additional-features)
 - [Testing](#testing)
 - [Deployment](#deployment)
-  - [Heroku Deployment](#heroku-deployment)
+  * [Heroku Deployment](#heroku-deployment)
 - [Technologies Used](#technologies-used)
-  - [Languages](#languages)
-  - [Tools](#tools)
+  * [Languages](#languages)
+  * [Tools](#tools)
 - [Credits](#credits)
-  - [Libraries](#libraries)
-  - [Code](#code)
-  - [HTML / CSS](#html---css)
-  - [Images](#images)
-  - [Other](#other)
+  * [Libraries](#libraries)
+  * [Code](#code)
+  * [HTML / CSS](#html---css)
+  * [Images](#images)
+  * [Other](#other)
 
 ## Objectives
 
@@ -42,7 +46,7 @@ In developing the web application, I aimed to achieve the following technical ob
 
 ### User Stories
 
-In order to implement the technical functionality, I defined and implemented a number of user stories. User Stories were tracked in GitHub using an agile framework planning tool. The full agile board can be found [here](https://github.com/users/eoinlarkin/projects/1).
+In order to implement the technical functionality, I defined and implemented a number of user stories: 
 
 - As a Site User: I can view a list of activities from other users
 - As a Site User: when I can click on an activity I can visualise further details
@@ -54,13 +58,58 @@ In order to implement the technical functionality, I defined and implemented a n
 - As a Site User: Information from the uploaded activity file is parsed automatically and populated in the database
 - As a Site Admin / User: The site features an About page with detail on the site features
 
+User Stories were tracked in GitHub using an agile framework planning tool. 
+
 In addition to mapping the user stories to Project Kanban board for tracking, development of the webapp was split into the following Sprint milestones:
+
+
+
+## Agile Development
+
+Agile development was used for the develoment of the webapp as follows:
+
+- Kanban Board for User stories
+- Github Milestones for the tracking of Sprints
+- Github Issues for recording issues / bugs
+
+### Kanban Board
+
+A Kanban board was used to track the development of the user stories for the site. The full Kanban board can be found [here](https://github.com/users/eoinlarkin/projects/1).
+
+Each of the user stories were tracked on the Kanban board; during the development all user stories were successfully implemented and marked as done on the Kanban board:
+
+- <details>
+    <summary><strong style="color:skyblue">Trax Kanban Board:</strong></summary>
+    <img src="./docs/screenshots/trax-kanban-board.png" alt="navbar"/>
+    </details>
+
+
+### Sprints
+
+In order to streamline the development process, the development was split across four distinct Sprints as follows:
 
 - 01 - Develop Initial Functionality
 - 02 - Style and theme site
 - 03 - Enhance Functionality
 - 04 - Bug fixes and Documentation
 
+In order to track the Sprints and assign work to each of the Sprint cycles, Github's milestone functionality was used as follows:
+
+- <details>
+    <summary><strong style="color:skyblue">Trax Sprints:</strong></summary>
+    <img src="./docs/screenshots/trax-sprints.png" alt="navbar"/>
+    </details>
+
+### Issue Tracking
+
+In addition to the use of the Kanban Board and Sprints, the GitHub issues log was used to track bugs that were detected during the testing of the site.
+
+Once issues were fixed, the commit to Git was linked to the issue using the unique issue number. An example of this is as follows:
+
+- <details>
+    <summary><strong style="color:skyblue">Issue Tracker:</strong></summary>
+    <img src="./docs/screenshots/trax-issue-tracker.png" alt="navbar"/>
+    </details>
 
 ## Design
 
