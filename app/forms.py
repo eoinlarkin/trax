@@ -1,7 +1,5 @@
 from django.forms import ModelForm
 from .models import Activity
-from django.contrib import admin
-
 
 
 class ActivityForm(ModelForm):
@@ -22,6 +20,7 @@ class ActivityForm(ModelForm):
             "heartrate_avg",
             "elev_max",
             "elev_min",
+            "gpx_file_uploaded",
         )
 
     def update_activity(self, commit=True):
@@ -33,5 +32,3 @@ class ActivityForm(ModelForm):
             ]
         )
         return super(ActivityForm, self).save(commit=commit)
-
-

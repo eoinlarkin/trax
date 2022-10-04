@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 import modules.slug_helper as slug_helper
 
-# Create your models here.
+gpx_img_path = "https://res.cloudinary.com/dapgpdd7z/image/upload/v1654524799/thumbnail_default_oxyqoe.png"  # noqa: E501
 
 
 class Activity(models.Model):
@@ -22,11 +22,9 @@ class Activity(models.Model):
     gpx_file_uploaded = models.BooleanField(default=False)
     gpx_thumb_path = models.CharField(
         max_length=1000,
-        default="https://res.cloudinary.com/dapgpdd7z/image/upload/v1654524799/thumbnail_default_oxyqoe.png",
+        default=gpx_img_path,
     )
-    likes = models.ManyToManyField(
-        User, related_name="activity_like", blank=True
-    )
+    likes = models.ManyToManyField(User, related_name="activity_like", blank=True)
 
     def gen(self, **kwargs):
         slug_str = "%s %s" % (self.title, self.user)
