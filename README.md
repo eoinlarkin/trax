@@ -264,6 +264,19 @@ The following screenshots illustrate some of the key features that were implemen
   - The user can access this page if they choose to edit an activity that they have uploaded.
   - Within this page, the user can edit either the activity name or description
   - Defensive programming is employed to ensure tha the length of the data input is not longer than the maximum lengths specified in the database schema.
+- **Toast Confirmations**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-toast.png" alt="trax-toast"/>
+    </details>
+  - Toasts are generated for key site events such as sign in, editing activities and on deletion of activities
+- **Activity Indicator**
+  - <details>
+    <summary><strong style="color:skyblue">Screenshot:</strong></summary>
+    <img src="./docs/screenshots/trax-activity-highlight.png" alt="trax-toast"/>
+    </details>
+  - Activites that have been uploaded by the logged in user are highlighted with a different color border on the activity feed page
+
 
 ### Future Additional Features
 
