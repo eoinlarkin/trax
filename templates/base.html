@@ -2,275 +2,193 @@
 {% load static %}
 
 <html lang="en" class="h-full">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Upload, share and analyse your activities"
-    />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    `
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Upload, share and analyse your activities">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="{% static 'css/output.css' %}" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
-    <title>Trax</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-6DF8T3HS5G"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+  <link href="{% static 'css/output.css' %}" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+  <title>Trax</title>
 
-      gtag("config", "G-6DF8T3HS5G");
-    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DF8T3HS5G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-    <!-- Jquery -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.1.slim.js"
-      integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk="
-      crossorigin="anonymous"
-    ></script>
-  </head>
+    gtag('config', 'G-6DF8T3HS5G');
+  </script>
 
-  <body class="min-h-screen">
-    <header class="mb-24">
-      <!-- Navigation -->
-      <nav
-        class="fixed z-10 top-0 w-full bg-cyan-800 border-neutral-100 px-2 sm:px-4 py-2.5"
-      >
-        <div
-          class="container flex flex-wrap justify-between items-center mx-auto"
-        >
-          <!-- Logo and Name -->
-          <a href="{% url 'home' %}" class="flex place-items-start">
-            <span
-              class="self-center text-xl font-semibold whitespace-nowrap text-neutral-100 hover:text-pink-800 md:p-1"
-            >
-              <i class="fa-solid fa-map"></i> TRAX</span
-            >
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.1.slim.js"
+    integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="min-h-screen">
+  <header class="mb-24">
+    <!-- Navigation -->
+    <nav class="fixed z-10 top-0 w-full bg-cyan-800 border-neutral-100 px-2 sm:px-4 py-2.5">
+      <div class="container flex flex-wrap justify-between items-center mx-auto">
+        <!-- Logo and Name -->
+        <a href="{% url 'home' %}" class="flex place-items-start">
+          <span class="self-center text-xl font-semibold whitespace-nowrap text-neutral-100 hover:text-pink-800 md:p-1">
+            <i class="fa-solid fa-map"></i> TRAX</span>
+        </a>
+
+        <!-- Hamburger Menu -->
+        <button data-collapse-toggle="mobile-menu" type="button"
+          class="inline-flex items-center p-2 ml-3 text-sm text-neutral-100 rounded-lg md:hidden hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-pink-800"
+          aria-controls="mobile-menu" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <svg class="hidden w-6 h-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+
+        <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+          <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+            {% if user.is_authenticated %}
+            <!-- Home Menu -->
+            <li>
+              <a href="{% url 'home' %}"
+                class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                aria-current="page">Home</a>
+            </li>
+            {% else %}
+            <!-- Activity Feed Menu -->
+            <li>
+              <a href="{% url 'activity_list' %}"
+                class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                aria-current="page">Activity Feed</a>
+            </li>
+            {% endif %}
+
+            <!-- LogOut or if not Authenticated: SignUp and LogIn -->
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'account_logout' %}"
+                class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                aria-current="page">Logout</a>
+            </li>
+
+            {% else %}
+            <li>
+              <a href="{% url 'account_signup' %}"
+                class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                aria-current="page">Register</a>
+            </li>
+            <li>
+              <a href="{% url 'account_login' %}"
+                class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                aria-current="page">Login</a>
+            </li>
+            {% endif %}
+
+            <!-- Upload -->
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'upload' %}"
+                class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                aria-current="page">Upload</a>
+            </li>
+            {% endif %}
+
+            <!-- About -->
+            <li>
+              <a href="{% url 'about' %}"
+                class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
+                aria-current="page">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="w-full">
+    {% if messages %} {% for message in messages %} {% include 'toast.html' %}
+    {% endfor %} {% endif %}
+  </div>
+
+  <div>
+    <div class="mt-0">
+      {% block content %}
+      <!-- Content Goes here -->
+      {% endblock content %}
+    </div>
+  </div>
+
+  <!-- Bottom footer with contact links-->
+  <footer class="sticky top-[100vh]">
+    <div class="w-full text-center bg-gray-100 text-gray-600">
+      <div class="flex justify-center items-center p-6 border-b border-gray-300">
+        <div class="flex justify-center">
+          <a href=" https://www.twitter.com/ " target=" _blank " rel=" noopener "
+            class="mr-8 text-cyan-800 hover:text-pink-800">
+            <i class="text-xl fab fa-twitter"></i>
           </a>
 
-          <!-- Hamburger Menu -->
-          <button
-            data-collapse-toggle="mobile-menu"
-            type="button"
-            class="inline-flex items-center p-2 ml-3 text-sm text-neutral-100 rounded-lg md:hidden hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-pink-800"
-            aria-controls="mobile-menu"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-6 h-6"
-              fill="currentColor"
-              viewbox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <svg
-              class="hidden w-6 h-6"
-              fill="currentColor"
-              viewbox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
+          <a href=" https://www.instagram.com/ " target=" _blank " rel="noopener"
+            class="mr-8 text-cyan-800 hover:text-pink-800">
+            <i class="text-xl fab fa-instagram"></i>
+          </a>
 
-          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
-            <ul
-              class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
-            >
-              {% if user.is_authenticated %}
-              <!-- Home Menu -->
-              <li>
-                <a
-                  href="{% url 'home' %}"
-                  class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
-                  aria-current="page"
-                  >Home</a
-                >
-              </li>
-              {% else %}
-              <!-- Activity Feed Menu -->
-              <li>
-                <a
-                  href="{% url 'activity_list' %}"
-                  class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
-                  aria-current="page"
-                  >Activity Feed</a
-                >
-              </li>
-              {% endif %}
-
-              <!-- LogOut or if not Authenticated: SignUp and LogIn -->
-              {% if user.is_authenticated %}
-              <li>
-                <a
-                  href="{% url 'account_logout' %}"
-                  class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
-                  aria-current="page"
-                  >Logout</a
-                >
-              </li>
-
-              {% else %}
-              <li>
-                <a
-                  href="{% url 'account_signup' %}"
-                  class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
-                  aria-current="page"
-                  >Register</a
-                >
-              </li>
-              <li>
-                <a
-                  href="{% url 'account_login' %}"
-                  class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
-                  aria-current="page"
-                  >Login</a
-                >
-              </li>
-              {% endif %}
-
-              <!-- Upload -->
-              {% if user.is_authenticated %}
-              <li>
-                <a
-                  href="{% url 'upload' %}"
-                  class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
-                  aria-current="page"
-                  >Upload</a
-                >
-              </li>
-              {% endif %}
-
-              <!-- About -->
-              <li>
-                <a
-                  href="{% url 'about' %}"
-                  class="block py-2 pr-4 pl-3 text-neutral-100 align-middle rounded-lg bg-cyan-800 hover:bg-pink-800 md:bg-transparent md:text-neutral-100 md:p-1 border-b border-gray-100 md:border-0"
-                  aria-current="page"
-                  >About</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <div class="w-full">
-      {% if messages %} {% for message in messages %} {% include 'toast.html' %}
-      {% endfor %} {% endif %}
-    </div>
-
-    <div>
-      <div class="mt-0">
-        {% block content %}
-        <!-- Content Goes here -->
-        {% endblock content %}
-      </div>
-    </div>
-
-    <!-- Bottom footer with contact links-->
-    <footer class="sticky top-[100vh]">
-      <div class="w-full text-center bg-gray-100 text-gray-600">
-        <div
-          class="flex justify-center items-center p-6 border-b border-gray-300"
-        >
-          <div class="flex justify-center">
-            <a
-              href=" https://www.twitter.com/ "
-              target=" _blank "
-              rel=" noopener "
-              class="mr-8 text-cyan-800 hover:text-pink-800"
-            >
-              <i class="text-xl fab fa-twitter"></i>
-            </a>
-
-            <a
-              href=" https://www.instagram.com/ "
-              target=" _blank "
-              rel="noopener"
-              class="mr-8 text-cyan-800 hover:text-pink-800"
-            >
-              <i class="text-xl fab fa-instagram"></i>
-            </a>
-
-            <a
-              href=" https://github.com/eoinlarkin/ "
-              target=" _blank "
-              rel=" noopener "
-              class="text-cyan-800 hover:text-pink-800"
-            >
-              <i class="text-xl fab fa-github"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="mx-6 py-2 text-center">
-          <div class="items-center justify-center">
-            <p class="uppercase font-semibold mb-1">TRAX</p>
-            <p class=" ">Upload, share, and analyse your activities</p>
-            {% if user.is_authenticated %}
-            <p class="text-xs italic text-cyan-800">
-              You are logged in under the account: {{ user.get_username }}
-            </p>
-            {% endif %}
-          </div>
-        </div>
-        <div class="text-center mt-0 p-6 bg-gray-200 text-xs space-y-0.5">
-          <p>
-            Credits and attributions in
-            <a
-              href=" https://github.com/eoinlarkin/trax "
-              target=" _blank "
-              rel=" noopener "
-              class="text-cyan-800 hover:text-pink-800"
-              >README.md</a
-            >
-          </p>
-          <p>
-            Design and code by
-            <a
-              href=" https://github.com/eoinlarkin/ "
-              target=" _blank "
-              rel=" noopener "
-              class="text-cyan-800 hover:text-pink-800"
-              >Eoin Larkin</a
-            >
-          </p>
-
-          <p></p>
-          <p>Made with <i class="fa fa-heart text-pink-800"></i> in D7</p>
+          <a href=" https://github.com/eoinlarkin/ " target=" _blank " rel=" noopener "
+            class="text-cyan-800 hover:text-pink-800">
+            <i class="text-xl fab fa-github"></i>
+          </a>
         </div>
       </div>
-    </footer>
 
-    <!-- Flowbite javascript file-->
-    <script src=" https://unpkg.com/flowbite@1.4.7/dist/flowbite.js "></script>
-  </body>
+      <div class="mx-6 py-2 text-center">
+        <div class="items-center justify-center">
+          <p class="uppercase font-semibold mb-1">TRAX</p>
+          <p class=" ">Upload, share, and analyse your activities</p>
+          {% if user.is_authenticated %}
+          <p class="text-xs italic text-cyan-800">
+            You are logged in under the account: {{ user.get_username }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="text-center mt-0 p-6 bg-gray-200 text-xs space-y-0.5">
+        <p>
+          Credits and attributions in
+          <a href=" https://github.com/eoinlarkin/trax " target=" _blank " rel=" noopener "
+            class="text-cyan-800 hover:text-pink-800">README.md</a>
+        </p>
+        <p>
+          Design and code by
+          <a href=" https://github.com/eoinlarkin/ " target=" _blank " rel=" noopener "
+            class="text-cyan-800 hover:text-pink-800">Eoin Larkin</a>
+        </p>
 
-  <!-- Loading script for dismissing toast messages -->
-  <script src="{% static 'js/toast.js' %}"></script>
+        <p></p>
+        <p>Made with <i class="fa fa-heart text-pink-800"></i> in D7</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Flowbite javascript file-->
+  <script src=" https://unpkg.com/flowbite@1.4.7/dist/flowbite.js "></script>
+</body>
+
+<!-- Loading script for dismissing toast messages -->
+<script src="{% static 'js/toast.js' %}"></script>
+
 </html>
