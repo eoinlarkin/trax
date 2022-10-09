@@ -131,8 +131,8 @@
         class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
 
         <div class="flex flex-grow flex-col p-4 leading-normal">
-            <p class="text-cyan-800 text-xl">Activity Map:</p>
-            <p>{{ my_map|safe }}</p>
+            <div class="text-cyan-800 text-xl">Activity Map:</div>
+            <div>{{ my_map|safe }}</div>
         </div>
     </div>
 
@@ -141,8 +141,8 @@
         class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
 
         <div class="flex flex-grow flex-col p-4 leading-normal">
-            <p class="text-cyan-800 text-xl">Heart Rate Plot:</p>
-            <p>{{ heart_rate|safe }}</p>
+            <div class="text-cyan-800 text-xl">Heart Rate Plot:</div>
+            <div>{{ heart_rate|safe }}</div>
         </div>
     </div>
 
@@ -150,8 +150,8 @@
     <div
         class="flex flex-grow items-center mx-auto bg-white rounded-lg border shadow-md md:flex-row md:min-w-2xl md:max-w-2xl mb-10">
         <div class="flex flex-grow flex-col p-4 leading-normal">
-            <p class="text-cyan-800 text-xl">Elevation Plot:</p>
-            <p>{{ elev_plot|safe }}</p>
+            <div class="text-cyan-800 text-xl">Elevation Plot:</div>
+            <div>{{ elev_plot|safe }}</div>
         </div>
     </div>
     {% endif %}
